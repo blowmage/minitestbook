@@ -370,8 +370,8 @@ Awful. Does it pass?
 
 It should feel like you are trolling yourself. The QA mindset finds the edges of what is acceptable behavior while the Worst Programmer mindset takes every short cut and intentionally avoids any sense of design. Why? The purpose of writing these tests is to design the API to be consumed with an acceptable amount of test coverage so we know if it works. Now we are ready to move on to the final phase of the TDD Cycle.
 
-Make it Pretty
---------------
+Make it Right
+-------------
 
 Now that the Customer and QA and Worst Programmer mindsets have gone rounds we have a suite of tests that demonstrate the API and show how it is intended to work. Now we can focus on changing the code so that it is correct. This step is also known as the Refactoring step, because we want to be able to make changes to how our code is implemented without changing the API we have defined. Let's switch to the Engineer mindset and start thinking about what improvements we should make to the code.
 
@@ -433,8 +433,8 @@ Much better! Does it continue to pass?
 
 Yep, it passes and all is right with the world. If I had ideas of design patterns to use I would implement them now. But the key in this phase is to only change the code, not the tests. If you change the tests in this phase you are redesigning and not refactoring.
 
-Make (the tests) Pretty
------------------------
+Make (the tests) Right
+----------------------
 
 I said that the Refactoring step was to make changes to the code, and that's true. But once I have all my code changes made I also like to revisit the design of the tests. We have one test for the default `hello` greeting, and four for the custom greeting. Perhaps we can rewrite the custom tests to not be as verbose by iterating over an array of names?
 

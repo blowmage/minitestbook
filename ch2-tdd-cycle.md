@@ -1,6 +1,10 @@
 Chapter 2 - TDD Cycle
 =====================
 
+**NOTE**: We want to go from red to green as quickly as possible. We should make changes so small that we can be red for only a moment, and quickly turn it around and be back to green. Green is our safe zone. We want to stay there.
+
+**NOTE**: How do we approach the difference between note writing any code until you have a failing test vs. being free to make any refactorings as long as the tests stay green? How do we know when we can refactor vs. adding new tests?
+
 Now that we are familiar with the Minitest API, let's take a look at how we can use Minitest to help us design our code. We will be using a practice called Test Driven Development (TDD) and the TDD Cycle. TDD is not intended to be used for quality assurance of our software; TDD is intended to be used to help us drive the design of our code. This means we want to write our tests before we write our code, and use the tests to inform what code we write.
 
 If this doesn't make sense to you, don't worry, we will step through the TDD Cycle several times before we're done.

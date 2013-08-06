@@ -7,7 +7,7 @@ Table of Contents
     * Chapter 2 - TDD Cycle
     * Chapter 3 - Minitest::Spec DSL
     * Chapter 4 - Running Tests
-* Part II - Building MiniBot
+* Part II - Building Minibot
     * Chapter 5 - ???
 * Part III - Extending Minitest
     * Chapter ? - ???

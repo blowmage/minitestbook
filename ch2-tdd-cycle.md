@@ -110,7 +110,7 @@ Let's fix the error by giving HelloWorld#hello an argument:
     end
 {hello_world.rb}
 
-Okay, 'et's rerun the tests and see if that helps:
+Okay, let's rerun the tests and see if that helps:
 
     $ ruby -r minitest/autorun hello_world.rb
     Run options: --seed 17455
@@ -238,7 +238,7 @@ What an awful solution! Surely Minitest wouldn't allow something as bad as that 
     2 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 {terminal}
 
-It passes! Our terrible code passes! But the code feels dirty, doesn't it? Time for another mindset change. We need some Quality Assurance, so let's put ourselves in the mindset of someone trying to expose edge cases in our code. Let's create a few more tests sending "Dave", "Andy", and "Ryan" into our greeting:
+It passes! Our terrible code passes! But the code feels dirty, doesn't it? Time for another mindset change. We need some Quality Assurance, so let's put ourselves in the mindset of someone trying to expose edge cases in our code. Let's create a few more tests sending "Ryan", "Aaron", and "Eric" into our greeting:
 
     class HelloWorld
       def hello(name = nil)

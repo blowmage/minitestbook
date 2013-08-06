@@ -10,6 +10,8 @@ New Feature
 
 Let's add a small feature to the code from chapter 1. We have a HelloWorld object which will give us a "Hello World!" greeting, but we want to customize the greeting for an individual. We would really like to make a greeting for Matz, the creator of Ruby, by making it say "Hello Matz!".
 
+Unlike the approach used in chapter 1 where we wrote a test for existing code, we are going to write a test *before* we write the code. This is known as test-first, as opposed to test-after. TDD is a test-first approach, while QA is typically a test-after approach. For the remainder of the book we will be testing before writing code.
+
 This is a simple feature, and one we could probably make without extensive test coverage. After all, the risk of our implementation being wrong is relatively small. However, we aren't using TDD to ensure the _correctness_ of our code as much as we are to inform the _design_ of our code. So to that end we will be taking what may seem like unnecessary steps, but hopefully by the end you will recognize how helpful they are.
 
 Make it Red

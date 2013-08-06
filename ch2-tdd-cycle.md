@@ -1,19 +1,7 @@
 TDD Cycle
 =========
 
-Now that we are familiar with the Minitest API, let's take a look at how we can use Minitest to help us design our code. 
-
-DO I LIST ALL THE TDD STEPS HERE?
-
-* Make it Error
-* Make it Fail
-* Make it Pass
-* Refactor
-* Repeat
-
-We will be using a practice called Test Driven Development (TDD) and the TDD Cycle.
-
-Minitest is not intended to be used for quality assurance of our software only, it is intended to be used within TDD to help us drive the design of our code. This means we want to write our tests before we write our code, and use the tests to inform what code we write.
+Now that we are familiar with the Minitest API, let's take a look at how we can use Minitest to help us design our code. We will be using a practice called Test Driven Development (TDD) and the TDD Cycle. TDD is not intended to be used for quality assurance of our software; TDD is intended to be used to help us drive the design of our code. This means we want to write our tests before we write our code, and use the tests to inform what code we write.
 
 If this doesn't make sense to you, don't worry, we will step through the TDD Cycle several times before we're done.
 
@@ -542,3 +530,10 @@ And the tests still pass.
     2 runs, 7 assertions, 0 failures, 0 errors, 0 skips
 
 Again, I only revisit the test design after all the tests pass cleanly and all code under test is refactored and my Engineer mindset is satisfied.
+
+Conclusion
+----------
+
+You've now written tests to go from **Error** to **Failure** to **Passing** to **Refactoring**. This is the TDD Cycle. Use the feedback the tests provide to make changes. The tests provide coverage for the API you are exposing to your software's consumers. This will give you the confidence to make improvements to your software by providing reassurance that you aren't breaking existing users.
+
+The TDD Cycle also promotes looking at your code from difference mindsets. You look at your code from multiple perspectives, from the consumer to the maintainer, allowing you to entertain both your creativity and your focus/completeness/something. The more you practice TDD, the better at these mindsets you get, and the better code you will write.

@@ -1,5 +1,5 @@
-Running Tests
-=============
+Chapter 4 - Running Tests
+=========================
 
 So far we have been passing `-r minitest/autorun` to ruby when we want to run the tests in a file. But what if we want to run all the tests in our application? Or what if we want to run just one test method in a file?
 

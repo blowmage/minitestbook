@@ -1,5 +1,5 @@
-TDD Cycle
-=========
+Chapter 2 - TDD Cycle
+=====================
 
 Now that we are familiar with the Minitest API, let's take a look at how we can use Minitest to help us design our code. We will be using a practice called Test Driven Development (TDD) and the TDD Cycle. TDD is not intended to be used for quality assurance of our software; TDD is intended to be used to help us drive the design of our code. This means we want to write our tests before we write our code, and use the tests to inform what code we write.
 

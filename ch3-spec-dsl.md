@@ -1,5 +1,5 @@
-Minitest::Spec DSL
-==================
+Chapter 3 - Minitest::Spec DSL
+==============================
 
 In chapter 1 we looked at the Minitest API and using `Minitest::Test` to create *test classes* and *test methods* using *assertion methods* and *support methods*. This style of testing may seem primitive to some who prefer using a high level spec DSL instead of an API. Minitest also provides a spec DSL, but to understand the spec DSL you must first understand the Minitest API. So I encourage you to read chapter 1 if you skipped it in your excitement.
 

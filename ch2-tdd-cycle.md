@@ -5,25 +5,25 @@ Chapter 2 - TDD Cycle
 
 **NOTE**: How do we approach the difference between note writing any code until you have a failing test vs. being free to make any refactorings as long as the tests stay green? How do we know when we can refactor vs. adding new tests?
 
-Now that we are familiar with the Minitest API, let's take a look at how we can use Minitest to help us design our code. We will be using a practice called Test Driven Development (TDD) and the TDD Cycle. TDD is not intended to be used for quality assurance of our software; TDD is intended to be used to help us drive the design of our code. This means we want to write our tests before we write our code, and use the tests to inform what code we write.
+Now that we are familiar with the Minitest API, let's take a look at how we can use Minitest to help us design our code. We will be using a practice called Test Driven Development (hereby referred to as "TDD"") and the TDD Cycle. TDD is not intended to be used for quality assurance of our software; TDD is intended to be used to help us drive the design of our code. This means we want to write our tests before we write our code, and use the tests to inform what code we write.
 
 If this doesn't make sense to you, don't worry, we will step through the TDD Cycle several times before we're done.
 
 New Feature
 -----------
 
-Let's add a small feature to the code from chapter 1. We have a HelloWorld object which will give us a "Hello World!" greeting, but we want to customize the greeting for an individual. We would really like to make a greeting for Matz, the creator of Ruby, by making it say "Hello Matz!".
+Let's add a small feature to the code from Chapter 1. We have a `HelloWorld` object which will give us a "Hello World!" greeting, but we want to customize the greeting for an individual. We would really like to make a greeting for Matz, the creator of Ruby, by making it say "Hello Matz!".
 
-Unlike the approach used in chapter 1 where we wrote a test for existing code, we are going to write a test *before* we write the code. This is known as test-first, as opposed to test-after. TDD is a test-first approach, while QA is typically a test-after approach. For the remainder of the book we will be testing before writing code.
+Unlike the approach used in Chapter 1 where we wrote a test for existing code, we are going to write a test *before* we write the code. This is known as test-first, as opposed to test-after. TDD is a test-first approach, while QA is typically a test-after approach. For the remainder of the book we will be testing before writing code.
 
 This is a simple feature, and one we could probably make without extensive test coverage. After all, the risk of our implementation being wrong is relatively small. However, we aren't using TDD to ensure the _correctness_ of our code as much as we are to inform the _design_ of our code. So to that end we will be taking what may seem like unnecessary steps, but hopefully by the end you will recognize how helpful they are.
 
 Make it Red
 -----------
 
-Let's start by adding a new *test method* that will say hello to Matz. When writing this new test method we have a decision to make: What do we want the API to be for customizing the message? We need to put ourselves in the mindset of those that consume our library: how do we want to use this code? Do we create a HelloWorld instance specific to the receiver? (`HelloWorld.for("Matz").hello`) Do we have a different `hello` method that accepts the customization? (`HelloWorld.new.hello_for("Matz")`) Or do we pass the name we want to use to the existing `hello` method? (`HelloWorld.new.hello("Matz")`)
+Let's start by adding a new *Test Method* that will say hello to Matz. When writing this new test method we have a decision to make: What do we want the API to be for customizing the message? We need to put ourselves in the mindset of those that consume our library: How do we want to use this code? Do we create a HelloWorld instance specific to the receiver (`HelloWorld.for("Matz").hello`)? Do we have a different `hello` method that accepts the customization (`HelloWorld.new.hello_for("Matz")`)? Or do we pass the name we want to use to the existing `hello` method (`HelloWorld.new.hello("Matz")`)?
 
-Let's decide on passing a `name` argument to HelloWorld#hello. We'll create a new method named `test_hello_to_matz` and pass "Matz" as an argument.
+Let's decide on passing a `name` argument to `HelloWorld#hello`. We'll create a new method named `test_hello_to_matz` and pass "Matz" as an argument.
 
     class HelloWorld
       def hello
@@ -44,7 +44,7 @@ Let's decide on passing a `name` argument to HelloWorld#hello. We'll create a ne
       end
 
       def test_hello_to_matz
-        assert("Hello Matz!" == HelloWorld.new.hello("Matz"))
+        assert("Hello Matz!" == @hello_world.hello("Matz"))
       end
 
       def teardown
@@ -53,7 +53,7 @@ Let's decide on passing a `name` argument to HelloWorld#hello. We'll create a ne
     end
 {hello_world.rb}
 
-So far we have only changed our *test class*, so we expect our tests to fail:
+So far we have only changed our *Test Class*, so we expect our new test to fail:
 
     $ ruby -r minitest/autorun hello_world.rb
 
@@ -74,7 +74,7 @@ So far we have only changed our *test class*, so we expect our tests to fail:
 
 Interestingly, instead of generating a failure it generated an error. The error occurred because our new test method passed an argument to the `hello` method when it didn't expect one. This is okay, Minitest expects errors to happen and will display the appropriate information.
 
-Let's fix the error by giving HelloWorld#hello an argument:
+Let's fix the error by giving `HelloWorld#hello` an argument:
 
     class HelloWorld
       def hello(name)
@@ -95,7 +95,7 @@ Let's fix the error by giving HelloWorld#hello an argument:
       end
 
       def test_hello_to_matz
-        assert("Hello Matz!" == HelloWorld.new.hello("Matz"))
+        assert("Hello Matz!" == @hello_world.hello("Matz"))
       end
 
       def teardown
@@ -129,7 +129,7 @@ Okay, let's rerun the tests and see if that helps:
     2 runs, 1 assertions, 1 failures, 1 errors, 0 skips
 {terminal}
 
-Now we have a failure and an error. We seem to be moving backwards, but we aren't really. Let's look at the two messages. The first error is from our original test that was previously passing. We added a parameter to `HelloWorld#hello` which changed the API that we were using. We have existing calls to `hello` that aren't providing a value, so we have broken our existing API. We need an API that allows for customizing the greeting as well as not customizing the greeting. We can do this by providing a default value along with the name parameter. Let's set the default value to nil in the method definition to see if we can get our original test to pass:
+Now we have a failure and an error. We seem to be moving backwards, but we aren't really. Let's look at the two messages. The first error is from our original test that was previously passing. We added a parameter to `HelloWorld#hello` which changed the API that we were using. We have existing calls to `hello` that aren't providing a value, so we have broken our existing API. We need an API that allows for customizing the greeting as well as not customizing the greeting. We can do this by providing a default value to the name parameter. Let's set the default value to nil in the method definition to see if we can get our original test to pass:
 
     class HelloWorld
       def hello(name = nil)
@@ -177,14 +177,14 @@ Now when we run the tests we see that the first test method is passing again:
     2 runs, 2 assertions, 1 failures, 0 errors, 0 skips
 {terminal}
 
-Not only does our original test pass again, but our new test `test_hello_to_matz` no longer errors. We are making progress. But our new test isn't passing yet, so we have some work to do. Let's update the HelloWorld#hello method to make it pass.
+Not only does our original test pass again, but our new test `test_hello_to_matz` no longer errors. We are making progress, but our new test isn't passing yet, so we have some work to do. Let's update the `HelloWorld#hello` method to make it pass.
 
 Make it Green
 -------------
 
 When we were writing our tests we put ourselves in the mindset of the consumers of our code. We thought through what API we wanted to use, not just what was easy to expose. Now that we are changing our code I want to change mindset once again. I want to put on the personality of the Worst Programmer in the World. I want to take any and all shortcuts needed to get the test to pass. I want to intentionally write bad or buggy code.
 
-How would the Worst Programmer in the World make this test pass? Probably hard code the implementation. So let's do that.
+How would the Worst Programmer in the World make this test pass? Probably hard code the implementation. So let's do that:
 
     class HelloWorld
       def hello(name = nil)
@@ -306,6 +306,10 @@ Now that we have three new tests, we should have three new failures:
     5 runs, 5 assertions, 3 failures, 0 errors, 0 skips
 {terminal}
 
+[ From Jason:
+Should there be discussion about test failure messages? These messages are currently misleading, leading the developer to think that no message was returned, when in fact it's failing because "Hello Aaron!" != "Hello World!"
+]
+
 Okay, what does the Worst Programmer in the World do now? Probably write some more terrible code.
 
     class HelloWorld
@@ -379,7 +383,7 @@ Make it Right
 
 Now that the Customer and QA and Worst Programmer mindsets have gone rounds we have a suite of tests that demonstrate the API and show how it is intended to work. Now we can focus on changing the code so that it is correct. This step is also known as the Refactoring step, because we want to be able to make changes to how our code is implemented without changing the API we have defined. Let's switch to the Engineer mindset and start thinking about what improvements we should make to the code.
 
-Right now HelloWorld#hello has five conditional branches. My Engineer mindset doesn't like that. How can we change the implementation without changing the API? We could use a different default value and use string interpolation.
+Right now `HelloWorld#hello` has five conditional branches. My Engineer mindset doesn't like that. How can we change the implementation without changing the API? We could use a different default value and use string interpolation.
 
     class HelloWorld
       def hello(name = "World")
@@ -485,7 +489,7 @@ Much better! While there is a bit more code to parse in the `test_hello_custom` 
 
     2 runs, 5 assertions, 0 failures, 0 errors, 0 skips
 
-We can make even more improvements to the tests. One thing that bothered my QA mindset was that we were dealing with a fixed list of names to test. I want to keep the Worst Programmer mindset honest, and the only way I can think of doing that is by giving it random names that the Worst Programmer can't anticipate. So let's create a new *support method* to generate a random name and add a couple random names to the list.
+We can make even more improvements to the tests. One thing that bothered my QA mindset was that we were dealing with a fixed list of names to test. I want to keep the Worst Programmer mindset honest, and the only way I can think of doing that is by giving it random names that the Worst Programmer can't anticipate. So let's create a new *Support Method* to generate a random name and add a couple random names to the list.
 
     class HelloWorld
       def hello(name = "World")

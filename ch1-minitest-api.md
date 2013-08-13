@@ -1,6 +1,8 @@
 Chapter 1 - Minitest API
 ========================
 
+**NOTE**: This isn't discussing or communicating what minitest's philosophy is and what value it will give the user.
+
 When you get right down to it, Minitest is pretty simple. If you are familiar with testing software it does what you would expect, and if you are new to testing software it is easy to learn thanks to its small surface area. That isn't to say Minitest isn't powerful, or full featured, just that it was designed to do it's job and to get out of the way. Writing tests with Minitest is easy. And, as it turns out, pretty fun.
 
 There are four main steps to writing tests using Minitest:

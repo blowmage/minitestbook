@@ -7,111 +7,110 @@ Using a spec DSL is also very popular with practitioners of BDD, a variation of 
 
 To demonstrate the spec DSL, let's start with the `test_hello_world.rb` file created from chapters 1 and 2. We will convert this file from using the Minitest API to the spec DSL. Here are the contents of the file we are starting with:
 
-    gem     "minitest"
-    require "minitest"
-    require "securerandom"
-    require_relative "hello_world.rb"
+```ruby
+gem "minitest"
+require "minitest/autorun"
 
-    class TestHelloWorld < Minitest::Test
-      def setup
-        @hello_world = HelloWorld.new
-      end
+class TestMinibot < Minitest::Test
+  def setup
+    @minibot = Minibot.new
+  end
 
-      def test_hello_default
-        assert_equal "Hello World!", @hello_world.hello
-      end
+  def test_add_rule
+    @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
 
-      def test_hello_custom
-        names = %W{Matz Ryan Aaron Eric #{random_name} #{random_name}}
-        names.each do |name|
-          assert_equal "Hello #{name}!", @hello_world.hello(name)
-        end
-      end
+    assert_equal 1, @minibot.triggers.size
+    assert_includes @minibot.triggers, "zomg"
+  end
 
-      def random_name
-        SecureRandom.hex(8)
-      end
+  def test_add_rules
+    @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+    @minibot.add "wtf", "http://i.imgur.com/ULQl7.gif"
 
-      def teardown
-        @hello_world = nil
-      end
-    end
-{test\_hello\_world.rb}
+    assert_equal 2, @minibot.triggers.size
+    assert_includes @minibot.triggers, "zomg"
+    assert_includes @minibot.triggers, "wtf"
+  end
+
+  def test_add_multiple_rules_on_same_trigger
+    @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+    @minibot.add "zomg", "http://i.imgur.com/KqCfQPR.gif"
+    @minibot.add "zomg", "http://i.imgur.com/fc5LmfO.gif"
+
+    assert_equal 1, @minibot.triggers.size
+    assert_includes @minibot.triggers, "zomg"
+  end
+
+  def test_triggers_is_empty
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+``` `test/test_minibot.rb`
 
 The `describe` Block
 --------------------
 
 The spec DSL is comprised of a series of nested blocks. Instead of creating a *test class* explicitly, we can use a **`describe` block** to do this for us. We can replace the line `class TestHelloWorld < Minitest::Test` with a describe:
 
-    gem     "minitest"
-    require "minitest"
-    require "securerandom"
-    require_relative "hello_world.rb"
+### Before
 
-    describe HelloWorld do
-      def setup
-        @hello_world = HelloWorld.new
-      end
+```ruby
+class TestMinibot < Minitest::Test
+```
 
-      def test_hello_default
-        assert_equal "Hello World!", @hello_world.hello
-      end
+### After
 
-      def test_hello_custom
-        names = %W{Matz Ryan Aaron Eric #{random_name} #{random_name}}
-        names.each do |name|
-          assert_equal "Hello #{name}!", @hello_world.hello(name)
-        end
-      end
-
-      def random_name
-        SecureRandom.hex(8)
-      end
-
-      def teardown
-        @hello_world = nil
-      end
-    end
-{test\_hello\_world.rb}
+```ruby
+describe Minibot do
+```
 
 The `describe` block can be passed the constant of the class you are testing, or a string, or any object that can be converted to a string, like a symbol. But for the most part a class constant it preferred when possible.
 
-We can use nested `describe` blocks to narrow the focus of our tests. This focus can be about a specific method under test, or it can be a scenario such as collaborator being valid or invalid, or permissions being present or not present. In our case, both of our existing *test methods* are specific to the `hello` method, so let's create a nested `describe` block that is focused on that method:
+We can use nested `describe` blocks to narrow the focus of our tests. This focus can be about a specific method under test, or it can be a scenario such as collaborator being valid or invalid, or permissions being present or not present. In our case, most of our *test methods* are specific to the `add` method, so let's create a nested `describe` block that is focused on that method:
 
-    gem     "minitest"
-    require "minitest"
-    require "securerandom"
-    require_relative "hello_world.rb"
+```ruby
+gem "minitest"
+require "minitest/autorun"
 
-    describe HelloWorld do
-      def setup
-        @hello_world = HelloWorld.new
-      end
+describe Minibot do
+  def setup
+    @minibot = Minibot.new
+  end
 
-      describe :hello do
-        def test_hello_default
-          assert_equal "Hello World!", @hello_world.hello
-        end
+  describe :add do
+    def test_add_rule
+      @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
 
-        def test_hello_custom
-          names = %W{Matz Ryan Aaron Eric #{random_name} #{random_name}}
-          names.each do |name|
-            assert_equal "Hello #{name}!", @hello_world.hello(name)
-          end
-        end
-      end
-
-      def random_name
-        SecureRandom.hex(8)
-      end
-
-      def teardown
-        @hello_world = nil
-      end
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, "zomg"
     end
-{test\_hello\_world.rb}
 
-Under the covers Minitest is creating a *test class* with the contents of each `describe` block. The *test class* inherits from the `describe` block it is nested under, or the default `Minitest::Spec` class if it is not nested. So the *test class* created by the `describe :hello` block inherits from the *test class* created by the `describe HelloWorld` block, which inherits from `Minitest::Spec` (which inherits from `Minitest::Test`).
+    def test_add_rules
+      @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+      @minibot.add "wtf", "http://i.imgur.com/ULQl7.gif"
+
+      assert_equal 2, @minibot.triggers.size
+      assert_includes @minibot.triggers, "zomg"
+      assert_includes @minibot.triggers, "wtf"
+    end
+
+    def test_add_multiple_rules_on_same_trigger
+      @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+      @minibot.add "zomg", "http://i.imgur.com/KqCfQPR.gif"
+      @minibot.add "zomg", "http://i.imgur.com/fc5LmfO.gif"
+
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, "zomg"
+    end
+  end
+
+  def test_triggers_is_empty
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+``` `test/test_minibot.rb`
+
+Under the covers Minitest is creating a *test class* with the contents of each `describe` block. The *test class* inherits from the `describe` block it is nested under, or the default `Minitest::Spec` class if it is not nested. So the *test class* created by the `describe :add` block inherits from the *test class* created by the `describe Minibot` block, which inherits from `Minitest::Spec` (which inherits from `Minitest::Test`).
 
 The `describe` block is just another way to create a *test class* in your tests. The output of the spec DSL are objects using the Minitest API.
 
@@ -120,40 +119,79 @@ The `it` Block
 
 You can create *test methods* using the spec DSL, just as you can create *test classes*. *Test methods* are created using the **`it` block**, which must be nested inside of a `describe` block, the same way a *test method* must be located inside a *test class*. The `it` block takes a string that can provide more descriptive description (?!?) than the name of the *test method*:
 
-    gem     "minitest"
-    require "minitest"
-    require "securerandom"
-    require_relative "hello_world.rb"
+### Before
 
-    describe TestHelloWorld do
-      def setup
-        @hello_world = HelloWorld.new
-      end
+```ruby
+def test_add_rule
+```
 
-      describe :hello do
-        it "gives a default greeting" do
-          assert_equal "Hello World!", @hello_world.hello
-        end
+```ruby
+def test_add_rules
+```
 
-        it "gives a custom greeting" do
-          names = %W{Matz Ryan Aaron Eric #{random_name} #{random_name}}
-          names.each do |name|
-            assert_equal "Hello #{name}!", @hello_world.hello(name)
-          end
-        end
-      end
+```ruby
+def test_add_multiple_rules_on_same_trigger
+```
 
-      def random_name
-        SecureRandom.hex(8)
-      end
+### After
 
-      def teardown
-        @hello_world = nil
-      end
+```ruby
+it "adds a single rule" do
+```
+
+```ruby
+it "adds multiple rules with different triggers" do
+```
+
+```ruby
+it "adds several rules all on the same trigger" do
+```
+
+Our revised test is now:
+
+```ruby
+gem "minitest"
+require "minitest/autorun"
+
+describe Minibot do
+  def setup
+    @minibot = Minibot.new
+  end
+
+  describe :add do
+    it "adds a single rule" do
+      @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, "zomg"
     end
-{test\_hello\_world.rb}
 
-Under the covers Minitest is creating a *test method* that uses the string provided to the `it` block. So the contents of the `it "gives a default greeting"` block is used to create a method named "`test_0001_gives a default greeting`" and contents of the `it "gives a custom greeting"` block is used to create a method named "`test_0002_gives a custom greeting`".
+    it "adds multiple rules with different triggers" do
+      @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+      @minibot.add "wtf", "http://i.imgur.com/ULQl7.gif"
+
+      assert_equal 2, @minibot.triggers.size
+      assert_includes @minibot.triggers, "zomg"
+      assert_includes @minibot.triggers, "wtf"
+    end
+
+    it "adds several rules all on the same trigger" do
+      @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+      @minibot.add "zomg", "http://i.imgur.com/KqCfQPR.gif"
+      @minibot.add "zomg", "http://i.imgur.com/fc5LmfO.gif"
+
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, "zomg"
+    end
+  end
+
+  it "has an empty trigger list by default" do
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+``` `test/test_minibot.rb`
+
+Under the covers Minitest is creating a *test method* that uses the string provided to the `it` block. So the contents of the `it "adds a single rule"` block is used to create a method named "`test_0001_adds a single rule`" and contents of the `it "adds multiple rules with different triggers"` block is used to create a method named "`test_0002_adds multiple rules with different triggers`".
 
 The `it` block is just another way to create a *test methods* in your tests. The output of the spec DSL are methods using the Minitest API.
 
@@ -171,46 +209,59 @@ The common order of arguments for assertions is expected, then actual. Consider 
 
 In the assertion method the position of the arguments is important, but expectations are called on the actual value eliminating the need to remember the positioning. In our tests, the `assert_equal` assertion:
 
-    assert_equal "Hello World!", @hello_world.hello
+```ruby
+assert_equal 1, @minibot.triggers.size
+```
 
 Can be written with the `must_equal` expectation:
 
-    @hello_world.hello.must_equal "Hello World!"
+```ruby
+@minibot.triggers.size.must_equal 1
+```
 
 Our revised test is now:
 
-    gem     "minitest"
-    require "minitest"
-    require "securerandom"
-    require_relative "hello_world.rb"
+```ruby
+gem "minitest"
+require "minitest/autorun"
 
-    describe TestHelloWorld do
-      def setup
-        @hello_world = HelloWorld.new
-      end
+describe Minibot do
+  def setup
+    @minibot = Minibot.new
+  end
 
-      describe :hello do
-        it "gives a default greeting" do
-          @hello_world.hello.must_equal "Hello World!"
-        end
+  describe :add do
+    it "adds a single rule" do
+      @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
 
-        it "gives a custom greeting" do
-          names = %W{Matz Ryan Aaron Eric #{random_name} #{random_name}}
-          names.each do |name|
-            @hello_world.hello(name).must_equal "Hello #{name}!"
-          end
-        end
-      end
-
-      def random_name
-        SecureRandom.hex(8)
-      end
-
-      def teardown
-        @hello_world = nil
-      end
+      @minibot.triggers.size.must_equal 1
+      @minibot.triggers.must_include "zomg"
     end
-{test\_hello\_world.rb}
+
+    it "adds multiple rules with different triggers" do
+      @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+      @minibot.add "wtf", "http://i.imgur.com/ULQl7.gif"
+
+      @minibot.triggers.size.must_equal 2
+      @minibot.triggers.must_include "zomg"
+      @minibot.triggers.must_include "wtf"
+    end
+
+    it "adds several rules all on the same trigger" do
+      @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+      @minibot.add "zomg", "http://i.imgur.com/KqCfQPR.gif"
+      @minibot.add "zomg", "http://i.imgur.com/fc5LmfO.gif"
+
+      @minibot.triggers.size.must_equal 1
+      @minibot.triggers.must_include "zomg"
+    end
+  end
+
+  it "has an empty trigger list by default" do
+    @minibot.triggers.size.must_equal 0
+  end
+end
+``` `test/test_minibot.rb`
 
 Under the covers Minitest is calling *assertion methods* from the *expectations*. *Expectations* are just another way to call *assertion methods* in your tests. The output of the spec DSL are methods using the Minitest API.
 
@@ -219,38 +270,20 @@ The `before` and `after` Blocks
 
 The spec DSL has analogs for the `setup` and `teardown` support methods. They are expressed as `before` and `after` blocks. The contents of the `setup` and `teardown` support methods will transfer directly to the `before` and `after` blocks.
 
-    gem     "minitest"
-    require "minitest"
-    require "securerandom"
-    require_relative "hello_world.rb"
+### Before
 
-    describe TestHelloWorld do
-      before do
-        @hello_world = HelloWorld.new
-      end
+```ruby
+def setup
+  @minibot = Minibot.new
+end
+```
+### After
 
-      describe :hello do
-        it "gives a default greeting" do
-          @hello_world.hello.must_equal "Hello World!"
-        end
-
-        it "gives a custom greeting" do
-          names = %W{Matz Ryan Aaron Eric #{random_name} #{random_name}}
-          names.each do |name|
-            @hello_world.hello(name).must_equal "Hello #{name}!"
-          end
-        end
-      end
-
-      def random_name
-        SecureRandom.hex(8)
-      end
-
-      after do
-        @hello_world = nil
-      end
-    end
-{test\_hello\_world.rb}
+```ruby
+before do
+  @minibot = Minibot.new
+end
+```
 
 The `let` Block
 ---------------
@@ -259,56 +292,91 @@ Since the test was only using the `setup` and `teardown` methods to initialize a
 
 The `let` block will create a support method that returns the result of the given block. And it will execute the block only once per test. So while it can be called several times in a test the block will only be executed the first time. And unlike the `setup` method or the `before` block it is lazy evaluated so if it is never called the block will never be invoked.
 
-    gem     "minitest"
-    require "minitest"
-    require "securerandom"
-    require_relative "hello_world.rb"
+Under the covers the `let` block Minitest is creates a memoized accessor method that clears the value between tests. So the following test-style code:
 
-    describe TestHelloWorld do
-      let(:hello_world) { HelloWorld.new }
+```ruby
+def setup
+  @foo = nil
+end
 
-      describe :hello do
-        it "gives a default greeting" do
-          hello_world.hello.must_equal "Hello World!"
-        end
+def foo
+  @foo ||= Foo.new
+end
 
-        it "gives a custom greeting" do
-          names = %W{Matz Ryan Aaron Eric #{random_name} #{random_name}}
-          names.each do |name|
-            hello_world.hello(name).must_equal "Hello #{name}!"
-          end
-        end
-      end
+def teardown
+  @foo = nil
+end
+```
 
-      def random_name
-        SecureRandom.hex(8)
-      end
-    end
-{test\_hello\_world.rb}
+Can be replaced with the spec-style code:
 
-Under the covers of the `let` block Minitest is creating using several support methods. Minitest creates code similar to the following:
+```ruby
+let(:foo) { Foo.new }
+```
 
-    class TestHelloWorld < Minitest::Test
-      def setup
-        @hello_world = nil
-      end
+We can replace our use of the `before` block with a `let` block and then update all instances of the instance variable with calls to the accessor method within the test methods.
 
-      def hello_world
-        @hello_world ||= HelloWorld.new
-      end
+### Before
 
-      def teardown
-        @hello_world = nil
-      end
-    end
-{test\_hello\_world.rb}
+```ruby
+before do
+  @minibot = Minibot.new
+end
+```
+### After
 
-This is one of the advantages 
+```ruby
+let(:minibot) { Minibot.new }
+```
+
+This is one of the advantages (???) `let` blocks can call other let block, because they just 
 
 The `before` and `after` and `let` blocks are more ways to create a *support methods* in your tests. The output of the spec DSL are methods using the Minitest API.
 
 Conclusion
 ----------
+
+Our revised test is now:
+
+```ruby
+gem "minitest"
+require "minitest/autorun"
+
+describe Minibot do
+  let(:minibot) { Minibot.new }
+
+  describe :add do
+    it "adds a single rule" do
+      minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+
+      minibot.triggers.size.must_equal 1
+      minibot.triggers.must_include "zomg"
+    end
+
+    it "adds multiple rules with different triggers" do
+      minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+      minibot.add "wtf", "http://i.imgur.com/ULQl7.gif"
+
+      minibot.triggers.size.must_equal 2
+      minibot.triggers.must_include "zomg"
+      minibot.triggers.must_include "wtf"
+    end
+
+    it "adds several rules all on the same trigger" do
+      minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+      minibot.add "zomg", "http://i.imgur.com/KqCfQPR.gif"
+      minibot.add "zomg", "http://i.imgur.com/fc5LmfO.gif"
+
+      minibot.triggers.size.must_equal 1
+      minibot.triggers.must_include "zomg"
+    end
+  end
+
+  it "has an empty trigger list by default" do
+    minibot.triggers.size.must_equal 0
+  end
+end
+``` `test/test_minibot.rb`
 
 You've now converted your test from the Minitest API to the spec DSL. 
 

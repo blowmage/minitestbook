@@ -5,362 +5,382 @@ Chapter 2 - TDD Cycle
 
 **NOTE**: How do we approach the difference between note writing any code until you have a failing test vs. being free to make any refactorings as long as the tests stay green? How do we know when we can refactor vs. adding new tests?
 
+
+I've often been asked, "How is writing code with tests any different than just writing code?". This is one of my favorite questions to answer, and by the end of this chapter you will be able to answer it too.
+
 Now that we are familiar with the Minitest API, let's take a look at how we can use Minitest to help us design our code. We will be using a practice called Test Driven Development (TDD) and the TDD Cycle. TDD is not intended to be used for quality assurance of our software; TDD is intended to be used to help us drive the design of our code. This means we want to write our tests before we write our code, and use the tests to inform what code we write.
 
 If this doesn't make sense to you, don't worry, we will step through the TDD Cycle several times before we're done.
 
+Simple Requirements
+-------------------
+
+Why did i choose "minibot" in the previous chapter? Because I love bots, all kids of bots. IRC bots. Campfire bots. Twitter bots. They make smile (for the most part). I want to build a bot that is well designed, and I'm going to use Minitest to help me get there.
+
+Since I don't want to get lots in the weeds of all the things that a bot can do, let's start simple. Here is a TODO list of the things I want this bot to do. We will work off this list and add to it as we progress.
+
+```plain
+Minibot
+=======
+
+A simple bot for storing and matching memes.
+
+- [ ] Add a new matching rule
+- [ ] List all matching rules
+- [ ] Remove a matching rule
+- [ ] Match an given string to an existing rule
+``` `todo.md`
+
 New Feature
 -----------
 
-Let's add a small feature to the code from chapter 1. We have a HelloWorld object which will give us a "Hello World!" greeting, but we want to customize the greeting for an individual. We would really like to make a greeting for Matz, the creator of Ruby, by making it say "Hello Matz!".
+Let's add one of the features from our TODO. I want to register a rule that a message can match. So any messages that include the word "zomg" in them would get an appropriate animated gif response. If you sent the message "zomg this is amazing!", the bot would respond "http://i.imgur.com/49ORL0o.gif".
 
-Unlike the approach used in chapter 1 where we wrote a test for existing code, we are going to write a test *before* we write the code. This is known as test-first, as opposed to test-after. TDD is a test-first approach, while QA is typically a test-after approach. For the remainder of the book we will be testing before writing code.
+We are going to write a test *before* we write the code. This is known as test-first, as opposed to test-after. TDD is a test-first approach, while QA is typically a test-after approach. For the remainder of the book we will be writing tests before writing code.
 
-This is a simple feature, and one we could probably make without extensive test coverage. After all, the risk of our implementation being wrong is relatively small. However, we aren't using TDD to ensure the _correctness_ of our code as much as we are to inform the _design_ of our code. So to that end we will be taking what may seem like unnecessary steps, but hopefully by the end you will recognize how helpful they are.
+Step 1: Make it Red
+-------------------
 
-Make it Red
------------
+Let's start by adding a new *test method* for the first TODO: "Add a new matching rule". When writing this new test method we have a decision to make: What do we want the Minibot API to be for adding a new rule? What information do we nee dto provide to add the rule? How do we know that a rule was added? We need to put ourselves in the mindset of those that consume our library: how would we want to use this code? This process is key: by consuming the code first we get to change our mindset and consider what the most appropriate API should be. We are not conscerned with implementation details, we are performing a *design* excercise.
 
-Let's start by adding a new *test method* that will say hello to Matz. When writing this new test method we have a decision to make: What do we want the API to be for customizing the message? We need to put ourselves in the mindset of those that consume our library: how do we want to use this code? Do we create a HelloWorld instance specific to the receiver? (`HelloWorld.for("Matz").hello`) Do we have a different `hello` method that accepts the customization? (`HelloWorld.new.hello_for("Matz")`) Or do we pass the name we want to use to the existing `hello` method? (`HelloWorld.new.hello("Matz")`)
+We know decide that for Minibot to register a new rule the client needs to provide a trigger for the rule (the text "zomg"), and the message to be returned (the text "http://i.imgur.com/49ORL0o.gif") when the rule is triggered. Let's pass both of those values to an `add` method.
 
-Let's decide on passing a `name` argument to HelloWorld#hello. We'll create a new method named `test_hello_to_matz` and pass "Matz" as an argument.
+```ruby
+minibot = Minibot.new
+minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+```
 
-    class HelloWorld
-      def hello
-        "Hello World!"
-      end
-    end
+But how can we tell the rule was added? We aren't making any assertions, which means if this functionality fails we have no way to tell. Let's add a check that the `minibot` object knows about the trigger by asserting that the trigger size is 1.
 
-    gem     "minitest"
-    require "minitest"
 
-    class TestHelloWorld < Minitest::Test
-      def setup
-        @hello_world = HelloWorld.new
-      end
+```ruby
+minibot = Minibot.new
+minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+assert_equal 1, minibot.triggers.size
+```
 
-      def test_hello
-        assert("Hello World!" == @hello_world.hello)
-      end
+Here is what our file looks like now.
 
-      def test_hello_to_matz
-        assert("Hello Matz!" == HelloWorld.new.hello("Matz"))
-      end
+```ruby
+gem "minitest"
+require "minitest/autorun"
 
-      def teardown
-        @hello_world = nil
-      end
-    end
-{hello_world.rb}
+class TestMinibot < Minitest::Test
+  def test_add_rule
+    minibot = Minibot.new
+    minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+    assert_equal 1, minibot.triggers.size
+  end
+end
+``` `minibot.rb`
 
 So far we have only changed our *test class*, so we expect our tests to fail:
 
-    $ ruby -r minitest/autorun hello_world.rb
+```shell
+$ ruby minibot.rb
+Run options: --seed 43987
 
-    # Running:
+E
 
-    .E
+Finished in 0.000808s, 1237.6238 runs/s, 0.0000 assertions/s.
 
-    Finished in 0.001275s, 1568.6275 runs/s, 784.3137 assertions/s.
+1) Error:
+TestMinibot#test_add_rule:
+NameError: uninitialized constant TestMinibot::Minibot
+minibot.rb:6:in `test_add_rule'
 
-      1) Error:
-    TestHelloWorld#test_hello_to_matz:
-    ArgumentError: wrong number of arguments (1 for 0)
-        hello_world.rb:2:in `hello'
-        hello_world.rb:20:in `test_hello_to_matz'
+1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
+``` `terminal`
 
-    2 runs, 1 assertions, 0 failures, 1 errors, 0 skips
-{terminal}
+Interestingly, instead of generating a failure it generated an error. The error occurred because our new test method is trying to create an new object from a class that does not exist. This is okay, Minitest expects errors to happen and will display the appropriate information.
 
-Interestingly, instead of generating a failure it generated an error. The error occurred because our new test method passed an argument to the `hello` method when it didn't expect one. This is okay, Minitest expects errors to happen and will display the appropriate information.
+Handling errors is part of our design process. We want to wrote tests to use our code before we write our code. And we want to make this test pass by writing as little code as possible. Let's start by fixing the 'uninitialized constant TestMinibot::Minibot' error by adding a class definition for Minibot:
 
-Let's fix the error by giving HelloWorld#hello an argument:
+```ruby
+class Minibot
 
-    class HelloWorld
-      def hello(name)
-        "Hello World!"
-      end
-    end
+end
 
-    gem     "minitest"
-    require "minitest"
+gem "minitest"
+require "minitest/autorun"
 
-    class TestHelloWorld < Minitest::Test
-      def setup
-        @hello_world = HelloWorld.new
-      end
-
-      def test_hello
-        assert("Hello World!" == @hello_world.hello)
-      end
-
-      def test_hello_to_matz
-        assert("Hello Matz!" == HelloWorld.new.hello("Matz"))
-      end
-
-      def teardown
-        @hello_world = nil
-      end
-    end
-{hello_world.rb}
+class TestMinibot < Minitest::Test
+  def test_add_rule
+    minibot = Minibot.new
+    minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+    assert_equal 1, minibot.triggers.size
+  end
+end
+``` `minibot.rb`
 
 Okay, let's rerun the tests and see if that helps:
 
-    $ ruby -r minitest/autorun hello_world.rb
-    Run options: --seed 17455
+```shell
+1) Error:
+TestMinibot#test_add_rule:
+NoMethodError: undefined method `add' for #<Minibot:0x007fc224eb2100>
+minibot.rb:11:in `test_add_rule'
 
-    # Running:
+1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
+```
 
-    EF
+Now we have a different error, this time because the test is calling a method that does not exist. The Minibot constant exists, but the `add` method does not. Let's add the method, but not the implementation, and rerun the test:
 
-    Finished in 0.001197s, 1670.8438 runs/s, 835.4219 assertions/s.
+```ruby
+class Minibot
+  def add(trigger, response)
 
-      1) Error:
-    TestHelloWorld#test_hello:
-    ArgumentError: wrong number of arguments (0 for 1)
-        hello_world.rb:2:in `hello'
-        hello_world.rb:16:in `test_hello'
+  end
+end
+```
 
+```shell
+1) Error:
+TestMinibot#test_add_rule:
+NoMethodError: undefined method `triggers' for #<Minibot:0x007fb494eb1ea0>
+minibot.rb:14:in `test_add_rule'
 
-      2) Failure:
-    TestHelloWorld#test_hello_to_matz [hello_world.rb:20]:
-    Failed assertion, no message given.
+1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
+```
 
-    2 runs, 1 assertions, 1 failures, 1 errors, 0 skips
-{terminal}
+Another undefined method. This time for `triggers` that we are going to use to verify that the rule was added successfully. Our test is going to ask the object returned from `triggers` for its size, but let's not implement that now since that isn't the error that Minitest is telling us about. Let's add an empty method to clear this error:
 
-Now we have a failure and an error. We seem to be moving backwards, but we aren't really. Let's look at the two messages. The first error is from our original test that was previously passing. We added a parameter to `HelloWorld#hello` which changed the API that we were using. We have existing calls to `hello` that aren't providing a value, so we have broken our existing API. We need an API that allows for customizing the greeting as well as not customizing the greeting. We can do this by providing a default value along with the name parameter. Let's set the default value to nil in the method definition to see if we can get our original test to pass:
+```ruby
+class Minibot
+  def add(trigger, response)
 
-    class HelloWorld
-      def hello(name = nil)
-        "Hello World!"
-      end
-    end
+  end
 
-    gem     "minitest"
-    require "minitest"
+  def triggers
 
-    class TestHelloWorld < Minitest::Test
-      def setup
-        @hello_world = HelloWorld.new
-      end
+  end
+end
+```
 
-      def test_hello
-        assert("Hello World!" == @hello_world.hello)
-      end
+```shell
+1) Error:
+TestMinibot#test_add_rule:
+NoMethodError: undefined method `size' for nil:NilClass
+minibot.rb:18:in `test_add_rule'
 
-      def test_hello_to_matz
-        assert("Hello Matz!" == @hello_world.hello("Matz"))
-      end
+1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
+```
 
-      def teardown
-        @hello_world = nil
-      end
-    end
-{hello_world.rb}
+As we expected, another error. It may not seem like such a small test method could generate this many errors, but it can and should. If we had started implementation without tests who knows what we would be implementing now. There is safety in letting the tests drive our implementation because we are only implementing what we know needs to be added.
 
-Now when we run the tests we see that the first test method is passing again:
+Let's add an object that responds to `size` from the `Minibot#triggers` method to clear this error. We should expect that `triggers` is going to return a list of triggers, so let's return an empty array and see if our output changes.
 
-    $ ruby -r minitest/autorun hello_world.rb
-    Run options: --seed 21214
+```ruby
+class Minibot
+  def add(trigger, response)
 
-    # Running:
+  end
 
-    .F
+  def triggers
+    []
+  end
+end
 
-    Finished in 0.001177s, 1699.2353 runs/s, 1699.2353 assertions/s.
+gem "minitest"
+require "minitest/autorun"
 
-      1) Failure:
-    TestHelloWorld#test_hello_to_matz [hello_world.rb:20]:
-    Failed assertion, no message given.
+class TestMinibot < Minitest::Test
+  def test_add_rule
+    minibot = Minibot.new
+    minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+    assert_equal 1, minibot.triggers.size
+  end
+end
+``` `minibot.rb`
 
-    2 runs, 2 assertions, 1 failures, 0 errors, 0 skips
-{terminal}
+```shell
+$ ruby minibot.rb
+Run options: --seed 55576
 
-Not only does our original test pass again, but our new test `test_hello_to_matz` no longer errors. We are making progress. But our new test isn't passing yet, so we have some work to do. Let's update the HelloWorld#hello method to make it pass.
+F
 
-Make it Green
--------------
+Finished in 0.026938s, 37.1223 runs/s, 37.1223 assertions/s.
+
+1) Failure:
+TestMinibot#test_add_rule [minibot.rb:18]:
+Expected: 1
+Actual: 0
+
+1 runs, 1 assertions, 1 failures, 0 errors, 0 skips
+``` `terminal`
+
+Ahh, now we have our first failure. This is considered *Red*. Before we had *errors*; classes or methods that were called by did not exist. Now we have a *failure*, the code's behavior does not meet the test's expectations. In this case, the test expected a value of 1, but got 0 instead. We want our tests to drive our code from error to failure to pass. Let's fix this failure and get our test passing.
+
+Step 2: Make it Green
+---------------------
 
 When we were writing our tests we put ourselves in the mindset of the consumers of our code. We thought through what API we wanted to use, not just what was easy to expose. Now that we are changing our code I want to change mindset once again. I want to put on the personality of the Worst Programmer in the World. I want to take any and all shortcuts needed to get the test to pass. I want to intentionally write bad or buggy code.
 
-How would the Worst Programmer in the World make this test pass? Probably hard code the implementation. So let's do that.
+How would the Worst Programmer in the World make this test pass? Probably hard code the implementation so it matches the expectations of the test. So let's do that by making the `triggers` method return an object that has a size of 1. How about an array with a single nil value?
 
-    class HelloWorld
-      def hello(name = nil)
-        if name.nil?
-          "Hello World!"
-        else
-          "Hello Matz!"
-        end
-      end
-    end
+```ruby
+class Minibot
+  def add(trigger, response)
 
-    gem     "minitest"
-    require "minitest"
+  end
 
-    class TestHelloWorld < Minitest::Test
-      def setup
-        @hello_world = HelloWorld.new
-      end
+  def triggers
+    []
+  end
+end
 
-      def test_hello
-        assert("Hello World!" == @hello_world.hello)
-      end
+gem "minitest"
+require "minitest/autorun"
 
-      def test_hello_to_matz
-        assert("Hello Matz!" == @hello_world.hello("Matz"))
-      end
-
-      def teardown
-        @hello_world = nil
-      end
-    end
-{hello_world.rb}
+class TestMinibot < Minitest::Test
+  def test_add_rule
+    minibot = Minibot.new
+    minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+    assert_equal 1, minibot.triggers.size
+  end
+end
+``` `minibot.rb`
 
 What an awful solution! Surely Minitest wouldn't allow something as bad as that to pass, right?
 
-    $ ruby -r minitest/autorun hello_world.rb
-    Run options: --seed 19258
+```shell
+$ ruby minibot.rb
+Run options: --seed 32365
 
-    # Running:
+.
 
-    ..
+Finished in 0.000784s, 1275.5102 runs/s, 1275.5102 assertions/s.
 
-    Finished in 0.001101s, 1816.5304 runs/s, 1816.5304 assertions/s.
+1 runs, 1 assertions, 0 failures, 0 errors, 0 skips
+``` `terminal`
 
-    2 runs, 2 assertions, 0 failures, 0 errors, 0 skips
-{terminal}
+It passes! Our terrible code passes! Passing is considered *Green*. But the code feels dirty, doesn't it? The `add` method doesn't do anything and the `triggers` method is hardcoded to the test expectation. Surely this isn't how we want our code to be.
 
-It passes! Our terrible code passes! But the code feels dirty, doesn't it? Time for another mindset change. We need some Quality Assurance, so let's put ourselves in the mindset of someone trying to expose edge cases in our code. Let's create a few more tests sending "Ryan", "Aaron", and "Eric" into our greeting:
+Time for another mindset change. We want to return to our Consumer Mindset and write more tests that flesh out all more of the expected behavior. Can we add multiple rules? Can we add multiple rules on the same trigger? Let's find out by writing some more tests. First, let's add to our existing test methods and add a second rule and a second trigger size assertion.
 
-    class HelloWorld
-      def hello(name = nil)
-        if name.nil?
-          "Hello World!"
-        else
-          "Hello Matz!"
-        end
-      end
-    end
+```ruby
+def test_add_rules
+  minibot = Minibot.new
+  minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+  assert_equal 1, minibot.triggers.size
+  minibot.add "wtf", "http://i.imgur.com/ULQl7.gif"
+  assert_equal 2, minibot.triggers.size
+end
+```
 
-    gem     "minitest"
-    require "minitest"
+Let's also add a second test method that adds multiple rules on the same trigger, and makes sure the fact that all these rules share the same trigger is reflected in the trigger size.
 
-    class TestHelloWorld < Minitest::Test
-      def setup
-        @hello_world = HelloWorld.new
-      end
+```ruby
+def test_add_multiple_rules_on_same_trigger
+  minibot = Minibot.new
+  minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+  minibot.add "zomg", "http://i.imgur.com/KqCfQPR.gif"
+  minibot.add "zomg", "http://i.imgur.com/fc5LmfO.gif"
+  assert_equal 1, minibot.triggers.size
+end
+```
 
-      def test_hello
-        assert("Hello World!" == @hello_world.hello)
-      end
+Running the tests now puts us back into *Red*.
 
-      def test_hello_to_matz
-        assert("Hello Matz!" == @hello_world.hello("Matz"))
-      end
+```shell
+  1) Failure:
+TestMinibot#test_add_rules [minibot.rb:20]:
+Expected: 2
+  Actual: 1
 
-      def test_hello_to_ryan
-        assert("Hello Ryan!" == @hello_world.hello("Ryan"))
-      end
+2 runs, 3 assertions, 1 failures, 0 errors, 0 skips
+```
 
-      def test_hello_to_aaron
-        assert("Hello Aaron!" == @hello_world.hello("Aaron"))
-      end
+The `test_add_multiple_rules_on_same_trigger` test passes, but `test_add_rules` doesn't. We want to get back to *Green* quckly. How can we do it? The way the tests are written we'll have to actually implement some logic here. We could save the trigger sent to `add` in a list and return that from the `triggers` method. Let's try that to get this test passing.
 
-      def test_hello_to_eric
-        assert("Hello Eric!" == @hello_world.hello("Eric"))
-      end
+class Minibot
+  def add(trigger, response)
+    @triggers ||= []
+    @triggers << trigger
+  end
 
-      def teardown
-        @hello_world = nil
-      end
-    end
-{hello_world.rb}
+  def triggers
+    @triggers
+  end
+end
 
-Now that we have three new tests, we should have three new failures:
+  1) Failure:
+TestMinibot#test_add_multiple_rules_on_same_trigger [minibot.rb:29]:
+Expected: 1
+  Actual: 3
 
-    $ ruby -r minitest/autorun hello_world.rb
-    Run options: --seed 33140
+2 runs, 3 assertions, 1 failures, 0 errors, 0 skips
 
-    # Running:
+This makes the `test_add_rules` test pass, but now the `test_add_multiple_rules_on_same_trigger` test fails. We are still *Red*. We are failing because now we have duplicate triggers in the list. The quickest way to get the test passing and us back into *green* is to return a list of unique triggers.
 
-    F.F.F
+def triggers
+  @triggers.uniq
+end
 
-    Finished in 0.001300s, 3846.1538 runs/s, 3846.1538 assertions/s.
+With that change we can run our tests again and see that they are all passing.
 
-      1) Failure:
-    TestHelloWorld#test_hello_to_eric [hello_world.rb:36]:
-    Failed assertion, no message given.
+$ ruby minibot.rb
+Run options: --seed 8669
+
+# Running:
+
+..
+
+Finished in 0.001366s, 1464.1288 runs/s, 2196.1933 assertions/s.
+
+2 runs, 3 assertions, 0 failures, 0 errors, 0 skips
 
 
-      2) Failure:
-    TestHelloWorld#test_hello_to_ryan [hello_world.rb:28]:
-    Failed assertion, no message given.
+We let the tests drive our code implementation and we are *Green* again. We are starting to describe a functional and usable API for Minibot, but I have low confidence in this code. If a client calls `triggers` before `add` then the `@triggers` list will be nil, causing an error. So let's add a failing test for that.
+
+def test_triggers_is_empty
+  minibot = Minibot.new
+  assert_equal 0, minibot.triggers.size
+end
+
+  1) Error:
+TestMinibot#test_triggers_is_empty:
+NoMethodError: undefined method `uniq' for nil:NilClass
+    minibot.rb:8:in `triggers'
+    minibot.rb:34:in `test_triggers_is_empty'
+
+3 runs, 3 assertions, 0 failures, 1 errors, 0 skips
+
+Again, our goal is to be *Green* as quickly as possible. Part of me wants to write some code to initailize `@triggers` in the initializer, but My Worse Programmer mindset needs to win here. The fastest way to make this test pass is to add some duplicate code to the `triggers` method and instantiate the list there. The speed of writing one line of bad code wins out over writing three lines of better code.
+
+def triggers
+  @triggers ||= []
+  @triggers.uniq
+end
 
 
-      3) Failure:
-    TestHelloWorld#test_hello_to_aaron [hello_world.rb:32]:
-    Failed assertion, no message given.
+$ ruby minibot.rb
+Run options: --seed 11535
 
-    5 runs, 5 assertions, 3 failures, 0 errors, 0 skips
-{terminal}
+# Running:
 
-Okay, what does the Worst Programmer in the World do now? Probably write some more terrible code.
+...
 
-    class HelloWorld
-      def hello(name = nil)
-        if name == "Matz"
-          "Hello Matz!"
-        elsif name == "Ryan"
-          "Hello Ryan!"
-        elsif name == "Aaron"
-          "Hello Aaron!"
-        elsif name == "Eric"
-          "Hello Eric!"
-        else
-          "Hello World!"
-        end
-      end
-    end
+Finished in 0.001904s, 1575.6303 runs/s, 2100.8403 assertions/s.
 
-    gem     "minitest"
-    require "minitest"
+3 runs, 4 assertions, 0 failures, 0 errors, 0 skips
 
-    class TestHelloWorld < Minitest::Test
-      def setup
-        @hello_world = HelloWorld.new
-      end
 
-      def test_hello
-        assert("Hello World!" == @hello_world.hello)
-      end
+How do you feel about the code you've written? If you are anything like me then you probably don't feel very good about it. You've possibly been shouting down the voice inside of your head complaining about duplicate code and design patterns. The truth is, you should feel like this. The Worst Programmer mindset takes all the shortcuts I've spend my career trying to avoid. This style of programming makes me feels like I'm trolling myself. (Or trolling my pair programmer, which is *so very fun*.)
 
-      def test_hello_to_matz
-        assert("Hello Matz!" == @hello_world.hello("Matz"))
-      end
+The Customer mindset wants to ensure that the API works in the "Make it Red" step, but the Worst Programmer wants to ensure that we spend as little time being *Red* as possible, taking any and every shortcut to get back to *Green*. The result is a very rapid feedback cycle on the design if the API that you are providing at the cost of your code quality.
 
-      def test_hello_to_ryan
-        assert("Hello Ryan!" == @hello_world.hello("Ryan"))
-      end
 
-      def test_hello_to_aaron
-        assert("Hello Aaron!" == @hello_world.hello("Aaron"))
-      end
 
-      def test_hello_to_eric
-        assert("Hello Eric!" == @hello_world.hello("Eric"))
-      end
 
-      def teardown
-        @hello_world = nil
-      end
-    end
-{hello_world.rb}
+
+
+
+
 
 Awful. Does it pass?
 
-    $ ruby -r minitest/autorun hello_world.rb
+    $ ruby -r minitest/autorun minibot.rb
     Run options: --seed 47356
 
     # Running:
@@ -372,174 +392,139 @@ Awful. Does it pass?
     5 runs, 5 assertions, 0 failures, 0 errors, 0 skips
 {terminal}
 
-It should feel like you are trolling yourself. The QA mindset finds the edges of what is acceptable behavior while the Worst Programmer mindset takes every short cut and intentionally avoids any sense of design. Why? The purpose of writing these tests is to design the API to be consumed with an acceptable amount of test coverage so we know if it works. Now we are ready to move on to the final phase of the TDD Cycle.
+It should feel like you are trolling yourself. The Consumer mindset excersizes your creativity by finding the edges of what is acceptable behavior for your API, while the Worst Programmer mindset excercises your cretical thinking by takeing every short cut possible to keep the code passing the tests. The result is a suite of tests that describe the API. The focus is all on API design and test coverage. The tests enforce the design the API. Now we are ready to move on to the final phase of the TDD Cycle.
 
-Make it Right
--------------
+Step 3: Make it Right
+---------------------
 
-Now that the Customer and QA and Worst Programmer mindsets have gone rounds we have a suite of tests that demonstrate the API and show how it is intended to work. Now we can focus on changing the code so that it is correct. This step is also known as the Refactoring step, because we want to be able to make changes to how our code is implemented without changing the API we have defined. Let's switch to the Engineer mindset and start thinking about what improvements we should make to the code.
+Now that the Customer and Worst Programmer mindsets have gone rounds we have a suite of tests that demonstrate the API and show how it is intended to work. Now we can focus on changing the code so that it is correct. This step is also known as the *Refactoring* step, because we want to be able to make changes to how our code is implemented without changing the API we have defined. Let's switch to the Engineer mindset and start thinking about what improvements we should make to the code. Luckilly, we have some good test coverage so that we will know if we change the expected behavior the next time we run the tests.
 
 Right now HelloWorld#hello has five conditional branches. My Engineer mindset doesn't like that. How can we change the implementation without changing the API? We could use a different default value and use string interpolation.
 
-    class HelloWorld
-      def hello(name = "World")
-        "Hello #{name}!"
-      end
-    end
+```ruby
+class Minibot
+  def initialize
+    @rules = Hash.new { |hash, key| hash[key] = [] }
+  end
 
-    gem     "minitest"
-    require "minitest"
+  def add(trigger, response)
+    @rules[trigger] << response
+  end
 
-    class TestHelloWorld < Minitest::Test
-      def setup
-        @hello_world = HelloWorld.new
-      end
-
-      def test_hello
-        assert("Hello World!" == @hello_world.hello)
-      end
-
-      def test_hello_to_matz
-        assert("Hello Matz!" == @hello_world.hello("Matz"))
-      end
-
-      def test_hello_to_ryan
-        assert("Hello Ryan!" == @hello_world.hello("Ryan"))
-      end
-
-      def test_hello_to_aaron
-        assert("Hello Aaron!" == @hello_world.hello("Aaron"))
-      end
-
-      def test_hello_to_eric
-        assert("Hello Eric!" == @hello_world.hello("Eric"))
-      end
-
-      def teardown
-        @hello_world = nil
-      end
-    end
-{hello_world.rb}
+  def triggers
+    @rules.keys
+  end
+end
+``` `minibot.rb`
 
 Much better! Does it continue to pass?
 
-    $ ruby -r minitest/autorun hello_world.rb
-    Run options: --seed 14436
+```shell
+$ ruby minibot.rb
+Run options: --seed 64926
 
-    # Running:
+# Running:
 
-    .....
+...
 
-    Finished in 0.001117s, 4476.2757 runs/s, 4476.2757 assertions/s.
+Finished in 0.001264s, 2373.4177 runs/s, 3164.5570 assertions/s.
 
-    5 runs, 5 assertions, 0 failures, 0 errors, 0 skips
-{terminal}
+3 runs, 4 assertions, 0 failures, 0 errors, 0 skips
+``` `terminal`
 
 Yep, it passes and all is right with the world. If I had ideas of design patterns to use I would implement them now. But the key in this phase is to only change the code, not the tests. If you change the tests in this phase you are redesigning and not refactoring.
 
-Make (the tests) Right
-----------------------
+*NOTE*: Tests need to be written and rewritten. Far too often I see tests that were written once and never revisited again. If you to the TDD Cycle right, you will be revisiting and updateing your tests *more* than you change your code.
 
-I said that the Refactoring step was to make changes to the code, and that's true. But once I have all my code changes made I also like to revisit the design of the tests. We have one test for the default `hello` greeting, and four for the custom greeting. Perhaps we can rewrite the custom tests to not be as verbose by iterating over an array of names?
+I said that the Refactoring step was to make changes to the code, and that's true. But once we have all the code right its a good idea to revisit the design of the tests. We have a fair bit of duplication in our tests, like creating a Minibot object for each test method. We can extract that out to a `setup` method.
 
-    class HelloWorld
-      def hello(name = "World")
-        "Hello #{name}!"
-      end
-    end
+```ruby
+ class TestMinibot < Minitest::Test
+  def setup
+    @minibot = Minibot.new
+  end
 
-    gem     "minitest"
-    require "minitest"
+  def test_add_rules
+    @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+    assert_equal 1, @minibot.triggers.size
+    @minibot.add "wtf", "http://i.imgur.com/ULQl7.gif"
+    assert_equal 2, @minibot.triggers.size
+  end
 
-    class TestHelloWorld < Minitest::Test
-      def setup
-        @hello_world = HelloWorld.new
-      end
+  def test_add_multiple_rules_on_same_trigger
+    @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+    @minibot.add "zomg", "http://i.imgur.com/KqCfQPR.gif"
+    @minibot.add "zomg", "http://i.imgur.com/fc5LmfO.gif"
+    assert_equal 1, @minibot.triggers.size
+  end
 
-      def test_hello_default
-        assert("Hello World!" == @hello_world.hello)
-      end
+  def test_triggers_is_empty
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+```
 
-      def test_hello_custom
-        names = %w{Matz Ryan Aaron Eric}
-        names.each do |name|
-          assert("Hello #{name}!" == @hello_world.hello(name))
-        end
-      end
+The other thing that stands out to me is that we only checking the size of the triggers, and not the contents. We can probably add some more test coverage around the intended behavior of the triggers. I think it would be sufficent to state that the triggers list includes the trigger that was added.
 
-      def teardown
-        @hello_world = nil
-      end
-    end
 
-Much better! While there is a bit more code to parse in the `test_hello_custom` test, it verifies the same values while not being as verbose. And the tests still pass cleanly:
+```ruby
+class TestMinibot < Minitest::Test
+  def setup
+    @minibot = Minibot.new
+  end
 
-    $ ruby -r minitest/autorun hello_world.rb
-    Run options: --seed 50853
+  def test_add_rule
+    @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
 
-    # Running:
+    assert_equal 1, @minibot.triggers.size
+    assert_includes @minibot.triggers, "zomg"
+  end
 
-    ..
+  def test_add_rules
+    @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+    @minibot.add "wtf", "http://i.imgur.com/ULQl7.gif"
 
-    Finished in 0.001144s, 1748.2517 runs/s, 4370.6294 assertions/s.
+    assert_equal 2, @minibot.triggers.size
+    assert_includes @minibot.triggers, "zomg"
+    assert_includes @minibot.triggers, "wtf"
+  end
 
-    2 runs, 5 assertions, 0 failures, 0 errors, 0 skips
+  def test_add_multiple_rules_on_same_trigger
+    @minibot.add "zomg", "http://i.imgur.com/49ORL0o.gif"
+    @minibot.add "zomg", "http://i.imgur.com/KqCfQPR.gif"
+    @minibot.add "zomg", "http://i.imgur.com/fc5LmfO.gif"
 
-We can make even more improvements to the tests. One thing that bothered my QA mindset was that we were dealing with a fixed list of names to test. I want to keep the Worst Programmer mindset honest, and the only way I can think of doing that is by giving it random names that the Worst Programmer can't anticipate. So let's create a new *support method* to generate a random name and add a couple random names to the list.
+    assert_equal 1, @minibot.triggers.size
+    assert_includes @minibot.triggers, "zomg"
+  end
 
-    class HelloWorld
-      def hello(name = "World")
-        "Hello #{name}!"
-      end
-    end
+  def test_triggers_is_empty
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+```
 
-    gem     "minitest"
-    require "minitest"
-    require "securerandom"
+Much better! While there is some data duplication across some of the tests, I'm happy with the behavior they describe. And best of all the tests still pass cleanly:
 
-    class TestHelloWorld < Minitest::Test
-      def setup
-        @hello_world = HelloWorld.new
-      end
+```shell
+$ ruby minibot.rb
+Run options: --seed 42383
 
-      def test_hello_default
-        assert("Hello World!" == @hello_world.hello)
-      end
+# Running:
 
-      def test_hello_custom
-        names = %W{Matz Ryan Aaron Eric #{random_name} #{random_name}}
-        names.each do |name|
-          assert("Hello #{name}!" == @hello_world.hello(name))
-        end
-      end
+....
 
-      def random_name
-        SecureRandom.hex(8)
-      end
+Finished in 0.000963s, 4153.6864 runs/s, 12461.0592 assertions/s.
 
-      def teardown
-        @hello_world = nil
-      end
-    end
+4 runs, 12 assertions, 0 failures, 0 errors, 0 skips
+``` `terminal`
 
-And the tests still pass.
+Again, we only let our Engineering mindset consider the test design after all code under test is properly refactored, while all the tests continue to pass cleanly. And by delaying our Engineering mindset until the *Refactoring* step we have given our Consumer mindset the ability to design the optimum API.
 
-    $ ruby -r minitest/autorun hello_world.rb
-    Run options: --seed 28991
-
-    # Running:
-
-    ..
-
-    Finished in 0.001130s, 1769.9115 runs/s, 6194.6903 assertions/s.
-
-    2 runs, 7 assertions, 0 failures, 0 errors, 0 skips
-
-Again, I only revisit the test design after all the tests pass cleanly and all code under test is refactored and my Engineer mindset is satisfied.
 
 Conclusion
 ----------
 
-You've now written tests to go from **Error** to **Failure** to **Passing** to **Refactoring**. This is the TDD Cycle. Use the feedback the tests provide to make changes. The tests provide coverage for the API you are exposing to your software's consumers. This will give you the confidence to make improvements to your software by providing reassurance that you aren't breaking existing users.
+You've now written tests to go from **Error** to **Failure** to **Passing** through TDD's **Red**, **Green, **Refactor** steps. The dirty little secret is that you will to *Red* *Green* *Red* *Green* *Red* *Green* and then *Refactor*. In this process the tests provide sufficent coverage for the API you design for your code's consumers. You then use the feedback your tests provide to make changes. The end result is you will have the confidence to make improvements to your software because you enjoy the assurance that you aren't breaking behavior.
 
-The TDD Cycle also promotes looking at your code from difference mindsets. You look at your code from multiple perspectives, from the consumer to the maintainer, allowing you to entertain both your creativity and your focus/completeness/something. The more you practice TDD, the better at these mindsets you get, and the better code you will write.
+The TDD Cycle also promotes looking at your code from difference mindsets. You look at your code from multiple perspectives, from the Consumer to the Engineer, from the Designer to the Maintainer, allowing you to entertain both your creativity and your focus/completeness/something (!!). The more you practice TDD, the better at these mindsets you get, and the better code you will write.

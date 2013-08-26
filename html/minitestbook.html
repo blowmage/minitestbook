@@ -695,75 +695,83 @@ Expected: 2
 
 <p>The <code>test_add_multiple_rules_on_same_trigger</code> test passes, but <code>test_add_rules</code> doesn&rsquo;t. We want to get back to <em>Green</em> quckly. How can we do it? The way the tests are written we&rsquo;ll have to actually implement some logic here. We could save the trigger sent to <code>add</code> in a list and return that from the <code>triggers</code> method. Let&rsquo;s try that to get this test passing.</p>
 
-<p>class Minibot
+<pre><code class="ruby">class Minibot
   def add(trigger, response)
     @triggers ||= []
     @triggers &lt;&lt; trigger
-  end</p>
+  end
 
-<p>def triggers
+  def triggers
     @triggers
   end
-end</p>
+end
+</code></pre>
 
-<p>1) Failure:
-TestMinibot#test<em>add</em>multiple<em>rules</em>on<em>same</em>trigger [minibot.rb:29]:
+<pre><code class="shell">  1) Failure:
+TestMinibot#test_add_multiple_rules_on_same_trigger [minibot.rb:29]:
 Expected: 1
-  Actual: 3</p>
+  Actual: 3
 
-<p>2 runs, 3 assertions, 1 failures, 0 errors, 0 skips</p>
+2 runs, 3 assertions, 1 failures, 0 errors, 0 skips
+</code></pre>
 
 <p>This makes the <code>test_add_rules</code> test pass, but now the <code>test_add_multiple_rules_on_same_trigger</code> test fails. We are still <em>Red</em>. We are failing because now we have duplicate triggers in the list. The quickest way to get the test passing and us back into <em>green</em> is to return a list of unique triggers.</p>
 
-<p>def triggers
+<pre><code class="ruby">def triggers
   @triggers.uniq
-end</p>
+end
+</code></pre>
 
 <p>With that change we can run our tests again and see that they are all passing.</p>
 
-<p>$ ruby minibot.rb
-Run options: &ndash;seed 8669</p>
+<pre><code class="shell">$ ruby minibot.rb
+Run options: --seed 8669
 
-<h1>Running:</h1>
+# Running:
 
-<p>..</p>
+..
 
-<p>Finished in 0.001366s, 1464.1288 runs/s, 2196.1933 assertions/s.</p>
+Finished in 0.001366s, 1464.1288 runs/s, 2196.1933 assertions/s.
 
-<p>2 runs, 3 assertions, 0 failures, 0 errors, 0 skips</p>
+2 runs, 3 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
 
 <p>We let the tests drive our code implementation and we are <em>Green</em> again. We are starting to describe a functional and usable API for Minibot, but I have low confidence in this code. If a client calls <code>triggers</code> before <code>add</code> then the <code>@triggers</code> list will be nil, causing an error. So let&rsquo;s add a failing test for that.</p>
 
-<p>def test<em>triggers</em>is<em>empty
+<pre><code class="ruby">def test_triggers_is_empty
   minibot = Minibot.new
-  assert</em>equal 0, minibot.triggers.size
-end</p>
+  assert_equal 0, minibot.triggers.size
+end
+</code></pre>
 
-<p>1) Error:
-TestMinibot#test<em>triggers</em>is<em>empty:
-NoMethodError: undefined method <code>uniq&#39; for nil:NilClass
-    minibot.rb:8:in</code>triggers&#39;
-    minibot.rb:34:in `test</em>triggers<em>is</em>empty&#39;</p>
+<pre><code class="shell">  1) Error:
+TestMinibot#test_triggers_is_empty:
+NoMethodError: undefined method `uniq&#39; for nil:NilClass
+    minibot.rb:8:in `triggers&#39;
+    minibot.rb:34:in `test_triggers_is_empty&#39;
 
-<p>3 runs, 3 assertions, 0 failures, 1 errors, 0 skips</p>
+3 runs, 3 assertions, 0 failures, 1 errors, 0 skips
+</code></pre>
 
 <p>Again, our goal is to be <em>Green</em> as quickly as possible. Part of me wants to write some code to initailize <code>@triggers</code> in the initializer, but My Worse Programmer mindset needs to win here. The fastest way to make this test pass is to add some duplicate code to the <code>triggers</code> method and instantiate the list there. The speed of writing one line of bad code wins out over writing three lines of better code.</p>
 
-<p>def triggers
+<pre><code class="ruby">def triggers
   @triggers ||= []
   @triggers.uniq
-end</p>
+end
+</code></pre>
 
-<p>$ ruby minibot.rb
-Run options: &ndash;seed 11535</p>
+<pre><code class="shell">$ ruby minibot.rb
+Run options: --seed 11535
 
-<h1>Running:</h1>
+# Running:
 
-<p>&hellip;</p>
+...
 
-<p>Finished in 0.001904s, 1575.6303 runs/s, 2100.8403 assertions/s.</p>
+Finished in 0.001904s, 1575.6303 runs/s, 2100.8403 assertions/s.
 
-<p>3 runs, 4 assertions, 0 failures, 0 errors, 0 skips</p>
+3 runs, 4 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
 
 <p>How do you feel about the code you&rsquo;ve written? If you are anything like me then you probably don&rsquo;t feel very good about it. You&rsquo;ve possibly been shouting down the voice inside of your head complaining about duplicate code and design patterns. The truth is, you should feel like this. The Worst Programmer mindset takes all the shortcuts I&rsquo;ve spend my career trying to avoid. This style of programming makes me feels like I&rsquo;m trolling myself. (Or trolling my pair programmer, which is <em>so very fun</em>.)</p>
 

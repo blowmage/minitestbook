@@ -88,6 +88,7 @@ Expected: 2
 
 The `test_add_multiple_rules_on_same_trigger` test passes, but `test_add_rules` doesn't. We want to get back to *Green* quckly. How can we do it? The way the tests are written we'll have to actually implement some logic here. We could save the trigger sent to `add` in a list and return that from the `triggers` method. Let's try that to get this test passing.
 
+```ruby
 class Minibot
   def add(trigger, response)
     @triggers ||= []
@@ -98,22 +99,28 @@ class Minibot
     @triggers
   end
 end
+```
 
+```shell
   1) Failure:
 TestMinibot#test_add_multiple_rules_on_same_trigger [minibot.rb:29]:
 Expected: 1
   Actual: 3
 
 2 runs, 3 assertions, 1 failures, 0 errors, 0 skips
+```
 
 This makes the `test_add_rules` test pass, but now the `test_add_multiple_rules_on_same_trigger` test fails. We are still *Red*. We are failing because now we have duplicate triggers in the list. The quickest way to get the test passing and us back into *green* is to return a list of unique triggers.
 
+```ruby
 def triggers
   @triggers.uniq
 end
+```
 
 With that change we can run our tests again and see that they are all passing.
 
+```shell
 $ ruby minibot.rb
 Run options: --seed 8669
 
@@ -124,15 +131,18 @@ Run options: --seed 8669
 Finished in 0.001366s, 1464.1288 runs/s, 2196.1933 assertions/s.
 
 2 runs, 3 assertions, 0 failures, 0 errors, 0 skips
-
+```
 
 We let the tests drive our code implementation and we are *Green* again. We are starting to describe a functional and usable API for Minibot, but I have low confidence in this code. If a client calls `triggers` before `add` then the `@triggers` list will be nil, causing an error. So let's add a failing test for that.
 
+```ruby
 def test_triggers_is_empty
   minibot = Minibot.new
   assert_equal 0, minibot.triggers.size
 end
+```
 
+```shell
   1) Error:
 TestMinibot#test_triggers_is_empty:
 NoMethodError: undefined method `uniq' for nil:NilClass
@@ -140,15 +150,18 @@ NoMethodError: undefined method `uniq' for nil:NilClass
     minibot.rb:34:in `test_triggers_is_empty'
 
 3 runs, 3 assertions, 0 failures, 1 errors, 0 skips
+```
 
 Again, our goal is to be *Green* as quickly as possible. Part of me wants to write some code to initailize `@triggers` in the initializer, but My Worse Programmer mindset needs to win here. The fastest way to make this test pass is to add some duplicate code to the `triggers` method and instantiate the list there. The speed of writing one line of bad code wins out over writing three lines of better code.
 
+```ruby
 def triggers
   @triggers ||= []
   @triggers.uniq
 end
+```
 
-
+```shell
 $ ruby minibot.rb
 Run options: --seed 11535
 
@@ -159,7 +172,7 @@ Run options: --seed 11535
 Finished in 0.001904s, 1575.6303 runs/s, 2100.8403 assertions/s.
 
 3 runs, 4 assertions, 0 failures, 0 errors, 0 skips
-
+```
 
 How do you feel about the code you've written? If you are anything like me then you probably don't feel very good about it. You've possibly been shouting down the voice inside of your head complaining about duplicate code and design patterns. The truth is, you should feel like this. The Worst Programmer mindset takes all the shortcuts I've spend my career trying to avoid. This style of programming makes me feels like I'm trolling myself. (Or trolling my pair programmer, which is *so very fun*.)
 

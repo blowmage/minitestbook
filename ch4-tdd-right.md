@@ -47,7 +47,7 @@ Finished in 0.001264s, 2373.4177 runs/s, 3164.5570 assertions/s.
 
 Yep, it passes and all is right with the world. If I had ideas of design patterns to use I would implement them now. But the key in this phase is to only change the code, not the tests. If you change the tests in this phase you are redesigning and not refactoring.
 
-*NOTE*: Tests need to be written and rewritten. Far too often I see tests that were written once and never revisited again. If you to the TDD Cycle right, you will be revisiting and updateing your tests *more* than you change your code.
+**NOTE**: Tests need to be written and rewritten. Far too often I see tests that were written once and never revisited again. If you to the TDD Cycle right, you will be revisiting and updateing your tests *more* than you change your code.
 
 I said that the Refactoring step was to make changes to the code, and that's true. But once we have all the code right its a good idea to revisit the design of the tests. We have a fair bit of duplication in our tests, like creating a Minibot object for each test method. We can extract that out to a `setup` method.
 

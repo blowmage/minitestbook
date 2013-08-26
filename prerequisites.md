@@ -1,7 +1,7 @@
 Prerequisites
 =============
 
-*NOTE:* Work in progress
+**NOTE**: Work in progress
 
 You need to get your system configured.
 

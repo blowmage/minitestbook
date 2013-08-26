@@ -12,7 +12,7 @@ There are four main steps to writing tests using Minitest:
 
 These steps are encompassed by the Minitest API, or Application Programming Interface. You use Minitest the way you would use any other software library. The best way to learn something is to use it, not read about it. So let's build something! We will use Minitest and explain its features as we go.
 
-*NOTE*: When I was first learning how to test I was confused and intimidated by the API. I think those reading this may also be in the same boat. What do I say here to let them know I am on their side and we can learn this together?
+**NOTE**: When I was first learning how to test I was confused and intimidated by the API. I think those reading this may also be in the same boat. What do I say here to let them know I am on their side and we can learn this together?
 
 Adding a rule to the bot
 ------------------------
@@ -90,7 +90,7 @@ Minitest also provides several specialied assertion methods, such as `assert_equ
 
 So far we have introduced a **Test Class**, created a **Test Method**, used an **Assertion Method** to specify our expectations. But there is one last component to the Minitest API: **Support Methods**.
 
-*NOTE*: Probably should explain the "expected, actual" order in assertions somewhere. This seems like a good place...
+**NOTE**: Probably should explain the "expected, actual" order in assertions somewhere. This seems like a good place...
 
 Support Methods
 ---------------

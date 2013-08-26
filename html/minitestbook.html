@@ -203,7 +203,7 @@ Successfully installed minitest-5.0.6
 </code></pre>
 <h1>Prerequisites</h1>
 
-<p><em>NOTE:</em> Work in progress</p>
+<p><strong>NOTE</strong>: Work in progress</p>
 
 <p>You need to get your system configured.</p>
 
@@ -316,7 +316,7 @@ Finished in 0.000784s, 1275.5102 runs/s, 1275.5102 assertions/s.
 
 <p>These steps are encompassed by the Minitest API, or Application Programming Interface. You use Minitest the way you would use any other software library. The best way to learn something is to use it, not read about it. So let&rsquo;s build something! We will use Minitest and explain its features as we go.</p>
 
-<p><em>NOTE</em>: When I was first learning how to test I was confused and intimidated by the API. I think those reading this may also be in the same boat. What do I say here to let them know I am on their side and we can learn this together?</p>
+<p><strong>NOTE</strong>: When I was first learning how to test I was confused and intimidated by the API. I think those reading this may also be in the same boat. What do I say here to let them know I am on their side and we can learn this together?</p>
 
 <h2>Adding a rule to the bot</h2>
 
@@ -387,7 +387,7 @@ end
 
 <p>So far we have introduced a <strong>Test Class</strong>, created a <strong>Test Method</strong>, used an <strong>Assertion Method</strong> to specify our expectations. But there is one last component to the Minitest API: <strong>Support Methods</strong>.</p>
 
-<p><em>NOTE</em>: Probably should explain the &ldquo;expected, actual&rdquo; order in assertions somewhere. This seems like a good place&hellip;</p>
+<p><strong>NOTE</strong>: Probably should explain the &ldquo;expected, actual&rdquo; order in assertions somewhere. This seems like a good place&hellip;</p>
 
 <h2>Support Methods</h2>
 
@@ -823,7 +823,7 @@ Finished in 0.001264s, 2373.4177 runs/s, 3164.5570 assertions/s.
 
 <p>Yep, it passes and all is right with the world. If I had ideas of design patterns to use I would implement them now. But the key in this phase is to only change the code, not the tests. If you change the tests in this phase you are redesigning and not refactoring.</p>
 
-<p><em>NOTE</em>: Tests need to be written and rewritten. Far too often I see tests that were written once and never revisited again. If you to the TDD Cycle right, you will be revisiting and updateing your tests <em>more</em> than you change your code.</p>
+<p><strong>NOTE</strong>: Tests need to be written and rewritten. Far too often I see tests that were written once and never revisited again. If you to the TDD Cycle right, you will be revisiting and updateing your tests <em>more</em> than you change your code.</p>
 
 <p>I said that the Refactoring step was to make changes to the code, and that&rsquo;s true. But once we have all the code right its a good idea to revisit the design of the tests. We have a fair bit of duplication in our tests, like creating a Minibot object for each test method. We can extract that out to a <code>setup</code> method.</p>
 

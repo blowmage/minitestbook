@@ -15,4 +15,6 @@ Installing Minitest 5
 
 ```shell
 $ gem install minitest
-``` `terminal`
+```
+
+`terminal`

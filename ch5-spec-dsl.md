@@ -1,5 +1,5 @@
-Chapter 3 - Minitest::Spec DSL
-==============================
+Chapter 5: Minitest Spec DSL
+============================
 
 In chapter 1 we looked at the Minitest API and using `Minitest::Test` to create *test classes* and *test methods* using *assertion methods* and *support methods*. This style of testing may seem primitive to some who prefer using a high level spec DSL instead of an API. Minitest also provides a spec DSL, but to understand the spec DSL you must first understand the Minitest API. So I encourage you to read chapter 1 if you skipped it in your excitement.
 
@@ -45,7 +45,9 @@ class TestMinibot < Minitest::Test
     assert_equal 0, @minibot.triggers.size
   end
 end
-``` `test/test_minibot.rb`
+```
+
+`test/test_minibot.rb`
 
 The `describe` Block
 --------------------
@@ -108,7 +110,9 @@ describe Minibot do
     assert_equal 0, @minibot.triggers.size
   end
 end
-``` `test/test_minibot.rb`
+```
+
+`test/test_minibot.rb`
 
 Under the covers Minitest is creating a *test class* with the contents of each `describe` block. The *test class* inherits from the `describe` block it is nested under, or the default `Minitest::Spec` class if it is not nested. So the *test class* created by the `describe :add` block inherits from the *test class* created by the `describe Minibot` block, which inherits from `Minitest::Spec` (which inherits from `Minitest::Test`).
 
@@ -189,7 +193,9 @@ describe Minibot do
     assert_equal 0, @minibot.triggers.size
   end
 end
-``` `test/test_minibot.rb`
+```
+
+`test/test_minibot.rb`
 
 Under the covers Minitest is creating a *test method* that uses the string provided to the `it` block. So the contents of the `it "adds a single rule"` block is used to create a method named "`test_0001_adds a single rule`" and contents of the `it "adds multiple rules with different triggers"` block is used to create a method named "`test_0002_adds multiple rules with different triggers`".
 
@@ -261,7 +267,9 @@ describe Minibot do
     @minibot.triggers.size.must_equal 0
   end
 end
-``` `test/test_minibot.rb`
+```
+
+`test/test_minibot.rb`
 
 Under the covers Minitest is calling *assertion methods* from the *expectations*. *Expectations* are just another way to call *assertion methods* in your tests. The output of the spec DSL are methods using the Minitest API.
 
@@ -376,7 +384,9 @@ describe Minibot do
     minibot.triggers.size.must_equal 0
   end
 end
-``` `test/test_minibot.rb`
+```
+
+`test/test_minibot.rb`
 
 You've now converted your test from the Minitest API to the spec DSL. 
 

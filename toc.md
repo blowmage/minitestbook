@@ -1,17 +1,19 @@
 Table of Contents
 =================
 
-* Preface
-* Prerequitites
-* Introduction
-* Part I - Getting Started
-    * Chapter 1 - Minitest API
-    * Chapter 2 - TDD Cycle
-    * Chapter 3 - Minitest::Spec DSL
-    * Chapter 4 - Running Tests (Project Structure/m/autotest)
+* [Preface](preface)
+* [Prerequitites](prerequitites)
+* [Introduction](introduction)
+* [Part I - Getting Started](part1)
+    * [Chapter 1 - Write a Test](ch1-write-a-test)
+    * [Chapter 2 - TDD: Make it Red](ch2-tdd-red)
+    * [Chapter 3 - TDD: Make it Green](ch3-tdd-green)
+    * [Chapter 4 - TDD: Make it Right](ch4-tdd-right)
+    * [Chapter 5 - Minitest::Spec DSL](ch5-spec-dsl)
 * Part II - Building Minibot
-    * Chapter 5 - ???
+    * Chapter 6 - ???
 * Part III - Extending Minitest
-    * Chapter ? - ???
+    * Chapter 10 - ???
 * Reference
-    * Appendix 1 - ???
+    * [Appendix A - Assertions](appendix/assertions)
+    * [Appendix B - API Changes](appendix/api-changes)

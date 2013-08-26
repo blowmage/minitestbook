@@ -1,0 +1,1968 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Minitest Book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+body{-webkit-font-smoothing:antialiased;font:normal .8764em/1.5em Arial,Verdana,sans-serif;margin:0}html>body{font-size:16px}li{font-size:110%}li li{font-size:100%}li p{font-size:100%;margin:.5em 0}h1{color:#000;font-size:2.2857em;line-height:.6563em;margin:.6563em 0}h2{color:#111;font-size:1.7143em;line-height:.875em;margin:.875em 0}h3{color:#111;font-size:1.5em;line-height:1em;margin:1em 0}h4{color:#111;font-size:1.2857em;line-height:1.1667em;margin:1.1667em 0}h5{color:#111;font-size:1.15em;line-height:1.3em;margin:1.3em 0}h6{font-size:1em;line-height:1.5em;margin:1.5em 0}body,p,td,div{color:#111;font-family:"Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;word-wrap:break-word}h1,h2,h3,h4,h5,h6{line-height:1.5em}a{-webkit-transition:color .2s ease-in-out;color:#0d6ea1;text-decoration:none}a:hover{color:#3593d9}.footnote{color:#0d6ea1;font-size:.8em;vertical-align:super}#wrapper img{max-width:100%;height:auto}dd{margin-bottom:1em}li>p:first-child{margin:0}ul ul,ul ol{margin-bottom:.4em}caption,col,colgroup,table,tbody,td,tfoot,th,thead,tr{border-spacing:0}table{border:1px solid rgba(0,0,0,0.25);border-collapse:collapse;display:table;empty-cells:hide;margin:-1px 0 23px;padding:0;table-layout:fixed}caption{display:table-caption;font-weight:700}col{display:table-column}colgroup{display:table-column-group}tbody{display:table-row-group}tfoot{display:table-footer-group}thead{display:table-header-group}td,th{display:table-cell}tr{display:table-row}table th,table td{font-size:1.1em;line-height:23px;padding:0 1em}table thead{background:rgba(0,0,0,0.15);border:1px solid rgba(0,0,0,0.15);border-bottom:1px solid rgba(0,0,0,0.2)}table tbody{background:rgba(0,0,0,0.05)}table tfoot{background:rgba(0,0,0,0.15);border:1px solid rgba(0,0,0,0.15);border-top:1px solid rgba(0,0,0,0.2)}figure{display:inline-block;margin-bottom:1.2em;position:relative;margin:1em 0}figcaption{font-style:italic;text-align:center;background:rgba(0,0,0,.9);color:rgba(255,255,255,1);position:absolute;left:0;bottom:-24px;width:98%;padding:1%;-webkit-transition:all .2s ease-in-out}.poetry pre{display:block;font-family:Georgia,Garamond,serif!important;font-size:110%!important;font-style:italic;line-height:1.6em;margin-left:1em}.poetry pre code{font-family:Georgia,Garamond,serif!important}blockquote p{font-size:110%;font-style:italic;line-height:1.6em}sup,sub,a.footnote{font-size:1.4ex;height:0;line-height:1;position:relative;vertical-align:super}sub{vertical-align:sub;top:-1px}p,h5{font-size:1.1429em;line-height:1.3125em;margin:1.3125em 0}dt,th{font-weight:700}table tr:nth-child(odd),table th:nth-child(odd),table td:nth-child(odd){background:rgba(255,255,255,0.06)}table tr:nth-child(even),table td:nth-child(even){background:rgba(0,0,0,0.06)}@media print{body{overflow:auto}img,pre,blockquote,table,figure,p{page-break-inside:avoid}#wrapper{background:#fff;color:#303030;font-size:85%;padding:10px;position:relative;text-indent:0}}@media screen{.inverted #wrapper,.inverted{background:rgba(37,42,42,1)}.inverted hr{border-color:rgba(51,63,64,1)!important}.inverted p,.inverted td,.inverted li,.inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5,.inverted h6,.inverted th,.inverted .math,.inverted caption,.inverted dd,.inverted dt{color:#eee!important}.inverted table tr:nth-child(odd),.inverted table th:nth-child(odd),.inverted table td:nth-child(odd){background:0}.inverted pre code{color:#111}.inverted a{color:rgba(172,209,213,1)}#wrapper{padding:20px}::selection{background:rgba(157,193,200,.5)}h1::selection{background-color:rgba(45,156,208,.3)}h2::selection{background-color:rgba(90,182,224,.3)}h3::selection,h4::selection,h5::selection,h6::selection,li::selection,ol::selection{background-color:rgba(133,201,232,.3)}code::selection{background-color:rgba(0,0,0,.7);color:#eee}code span::selection{background-color:rgba(0,0,0,.7)!important;color:#eee!important}a::selection{background-color:rgba(255,230,102,.2)}.inverted a::selection{background-color:rgba(255,230,102,.6)}td::selection,th::selection,caption::selection{background-color:rgba(180,237,95,.5)}}/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+pre code {
+  display: block; padding: 0.5em;
+  color: #000;
+  background: #f8f8ff
+}
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .lisp .title,
+pre .subst {
+  color: #000;
+  font-weight: bold
+}
+
+pre .ruby .keyword {
+  font-weight: normal
+}
+
+pre .number,
+pre .hexcolor {
+  color: #40a070
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+
+pre .title,
+pre .id {
+  color: #900;
+  font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .label,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+pre .class .params {
+	color: #000;
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .instancevar,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .ruby .symbol .keyword,
+pre .ruby .symbol .keymethods,
+pre .lisp .keyword,
+pre .tex .special,
+pre .input_number {
+  color: #0086b3
+}
+
+pre .ruby .identifier .keyword,
+pre .ruby .identifier .keymethods {
+  color: #0086b3;
+}
+
+pre .ruby .constant {
+  color: #008080;
+}
+
+pre .builtin,
+pre .built_in,
+pre .lisp .title {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}
+
+pre .tex .formula {
+  opacity: 0.5;
+}
+</style>
+<style>#wrapper { max-width:700px; margin:0 auto }</style>
+</head>
+<body class="normal">
+  <div id="wrapper">
+<h1>Minitest Book</h1>
+
+<p>by Mike Moore</p>
+<h1>Table of Contents</h1>
+
+<ul>
+<li><a href="preface">Preface</a></li>
+<li><a href="prerequitites">Prerequitites</a></li>
+<li><a href="introduction">Introduction</a></li>
+<li><a href="part1">Part I - Getting Started</a>
+
+<ul>
+<li><a href="ch1-write-a-test">Chapter 1 - Write a Test</a></li>
+<li><a href="ch2-tdd-red">Chapter 2 - TDD: Make it Red</a></li>
+<li><a href="ch3-tdd-green">Chapter 3 - TDD: Make it Green</a></li>
+<li><a href="ch4-tdd-right">Chapter 4 - TDD: Make it Right</a></li>
+<li><a href="ch5-spec-dsl">Chapter 5 - Minitest::Spec DSL</a></li>
+</ul></li>
+<li>Part II - Building Minibot
+
+<ul>
+<li>Chapter 6 - ???</li>
+</ul></li>
+<li>Part III - Extending Minitest
+
+<ul>
+<li>Chapter 10 - ???</li>
+</ul></li>
+<li>Reference
+
+<ul>
+<li><a href="appendix/assertions">Appendix A - Assertions</a></li>
+<li><a href="appendix/api-changes">Appendix B - API Changes</a></li>
+</ul></li>
+</ul>
+<h1>Preface</h1>
+
+<p>This book is written for Minitest 5.0 using Ruby 2.0. If you are using Ruby 1.9 or 2.0 you already have a version of Minitest that comes with Ruby, but it isn&rsquo;t 5.0. But getting the latest Minitest is very straightforward. First we need to use rubygems to install the latest minitest:</p>
+
+<pre><code>$ gem install minitest
+Fetching: minitest-5.0.6.gem (100%)
+Successfully installed minitest-5.0.6
+1 gem installed
+</code></pre>
+<h1>Prerequisites</h1>
+
+<p><em>NOTE:</em> Work in progress</p>
+
+<p>You need to get your system configured.</p>
+
+<h2>Installing Ruby 2.0</h2>
+
+<p>Install it.</p>
+
+<h2>Installing Minitest 5</h2>
+
+<pre><code class="shell">$ gem install minitest
+</code></pre>
+
+<p><code>terminal</code></p>
+<h1>Introduction</h1>
+
+<h2>Why Minitest?</h2>
+
+<p><strong>NOTE</strong>: Here is where we sell the reader on testing and what benefits testing has.</p>
+
+<p>Is your code hard to maintain? Does it take longer to add a feature the older your code is? This is a common situation, and testing is a wonderful way to write better code that is easier to change and you can have more confidence in.</p>
+
+<p><strong>NOTE</strong>: Explain what Minitest&rsquo;s philosophy is and what value it will give the user.</p>
+
+<p>Minitest is more than a testing library. It embodies a specific philosophy for testing code. It also embodies a larger philosophy of how software should be designed. Unix, TDD, XP</p>
+
+<p>Minitest embodies these philosophies, but that doesn&rsquo;t mean you can&rsquo;t use Minitest if you have a different view. Minitest is intended to be used, and so it doesn&rsquo;t </p>
+
+<h2>Getting Started</h2>
+
+<h2>Project Layout</h2>
+
+<p>In order to use Minitest we need to require the library in our code. We also want to make sure we are using the gem version of Minitest and not the one that is distributed with Ruby. To do that we use the <code>gem</code> command.</p>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+</code></pre>
+
+<p><code>test/helper.rb</code></p>
+
+<h2>Running Tests</h2>
+
+<h2>Building Minibot</h2>
+
+<p>I love bots, all kids of bots. IRC bots. Campfire bots. Twitter bots. They make smile (for the most part). I want to build a bot that is well designed, and I&rsquo;m going to use Minitest to help me get there.</p>
+
+<p>Since I don&rsquo;t want to get lots in the weeds of all the things that a bot can do, let&rsquo;s start simple. Here is a TODO list of the things I want this bot to do. We will work off this list and add to it as we progress.</p>
+
+<pre><code class="plain">Minibot
+=======
+
+A simple bot for storing and matching memes.
+
+- [ ] Add a new matching rule
+- [ ] List all matching rules
+- [ ] Remove a matching rule
+- [ ] Match an given string to an existing rule
+</code></pre>
+
+<p><code>todo.md</code></p>
+
+<ol>
+<li>Directly through the command line</li>
+<li>Rake#testtask</li>
+<li>m gem</li>
+<li>autotest</li>
+</ol>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+
+class TestMinitest &lt; Minitest::Test
+  def test_minitest
+    assert &quot;Minitest is pretty great!&quot;
+  end
+end
+</code></pre>
+
+<p><code>test_minitest.rb</code></p>
+
+<pre><code class="shell">$ ruby test_minitest.rb
+Run options: --seed 32365
+
+.
+
+Finished in 0.000784s, 1275.5102 runs/s, 1275.5102 assertions/s.
+
+1 runs, 1 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
+
+<p><code>terminal</code></p>
+
+<p>So far we have been passing <code>-r minitest/autorun</code> to ruby when we want to run the tests in a file. But what if we want to run all the tests in our application? Or what if we want to run just one test method in a file?</p>
+
+<p>Minitest provides an object called a Runner that will run the tests for us and print the output. This makes running tests very easy. All we need to do is to load the runner with our code. Let&rsquo;s do this by passing <code>-r minitest/autorun</code> to Ruby to tell it to load the runner as we load our code:</p>
+<h1>Part I - Getting Started</h1>
+
+<p>EXPLAIN WHAT IS COVERED IN PART I HERE.</p>
+<h1>Write a Test</h1>
+
+<p>When you get right down to it, Minitest is pretty simple. If you are familiar with testing software it does what you would expect, and if you are new to testing software it is easy to learn thanks to its small surface area. That isn&rsquo;t to say Minitest isn&rsquo;t powerful, or full featured, just that it was designed to do it&rsquo;s job and to get out of the way. Writing tests with Minitest is easy. And, as it turns out, pretty fun.</p>
+
+<p>There are four main steps to writing tests using Minitest:</p>
+
+<ol>
+<li>Create a test class</li>
+<li>Create a test method</li>
+<li>Call an assertion method</li>
+<li>Create support methods</li>
+</ol>
+
+<p>These steps are encompassed by the Minitest API, or Application Programming Interface. You use Minitest the way you would use any other software library. The best way to learn something is to use it, not read about it. So let&rsquo;s build something! We will use Minitest and explain its features as we go.</p>
+
+<p><em>NOTE</em>: When I was first learning how to test I was confused and intimidated by the API. I think those reading this may also be in the same boat. What do I say here to let them know I am on their side and we can learn this together?</p>
+
+<h2>Adding a rule to the bot</h2>
+
+<p>Let&rsquo;s add one of the Minibot features from our TODO as described in the <a href="introduction">introduction</a>. I want to register a rule that a message can match. So any messages that include the word &ldquo;zomg&rdquo; in them would get an appropriate animated gif response. If you sent the message &ldquo;zomg this is amazing!&rdquo;, the bot would respond &ldquo;http://i.imgur.com/49ORL0o.gif&rdquo;.</p>
+
+<p>We are going to write a test <em>before</em> we write the code. This is known as test-first, as opposed to test-after. Test Driven Development is a test-first approach, while Quality Assurance is typically a test-after approach. We will be writing tests before writing code.</p>
+
+<h2>Test Class</h2>
+
+<p>Let&rsquo;s create a new file in our <code>test</code> directory named <code>test/test_minibot.rb</code> to hold our test code. To create a test we need to create a new class that inherits from <code>Minitest::Test</code>. This will be our <strong>Test Class</strong>. Some projects, like <a href="http://rubyonrails.org/">Ruby on Rails</a>, will provide other test classes that provide project-specific functionality. The testing behavior of these classes is shared through inheritance. Your test classes don&rsquo;t need to inherit directly from <code>Minitest::Test</code>, but it needs to have <code>Minitest::Test</code> in its ancestry.</p>
+
+<p>It is common for the test class name to describe the subject of the test. Let&rsquo;s create a new test class named <code>TestMinibot</code>.</p>
+
+<pre><code class="ruby">require &quot;helper&quot;
+
+class TestMinibot &lt; Minitest::Test
+
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p><aside>
+<p>Earlier versions of Minitest used <code>MiniTest::Unit::TestCase</code> instead of <code>Minitest::Test</code>. They are functionally equivalent, but <code>MiniTest::Unit::TestCase</code> is deprecated. See <a href="appendix/api-changes">appendix C</a> for a more detailed description of the changes between Minitest 5 and MiniTest 4.</p>
+</aside></p>
+
+<p>This code looks pretty simple, but it actually does quite a bit. By inheriting from <code>Minitest::Test</code> our class has all the behavior it needs to run our tests. All we need to do is implement them.</p>
+
+<h2>Test Methods</h2>
+
+<p>We implement individual tests by creating <strong>Test Methods</strong> within out <strong>Test Class</strong>. These methods are no different that any other method, except for how they are named. They must begin with <code>test_</code> for Minitest to recognize that they are test methods and treat them as such.</p>
+
+<p>Let&rsquo;s create a test method. Like test classes, test methods should have a descriptive name. We don&rsquo;t know what a &ldquo;minibot&rdquo; is just yet, so the only requirement is that it starts with <code>test_</code>. How about <code>test_minibot</code>?</p>
+
+<pre><code class="ruby">require &quot;helper&quot;
+
+class TestMinibot &lt; Minitest::Test
+  def test_add_rule
+
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>Like our <strong>Test Class</strong>, the <strong>Test Methods</strong> are containers tests. So far we have been creating locations for the test, but haven&rsquo;t actually tested anything. To do this we will use one of the many <strong>Assertion Methods</strong> that Minitest provides.</p>
+
+<h2>Assertion Methods</h2>
+
+<p>Minitest checks for correctness by asserting that behavior is correct. If an assertion fails then Minitest will log it as a failure. The base assertion is the <code>assert</code> method. It evaluates the value passed to it, and if the value is <code>nil</code> or <code>false</code> the assertion will fail. For now, let&rsquo;s create the most basic assertion we can.</p>
+
+<pre><code class="ruby">require &quot;helper&quot;
+
+class TestMinibot &lt; Minitest::Test
+  def test_add_rule
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    assert_equal 1, minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>In our Test Method we are calling the <code>assert</code> method, and passing it a boolean value. If the value is <code>true</code>, the test till pass. If it is <code>false</code>, the test will fail.</p>
+
+<p>Minitest also provides several specialied assertion methods, such as <code>assert_equal</code>, <code>assert_in_delta</code>, and <code>assert_kind_of</code>. A full list of assertions with examples is found in <a href="appendix/assertions">appendix A</a>.</p>
+
+<p>So far we have introduced a <strong>Test Class</strong>, created a <strong>Test Method</strong>, used an <strong>Assertion Method</strong> to specify our expectations. But there is one last component to the Minitest API: <strong>Support Methods</strong>.</p>
+
+<p><em>NOTE</em>: Probably should explain the &ldquo;expected, actual&rdquo; order in assertions somewhere. This seems like a good place&hellip;</p>
+
+<h2>Support Methods</h2>
+
+<p>Minitest provides methods to execute code before and after a <em>test method</em> is run. These methods are <code>setup</code> and <code>teardown</code>, respectively. They can be used for anything from initializing common collaborators in your tests to to creating and rolling back database transactions.</p>
+
+<pre><code class="ruby">def setup
+  # I get called before every test method
+end
+
+def teardown
+  # I get called after every test method
+end
+</code></pre>
+
+<p>For our purpose, let&rsquo;s use an instance variable named <code>@minibot</code>. The <code>setup</code> method will be called before every test method, setting <code>@minibot</code> to <code>true</code> before each test. And the <code>teardown</code> method will be called after each test, setting <code>@minibot</code> to nil. The test methods can use <code>@minibot</code> in the assertions.</p>
+
+<p>Let&rsquo;s ???</p>
+
+<pre><code class="ruby">require &quot;helper&quot;
+
+class TestMinibot &lt; Minitest::Test
+  def setup
+    @minibot = true
+  end
+
+  def test_add_rule
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    assert_equal 1, @minibot.triggers.size
+  end
+
+  def teardown
+    @minibot = nil
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>The <code>teardown</code> method here is to illustrate how it can be used, but it isn&rsquo;t really needed for this test code to work.</p>
+
+<p>One way to improve the readability of your tests is to move shared functionality out of the test methods and into new methods. Because Minitest is using normal Ruby classes you can use all the approaches you would use to remove duplication in your test classes as you would your application classes. But be careful, the purpose of the test code is to clearly describe the application&rsquo;s API and intent, and too much indirection may hurt readability. I generally prefer a little more duplication in my tests than I prefer in my application code.</p>
+
+<h2>Conclusion</h2>
+
+<p>You&rsquo;ve created your own <strong>test class</strong>, added a <strong>test method</strong>, and called an <strong>assertion method</strong> on an object created by the <strong>support methods</strong>. Simple, right? This is really all there is to it. Tests are just classes with methods that verify the behavior of your code with assertions.</p>
+
+<p>You are now familiar with the Minitest API. The notion of API is important: it communicates how the software is expected to be used. Your tests will also communicate how your code is expected to be used by verifying how the API works.</p>
+<h1>TDD Cycle: Make it Red</h1>
+
+<p><strong>NOTE</strong>: We want to go from red to green as quickly as possible. We should make changes so small that we can be red for only a moment, and quickly turn it around and be back to green. Green is our safe zone. We want to stay there.</p>
+
+<p><strong>NOTE</strong>: How do we approach the difference between note writing any code until you have a failing test vs. being free to make any refactorings as long as the tests stay green? How do we know when we can refactor vs. adding new tests?</p>
+
+<p>I&rsquo;ve often been asked, &ldquo;How is writing code with tests any different than just writing code?&rdquo;. This is one of my favorite questions to answer, and by the end of this chapter you will be able to answer it too.</p>
+
+<p>Now that we are familiar with the Minitest API, let&rsquo;s take a look at how we can use Minitest to help us design our code. We will be using a practice called Test Driven Development (TDD) and the TDD Cycle. TDD is not intended to be used for quality assurance of our software; TDD is intended to be used to help us drive the design of our code. This means we want to write our tests before we write our code, and use the tests to inform what code we write.</p>
+
+<p>If this doesn&rsquo;t make sense to you, don&rsquo;t worry, we will step through the TDD Cycle several times before we&rsquo;re done.</p>
+
+<h2>Step 1: Make it Red</h2>
+
+<p>Let&rsquo;s start by adding a new <em>test method</em> for the first TODO: &ldquo;Add a new matching rule&rdquo;. When writing this new test method we have a decision to make: What do we want the Minibot API to be for adding a new rule? What information do we nee dto provide to add the rule? How do we know that a rule was added? We need to put ourselves in the mindset of those that consume our library: how would we want to use this code? This process is key: by consuming the code first we get to change our mindset and consider what the most appropriate API should be. We are not conscerned with implementation details, we are performing a <em>design</em> excercise.</p>
+
+<p>We know decide that for Minibot to register a new rule the client needs to provide a trigger for the rule (the text &ldquo;zomg&rdquo;), and the message to be returned (the text &ldquo;http://i.imgur.com/49ORL0o.gif&rdquo;) when the rule is triggered. Let&rsquo;s pass both of those values to an <code>add</code> method.</p>
+
+<pre><code class="ruby">minibot = Minibot.new
+minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+</code></pre>
+
+<p>But how can we tell the rule was added? We aren&rsquo;t making any assertions, which means if this functionality fails we have no way to tell. Let&rsquo;s add a check that the <code>minibot</code> object knows about the trigger by asserting that the trigger size is 1.</p>
+
+<pre><code class="ruby">minibot = Minibot.new
+minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+assert_equal 1, minibot.triggers.size
+</code></pre>
+
+<p>Here is what our file looks like now.</p>
+
+<pre><code class="ruby">require &quot;helper&quot;
+
+class TestMinibot &lt; Minitest::Test
+  def test_add_rule
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    assert_equal 1, minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>So far we have only changed our <em>test class</em>, so we expect our tests to fail:</p>
+
+<pre><code class="shell">$ ruby minibot.rb
+Run options: --seed 43987
+
+E
+
+Finished in 0.000808s, 1237.6238 runs/s, 0.0000 assertions/s.
+
+1) Error:
+TestMinibot#test_add_rule:
+NameError: uninitialized constant TestMinibot::Minibot
+minibot.rb:6:in `test_add_rule&#39;
+
+1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
+</code></pre>
+
+<p><code>terminal</code></p>
+
+<p>Interestingly, instead of generating a failure it generated an error. The error occurred because our new test method is trying to create an new object from a class that does not exist. This is okay, Minitest expects errors to happen and will display the appropriate information.</p>
+
+<p>Handling errors is part of our design process. We want to wrote tests to use our code before we write our code. And we want to make this test pass by writing as little code as possible. Let&rsquo;s start by fixing the &lsquo;uninitialized constant TestMinibot::Minibot&rsquo; error by adding a class definition for Minibot:</p>
+
+<pre><code class="ruby">class Minibot
+
+end
+
+require &quot;helper&quot;
+
+class TestMinibot &lt; Minitest::Test
+  def test_add_rule
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    assert_equal 1, minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>Okay, let&rsquo;s rerun the tests and see if that helps:</p>
+
+<pre><code class="shell">1) Error:
+TestMinibot#test_add_rule:
+NoMethodError: undefined method `add&#39; for #&lt;Minibot:0x007fc224eb2100&gt;
+minibot.rb:11:in `test_add_rule&#39;
+
+1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
+</code></pre>
+
+<p>Now we have a different error, this time because the test is calling a method that does not exist. The Minibot constant exists, but the <code>add</code> method does not. Let&rsquo;s add the method, but not the implementation, and rerun the test:</p>
+
+<pre><code class="ruby">class Minibot
+  def add(trigger, response)
+
+  end
+end
+</code></pre>
+
+<pre><code class="shell">1) Error:
+TestMinibot#test_add_rule:
+NoMethodError: undefined method `triggers&#39; for #&lt;Minibot:0x007fb494eb1ea0&gt;
+minibot.rb:14:in `test_add_rule&#39;
+
+1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
+</code></pre>
+
+<p>Another undefined method. This time for <code>triggers</code> that we are going to use to verify that the rule was added successfully. Our test is going to ask the object returned from <code>triggers</code> for its size, but let&rsquo;s not implement that now since that isn&rsquo;t the error that Minitest is telling us about. Let&rsquo;s add an empty method to clear this error:</p>
+
+<pre><code class="ruby">class Minibot
+  def add(trigger, response)
+
+  end
+
+  def triggers
+
+  end
+end
+</code></pre>
+
+<pre><code class="shell">1) Error:
+TestMinibot#test_add_rule:
+NoMethodError: undefined method `size&#39; for nil:NilClass
+minibot.rb:18:in `test_add_rule&#39;
+
+1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
+</code></pre>
+
+<p>As we expected, another error. It may not seem like such a small test method could generate this many errors, but it can and should. If we had started implementation without tests who knows what we would be implementing now. There is safety in letting the tests drive our implementation because we are only implementing what we know needs to be added.</p>
+
+<p>Let&rsquo;s add an object that responds to <code>size</code> from the <code>Minibot#triggers</code> method to clear this error. We should expect that <code>triggers</code> is going to return a list of triggers, so let&rsquo;s return an empty array and see if our output changes.</p>
+
+<pre><code class="ruby">class Minibot
+  def add(trigger, response)
+
+  end
+
+  def triggers
+    []
+  end
+end
+
+require &quot;helper&quot;
+
+class TestMinibot &lt; Minitest::Test
+  def test_add_rule
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    assert_equal 1, minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<pre><code class="shell">$ ruby minibot.rb
+Run options: --seed 55576
+
+F
+
+Finished in 0.026938s, 37.1223 runs/s, 37.1223 assertions/s.
+
+1) Failure:
+TestMinibot#test_add_rule [minibot.rb:18]:
+Expected: 1
+Actual: 0
+
+1 runs, 1 assertions, 1 failures, 0 errors, 0 skips
+</code></pre>
+
+<p><code>terminal</code></p>
+
+<p>Ahh, now we have our first failure. This is considered <em>Red</em>. Before we had <em>errors</em>; classes or methods that were called by did not exist. Now we have a <em>failure</em>, the code&rsquo;s behavior does not meet the test&rsquo;s expectations. In this case, the test expected a value of 1, but got 0 instead. We want our tests to drive our code from error to failure to pass. Let&rsquo;s fix this failure and get our test passing.</p>
+<h1>TDD Cycle: Make it Green</h1>
+
+<p>???</p>
+
+<h2>Worst Programmer Mindset</h2>
+
+<p>When we were writing our tests we put ourselves in the mindset of the consumers of our code. We thought through what API we wanted to use, not just what was easy to expose. Now that we are changing our code I want to change mindset once again. I want to put on the personality of the Worst Programmer in the World. I want to take any and all shortcuts needed to get the test to pass. I want to intentionally write bad or buggy code.</p>
+
+<p>How would the Worst Programmer in the World make this test pass? Probably hard code the implementation so it matches the expectations of the test. So let&rsquo;s do that by making the <code>triggers</code> method return an object that has a size of 1. How about an array with a single nil value?</p>
+
+<pre><code class="ruby">class Minibot
+  def add(trigger, response)
+
+  end
+
+  def triggers
+    []
+  end
+end
+
+require &quot;helper&quot;
+
+class TestMinibot &lt; Minitest::Test
+  def test_add_rule
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    assert_equal 1, minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p><code>minibot.rb</code></p>
+
+<p>What an awful solution! Surely Minitest wouldn&rsquo;t allow something as bad as that to pass, right?</p>
+
+<pre><code class="shell">$ ruby minibot.rb
+Run options: --seed 32365
+
+.
+
+Finished in 0.000784s, 1275.5102 runs/s, 1275.5102 assertions/s.
+
+1 runs, 1 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
+
+<p><code>terminal</code></p>
+
+<p>It passes! Our terrible code passes! Passing is considered <em>Green</em>. But the code feels dirty, doesn&rsquo;t it? The <code>add</code> method doesn&rsquo;t do anything and the <code>triggers</code> method is hardcoded to the test expectation. Surely this isn&rsquo;t how we want our code to be.</p>
+
+<p>Time for another mindset change. We want to return to our Consumer Mindset and write more tests that flesh out all more of the expected behavior. Can we add multiple rules? Can we add multiple rules on the same trigger? Let&rsquo;s find out by writing some more tests. First, let&rsquo;s add to our existing test methods and add a second rule and a second trigger size assertion.</p>
+
+<pre><code class="ruby">def test_add_rules
+  minibot = Minibot.new
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+  assert_equal 1, minibot.triggers.size
+  minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+  assert_equal 2, minibot.triggers.size
+end
+</code></pre>
+
+<p>Let&rsquo;s also add a second test method that adds multiple rules on the same trigger, and makes sure the fact that all these rules share the same trigger is reflected in the trigger size.</p>
+
+<pre><code class="ruby">def test_add_multiple_rules_on_same_trigger
+  minibot = Minibot.new
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+  assert_equal 1, minibot.triggers.size
+end
+</code></pre>
+
+<p>Running the tests now puts us back into <em>Red</em>.</p>
+
+<pre><code class="shell">  1) Failure:
+TestMinibot#test_add_rules [minibot.rb:20]:
+Expected: 2
+  Actual: 1
+
+2 runs, 3 assertions, 1 failures, 0 errors, 0 skips
+</code></pre>
+
+<p>The <code>test_add_multiple_rules_on_same_trigger</code> test passes, but <code>test_add_rules</code> doesn&rsquo;t. We want to get back to <em>Green</em> quckly. How can we do it? The way the tests are written we&rsquo;ll have to actually implement some logic here. We could save the trigger sent to <code>add</code> in a list and return that from the <code>triggers</code> method. Let&rsquo;s try that to get this test passing.</p>
+
+<p>class Minibot
+  def add(trigger, response)
+    @triggers ||= []
+    @triggers &lt;&lt; trigger
+  end</p>
+
+<p>def triggers
+    @triggers
+  end
+end</p>
+
+<p>1) Failure:
+TestMinibot#test<em>add</em>multiple<em>rules</em>on<em>same</em>trigger [minibot.rb:29]:
+Expected: 1
+  Actual: 3</p>
+
+<p>2 runs, 3 assertions, 1 failures, 0 errors, 0 skips</p>
+
+<p>This makes the <code>test_add_rules</code> test pass, but now the <code>test_add_multiple_rules_on_same_trigger</code> test fails. We are still <em>Red</em>. We are failing because now we have duplicate triggers in the list. The quickest way to get the test passing and us back into <em>green</em> is to return a list of unique triggers.</p>
+
+<p>def triggers
+  @triggers.uniq
+end</p>
+
+<p>With that change we can run our tests again and see that they are all passing.</p>
+
+<p>$ ruby minibot.rb
+Run options: &ndash;seed 8669</p>
+
+<h1>Running:</h1>
+
+<p>..</p>
+
+<p>Finished in 0.001366s, 1464.1288 runs/s, 2196.1933 assertions/s.</p>
+
+<p>2 runs, 3 assertions, 0 failures, 0 errors, 0 skips</p>
+
+<p>We let the tests drive our code implementation and we are <em>Green</em> again. We are starting to describe a functional and usable API for Minibot, but I have low confidence in this code. If a client calls <code>triggers</code> before <code>add</code> then the <code>@triggers</code> list will be nil, causing an error. So let&rsquo;s add a failing test for that.</p>
+
+<p>def test<em>triggers</em>is<em>empty
+  minibot = Minibot.new
+  assert</em>equal 0, minibot.triggers.size
+end</p>
+
+<p>1) Error:
+TestMinibot#test<em>triggers</em>is<em>empty:
+NoMethodError: undefined method <code>uniq&#39; for nil:NilClass
+    minibot.rb:8:in</code>triggers&#39;
+    minibot.rb:34:in `test</em>triggers<em>is</em>empty&#39;</p>
+
+<p>3 runs, 3 assertions, 0 failures, 1 errors, 0 skips</p>
+
+<p>Again, our goal is to be <em>Green</em> as quickly as possible. Part of me wants to write some code to initailize <code>@triggers</code> in the initializer, but My Worse Programmer mindset needs to win here. The fastest way to make this test pass is to add some duplicate code to the <code>triggers</code> method and instantiate the list there. The speed of writing one line of bad code wins out over writing three lines of better code.</p>
+
+<p>def triggers
+  @triggers ||= []
+  @triggers.uniq
+end</p>
+
+<p>$ ruby minibot.rb
+Run options: &ndash;seed 11535</p>
+
+<h1>Running:</h1>
+
+<p>&hellip;</p>
+
+<p>Finished in 0.001904s, 1575.6303 runs/s, 2100.8403 assertions/s.</p>
+
+<p>3 runs, 4 assertions, 0 failures, 0 errors, 0 skips</p>
+
+<p>How do you feel about the code you&rsquo;ve written? If you are anything like me then you probably don&rsquo;t feel very good about it. You&rsquo;ve possibly been shouting down the voice inside of your head complaining about duplicate code and design patterns. The truth is, you should feel like this. The Worst Programmer mindset takes all the shortcuts I&rsquo;ve spend my career trying to avoid. This style of programming makes me feels like I&rsquo;m trolling myself. (Or trolling my pair programmer, which is <em>so very fun</em>.)</p>
+
+<p>The Customer mindset wants to ensure that the API works in the &ldquo;Make it Red&rdquo; step, but the Worst Programmer wants to ensure that we spend as little time being <em>Red</em> as possible, taking any and every shortcut to get back to <em>Green</em>. The result is a very rapid feedback cycle on the design if the API that you are providing at the cost of your code quality.</p>
+
+<p>It should feel like you are trolling yourself. The Consumer mindset excersizes your creativity by finding the edges of what is acceptable behavior for your API, while the Worst Programmer mindset excercises your cretical thinking by takeing every short cut possible to keep the code passing the tests. The result is a suite of tests that describe the API. The focus is all on API design and test coverage. The tests enforce the design the API. Now we are ready to move on to the final phase of the TDD Cycle.</p>
+<h1>TDD Cycle: Make it Right</h1>
+
+<p>???</p>
+
+<h2>Step 3: Make it Right</h2>
+
+<p>Now that the Customer and Worst Programmer mindsets have gone rounds we have a suite of tests that demonstrate the API and show how it is intended to work. Now we can focus on changing the code so that it is correct. This step is also known as the <em>Refactoring</em> step, because we want to be able to make changes to how our code is implemented without changing the API we have defined. Let&rsquo;s switch to the Engineer mindset and start thinking about what improvements we should make to the code. Luckilly, we have some good test coverage so that we will know if we change the expected behavior the next time we run the tests.</p>
+
+<p>Right now HelloWorld#hello has five conditional branches. My Engineer mindset doesn&rsquo;t like that. How can we change the implementation without changing the API? We could use a different default value and use string interpolation.</p>
+
+<pre><code class="ruby">class Minibot
+  def initialize
+    @rules = Hash.new { |hash, key| hash[key] = [] }
+  end
+
+  def add(trigger, response)
+    @rules[trigger] &lt;&lt; response
+  end
+
+  def triggers
+    @rules.keys
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>Much better! Does it continue to pass?</p>
+
+<pre><code class="shell">$ ruby minibot.rb
+Run options: --seed 64926
+
+# Running:
+
+...
+
+Finished in 0.001264s, 2373.4177 runs/s, 3164.5570 assertions/s.
+
+3 runs, 4 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
+
+<p><code>terminal</code></p>
+
+<p>Yep, it passes and all is right with the world. If I had ideas of design patterns to use I would implement them now. But the key in this phase is to only change the code, not the tests. If you change the tests in this phase you are redesigning and not refactoring.</p>
+
+<p><em>NOTE</em>: Tests need to be written and rewritten. Far too often I see tests that were written once and never revisited again. If you to the TDD Cycle right, you will be revisiting and updateing your tests <em>more</em> than you change your code.</p>
+
+<p>I said that the Refactoring step was to make changes to the code, and that&rsquo;s true. But once we have all the code right its a good idea to revisit the design of the tests. We have a fair bit of duplication in our tests, like creating a Minibot object for each test method. We can extract that out to a <code>setup</code> method.</p>
+
+<pre><code class="ruby"> class TestMinibot &lt; Minitest::Test
+  def setup
+    @minibot = Minibot.new
+  end
+
+  def test_add_rules
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    assert_equal 1, @minibot.triggers.size
+    @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+    assert_equal 2, @minibot.triggers.size
+  end
+
+  def test_add_multiple_rules_on_same_trigger
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+    assert_equal 1, @minibot.triggers.size
+  end
+
+  def test_triggers_is_empty
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p>The other thing that stands out to me is that we only checking the size of the triggers, and not the contents. We can probably add some more test coverage around the intended behavior of the triggers. I think it would be sufficent to state that the triggers list includes the trigger that was added.</p>
+
+<pre><code class="ruby">class TestMinibot &lt; Minitest::Test
+  def setup
+    @minibot = Minibot.new
+  end
+
+  def test_add_rule
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+    assert_equal 1, @minibot.triggers.size
+    assert_includes @minibot.triggers, &quot;zomg&quot;
+  end
+
+  def test_add_rules
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+    assert_equal 2, @minibot.triggers.size
+    assert_includes @minibot.triggers, &quot;zomg&quot;
+    assert_includes @minibot.triggers, &quot;wtf&quot;
+  end
+
+  def test_add_multiple_rules_on_same_trigger
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+    assert_equal 1, @minibot.triggers.size
+    assert_includes @minibot.triggers, &quot;zomg&quot;
+  end
+
+  def test_triggers_is_empty
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p>Much better! While there is some data duplication across some of the tests, I&rsquo;m happy with the behavior they describe. And best of all the tests still pass cleanly:</p>
+
+<pre><code class="shell">$ ruby minibot.rb
+Run options: --seed 42383
+
+# Running:
+
+....
+
+Finished in 0.000963s, 4153.6864 runs/s, 12461.0592 assertions/s.
+
+4 runs, 12 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
+
+<p><code>terminal</code></p>
+
+<p>Again, we only let our Engineering mindset consider the test design after all code under test is properly refactored, while all the tests continue to pass cleanly. And by delaying our Engineering mindset until the <em>Refactoring</em> step we have given our Consumer mindset the ability to design the optimum API.</p>
+
+<h2>Conclusion</h2>
+
+<p>You&rsquo;ve now written tests to go from <strong>Error</strong> to <strong>Failure</strong> to <strong>Passing</strong> through TDD&rsquo;s <strong>Red</strong>, <strong>Green, **Refactor</strong> steps. The dirty little secret is that you will to <em>Red</em> <em>Green</em> <em>Red</em> <em>Green</em> <em>Red</em> <em>Green</em> and then <em>Refactor</em>. In this process the tests provide sufficent coverage for the API you design for your code&rsquo;s consumers. You then use the feedback your tests provide to make changes. The end result is you will have the confidence to make improvements to your software because you enjoy the assurance that you aren&rsquo;t breaking behavior.</p>
+
+<p>The TDD Cycle also promotes looking at your code from difference mindsets. You look at your code from multiple perspectives, from the Consumer to the Engineer, from the Designer to the Maintainer, allowing you to entertain both your creativity and your focus/completeness/something (!!). The more you practice TDD, the better at these mindsets you get, and the better code you will write.</p>
+<h1>Chapter 5: Minitest Spec DSL</h1>
+
+<p>In chapter 1 we looked at the Minitest API and using <code>Minitest::Test</code> to create <em>test classes</em> and <em>test methods</em> using <em>assertion methods</em> and <em>support methods</em>. This style of testing may seem primitive to some who prefer using a high level spec DSL instead of an API. Minitest also provides a spec DSL, but to understand the spec DSL you must first understand the Minitest API. So I encourage you to read chapter 1 if you skipped it in your excitement.</p>
+
+<p>Using a spec DSL is also very popular with practitioners of BDD, a variation of TDD. In BDD the spec DSL is used to create tests that can read as a software specification. Minitest&rsquo;s spec DSL is built on top of Minitest&rsquo;s API and provides this abstraction with minimal DIFFERENCE(?).</p>
+
+<p>To demonstrate the spec DSL, let&rsquo;s start with the <code>test_hello_world.rb</code> file created from chapters 1 and 2. We will convert this file from using the Minitest API to the spec DSL. Here are the contents of the file we are starting with:</p>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+
+class TestMinibot &lt; Minitest::Test
+  def setup
+    @minibot = Minibot.new
+  end
+
+  def test_add_rule
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+    assert_equal 1, @minibot.triggers.size
+    assert_includes @minibot.triggers, &quot;zomg&quot;
+  end
+
+  def test_add_rules
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+    assert_equal 2, @minibot.triggers.size
+    assert_includes @minibot.triggers, &quot;zomg&quot;
+    assert_includes @minibot.triggers, &quot;wtf&quot;
+  end
+
+  def test_add_multiple_rules_on_same_trigger
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+    assert_equal 1, @minibot.triggers.size
+    assert_includes @minibot.triggers, &quot;zomg&quot;
+  end
+
+  def test_triggers_is_empty
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<h2>The <code>describe</code> Block</h2>
+
+<p>The spec DSL is comprised of a series of nested blocks. Instead of creating a <em>test class</em> explicitly, we can use a <strong><code>describe</code> block</strong> to do this for us. We can replace the line <code>class TestHelloWorld &lt; Minitest::Test</code> with a describe:</p>
+
+<h3>Before</h3>
+
+<pre><code class="ruby">class TestMinibot &lt; Minitest::Test
+</code></pre>
+
+<h3>After</h3>
+
+<pre><code class="ruby">describe Minibot do
+</code></pre>
+
+<p>The <code>describe</code> block can be passed the constant of the class you are testing, or a string, or any object that can be converted to a string, like a symbol. But for the most part a class constant it preferred when possible.</p>
+
+<p>We can use nested <code>describe</code> blocks to narrow the focus of our tests. This focus can be about a specific method under test, or it can be a scenario such as collaborator being valid or invalid, or permissions being present or not present. In our case, most of our <em>test methods</em> are specific to the <code>add</code> method, so let&rsquo;s create a nested <code>describe</code> block that is focused on that method:</p>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+
+describe Minibot do
+  def setup
+    @minibot = Minibot.new
+  end
+
+  describe :add do
+    def test_add_rule
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+    end
+
+    def test_add_rules
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+      assert_equal 2, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+      assert_includes @minibot.triggers, &quot;wtf&quot;
+    end
+
+    def test_add_multiple_rules_on_same_trigger
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+    end
+  end
+
+  def test_triggers_is_empty
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>Under the covers Minitest is creating a <em>test class</em> with the contents of each <code>describe</code> block. The <em>test class</em> inherits from the <code>describe</code> block it is nested under, or the default <code>Minitest::Spec</code> class if it is not nested. So the <em>test class</em> created by the <code>describe :add</code> block inherits from the <em>test class</em> created by the <code>describe Minibot</code> block, which inherits from <code>Minitest::Spec</code> (which inherits from <code>Minitest::Test</code>).</p>
+
+<p>The <code>describe</code> block is just another way to create a <em>test class</em> in your tests. The output of the spec DSL are objects using the Minitest API.</p>
+
+<h2>The <code>it</code> Block</h2>
+
+<p>You can create <em>test methods</em> using the spec DSL, just as you can create <em>test classes</em>. <em>Test methods</em> are created using the <strong><code>it</code> block</strong>, which must be nested inside of a <code>describe</code> block, the same way a <em>test method</em> must be located inside a <em>test class</em>. The <code>it</code> block takes a string that can provide more descriptive description (?!?) than the name of the <em>test method</em>:</p>
+
+<h3>Before</h3>
+
+<pre><code class="ruby">def test_add_rule
+</code></pre>
+
+<pre><code class="ruby">def test_add_rules
+</code></pre>
+
+<pre><code class="ruby">def test_add_multiple_rules_on_same_trigger
+</code></pre>
+
+<h3>After</h3>
+
+<pre><code class="ruby">it &quot;adds a single rule&quot; do
+</code></pre>
+
+<pre><code class="ruby">it &quot;adds multiple rules with different triggers&quot; do
+</code></pre>
+
+<pre><code class="ruby">it &quot;adds several rules all on the same trigger&quot; do
+</code></pre>
+
+<p>Our revised test is now:</p>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+
+describe Minibot do
+  def setup
+    @minibot = Minibot.new
+  end
+
+  describe :add do
+    it &quot;adds a single rule&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+    end
+
+    it &quot;adds multiple rules with different triggers&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+      assert_equal 2, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+      assert_includes @minibot.triggers, &quot;wtf&quot;
+    end
+
+    it &quot;adds several rules all on the same trigger&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+    end
+  end
+
+  it &quot;has an empty trigger list by default&quot; do
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>Under the covers Minitest is creating a <em>test method</em> that uses the string provided to the <code>it</code> block. So the contents of the <code>it &quot;adds a single rule&quot;</code> block is used to create a method named &ldquo;<code>test_0001_adds a single rule</code>&rdquo; and contents of the <code>it &quot;adds multiple rules with different triggers&quot;</code> block is used to create a method named &ldquo;<code>test_0002_adds multiple rules with different triggers</code>&rdquo;.</p>
+
+<p>The <code>it</code> block is just another way to create a <em>test methods</em> in your tests. The output of the spec DSL are methods using the Minitest API.</p>
+
+<h2>Expectations</h2>
+
+<p>Instead of passing calculated values to the main <code>assert</code> method, or using special case assertions such as <code>assert_equal</code> or <code>assert_match</code>, we can use call the assertions using an alternate API(?) called <strong>expectations</strong>.</p>
+
+<p>The common order of arguments for assertions is expected, then actual. Consider the argument names for the <code>assert_equal</code> method as defined in Minitest:</p>
+
+<pre><code>def assert_equal exp, act, msg = nil
+  msg = message(msg, &quot;&quot;) { diff exp, act }
+  assert exp == act, msg
+end
+</code></pre>
+
+<p>In the assertion method the position of the arguments is important, but expectations are called on the actual value eliminating the need to remember the positioning. In our tests, the <code>assert_equal</code> assertion:</p>
+
+<pre><code class="ruby">assert_equal 1, @minibot.triggers.size
+</code></pre>
+
+<p>Can be written with the <code>must_equal</code> expectation:</p>
+
+<pre><code class="ruby">@minibot.triggers.size.must_equal 1
+</code></pre>
+
+<p>Our revised test is now:</p>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+
+describe Minibot do
+  def setup
+    @minibot = Minibot.new
+  end
+
+  describe :add do
+    it &quot;adds a single rule&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+      @minibot.triggers.size.must_equal 1
+      @minibot.triggers.must_include &quot;zomg&quot;
+    end
+
+    it &quot;adds multiple rules with different triggers&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+      @minibot.triggers.size.must_equal 2
+      @minibot.triggers.must_include &quot;zomg&quot;
+      @minibot.triggers.must_include &quot;wtf&quot;
+    end
+
+    it &quot;adds several rules all on the same trigger&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+      @minibot.triggers.size.must_equal 1
+      @minibot.triggers.must_include &quot;zomg&quot;
+    end
+  end
+
+  it &quot;has an empty trigger list by default&quot; do
+    @minibot.triggers.size.must_equal 0
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>Under the covers Minitest is calling <em>assertion methods</em> from the <em>expectations</em>. <em>Expectations</em> are just another way to call <em>assertion methods</em> in your tests. The output of the spec DSL are methods using the Minitest API.</p>
+
+<h2>The <code>before</code> and <code>after</code> Blocks</h2>
+
+<p>The spec DSL has analogs for the <code>setup</code> and <code>teardown</code> support methods. They are expressed as <code>before</code> and <code>after</code> blocks. The contents of the <code>setup</code> and <code>teardown</code> support methods will transfer directly to the <code>before</code> and <code>after</code> blocks.</p>
+
+<h3>Before</h3>
+
+<pre><code class="ruby">def setup
+  @minibot = Minibot.new
+end
+</code></pre>
+
+<h3>After</h3>
+
+<pre><code class="ruby">before do
+  @minibot = Minibot.new
+end
+</code></pre>
+
+<h2>The <code>let</code> Block</h2>
+
+<p>Since the test was only using the <code>setup</code> and <code>teardown</code> methods to initialize an instance variable in our <em>test class</em>, the spec DSL provides a way to declare this outside of the the <code>before</code> and <code>after</code> blocks. This is the <code>let</code> block.</p>
+
+<p>The <code>let</code> block will create a support method that returns the result of the given block. And it will execute the block only once per test. So while it can be called several times in a test the block will only be executed the first time. And unlike the <code>setup</code> method or the <code>before</code> block it is lazy evaluated so if it is never called the block will never be invoked.</p>
+
+<p>Under the covers the <code>let</code> block Minitest is creates a memoized accessor method that clears the value between tests. So the following test-style code:</p>
+
+<pre><code class="ruby">def setup
+  @foo = nil
+end
+
+def foo
+  @foo ||= Foo.new
+end
+
+def teardown
+  @foo = nil
+end
+</code></pre>
+
+<p>Can be replaced with the spec-style code:</p>
+
+<pre><code class="ruby">let(:foo) { Foo.new }
+</code></pre>
+
+<p>We can replace our use of the <code>before</code> block with a <code>let</code> block and then update all instances of the instance variable with calls to the accessor method within the test methods.</p>
+
+<h3>Before</h3>
+
+<pre><code class="ruby">before do
+  @minibot = Minibot.new
+end
+</code></pre>
+
+<h3>After</h3>
+
+<pre><code class="ruby">let(:minibot) { Minibot.new }
+</code></pre>
+
+<p>This is one of the advantages (???) <code>let</code> blocks can call other let block, because they just </p>
+
+<p>The <code>before</code> and <code>after</code> and <code>let</code> blocks are more ways to create a <em>support methods</em> in your tests. The output of the spec DSL are methods using the Minitest API.</p>
+
+<h2>Conclusion</h2>
+
+<p>Our revised test is now:</p>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+
+describe Minibot do
+  let(:minibot) { Minibot.new }
+
+  describe :add do
+    it &quot;adds a single rule&quot; do
+      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+      minibot.triggers.size.must_equal 1
+      minibot.triggers.must_include &quot;zomg&quot;
+    end
+
+    it &quot;adds multiple rules with different triggers&quot; do
+      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+      minibot.triggers.size.must_equal 2
+      minibot.triggers.must_include &quot;zomg&quot;
+      minibot.triggers.must_include &quot;wtf&quot;
+    end
+
+    it &quot;adds several rules all on the same trigger&quot; do
+      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+      minibot.triggers.size.must_equal 1
+      minibot.triggers.must_include &quot;zomg&quot;
+    end
+  end
+
+  it &quot;has an empty trigger list by default&quot; do
+    minibot.triggers.size.must_equal 0
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>You&rsquo;ve now converted your test from the Minitest API to the spec DSL. </p>
+
+<p>You&rsquo;ve created <em>test classes</em> using <strong><code>describe</code> blocks</strong>, created <em>test methods</em> using <strong><code>it</code> blocks</strong>, called <em>assertion methods</em> using <strong>expectations</strong>, and created <em>support methods</em> using <strong><code>before</code></strong> and <strong><code>after</code></strong> and <strong><code>let</code> blocks</strong>.</p>
+
+<p>The spec DSL allows for an english-like/high-level abstraction for creating objects and methods using the Minitest API. Minitest tests can use a combination of the spec DSL and the Minitest API. You can use <code>it</code> blocks with <em>test classes</em>, and <em>assertions</em> with <code>let</code> blocks. The spec DSL generates objects and methods according to the Minitest API that Minitest uses.</p>
+<h1>Chapter 5: Minitest Spec DSL</h1>
+
+<p>In chapter 1 we looked at the Minitest API and using <code>Minitest::Test</code> to create <em>test classes</em> and <em>test methods</em> using <em>assertion methods</em> and <em>support methods</em>. This style of testing may seem primitive to some who prefer using a high level spec DSL instead of an API. Minitest also provides a spec DSL, but to understand the spec DSL you must first understand the Minitest API. So I encourage you to read chapter 1 if you skipped it in your excitement.</p>
+
+<p>Using a spec DSL is also very popular with practitioners of BDD, a variation of TDD. In BDD the spec DSL is used to create tests that can read as a software specification. Minitest&rsquo;s spec DSL is built on top of Minitest&rsquo;s API and provides this abstraction with minimal DIFFERENCE(?).</p>
+
+<p>To demonstrate the spec DSL, let&rsquo;s start with the <code>test_hello_world.rb</code> file created from chapters 1 and 2. We will convert this file from using the Minitest API to the spec DSL. Here are the contents of the file we are starting with:</p>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+
+class TestMinibot &lt; Minitest::Test
+  def setup
+    @minibot = Minibot.new
+  end
+
+  def test_add_rule
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+    assert_equal 1, @minibot.triggers.size
+    assert_includes @minibot.triggers, &quot;zomg&quot;
+  end
+
+  def test_add_rules
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+    assert_equal 2, @minibot.triggers.size
+    assert_includes @minibot.triggers, &quot;zomg&quot;
+    assert_includes @minibot.triggers, &quot;wtf&quot;
+  end
+
+  def test_add_multiple_rules_on_same_trigger
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+    assert_equal 1, @minibot.triggers.size
+    assert_includes @minibot.triggers, &quot;zomg&quot;
+  end
+
+  def test_triggers_is_empty
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<h2>The <code>describe</code> Block</h2>
+
+<p>The spec DSL is comprised of a series of nested blocks. Instead of creating a <em>test class</em> explicitly, we can use a <strong><code>describe</code> block</strong> to do this for us. We can replace the line <code>class TestHelloWorld &lt; Minitest::Test</code> with a describe:</p>
+
+<h3>Before</h3>
+
+<pre><code class="ruby">class TestMinibot &lt; Minitest::Test
+</code></pre>
+
+<h3>After</h3>
+
+<pre><code class="ruby">describe Minibot do
+</code></pre>
+
+<p>The <code>describe</code> block can be passed the constant of the class you are testing, or a string, or any object that can be converted to a string, like a symbol. But for the most part a class constant it preferred when possible.</p>
+
+<p>We can use nested <code>describe</code> blocks to narrow the focus of our tests. This focus can be about a specific method under test, or it can be a scenario such as collaborator being valid or invalid, or permissions being present or not present. In our case, most of our <em>test methods</em> are specific to the <code>add</code> method, so let&rsquo;s create a nested <code>describe</code> block that is focused on that method:</p>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+
+describe Minibot do
+  def setup
+    @minibot = Minibot.new
+  end
+
+  describe :add do
+    def test_add_rule
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+    end
+
+    def test_add_rules
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+      assert_equal 2, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+      assert_includes @minibot.triggers, &quot;wtf&quot;
+    end
+
+    def test_add_multiple_rules_on_same_trigger
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+    end
+  end
+
+  def test_triggers_is_empty
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>Under the covers Minitest is creating a <em>test class</em> with the contents of each <code>describe</code> block. The <em>test class</em> inherits from the <code>describe</code> block it is nested under, or the default <code>Minitest::Spec</code> class if it is not nested. So the <em>test class</em> created by the <code>describe :add</code> block inherits from the <em>test class</em> created by the <code>describe Minibot</code> block, which inherits from <code>Minitest::Spec</code> (which inherits from <code>Minitest::Test</code>).</p>
+
+<p>The <code>describe</code> block is just another way to create a <em>test class</em> in your tests. The output of the spec DSL are objects using the Minitest API.</p>
+
+<h2>The <code>it</code> Block</h2>
+
+<p>You can create <em>test methods</em> using the spec DSL, just as you can create <em>test classes</em>. <em>Test methods</em> are created using the <strong><code>it</code> block</strong>, which must be nested inside of a <code>describe</code> block, the same way a <em>test method</em> must be located inside a <em>test class</em>. The <code>it</code> block takes a string that can provide more descriptive description (?!?) than the name of the <em>test method</em>:</p>
+
+<h3>Before</h3>
+
+<pre><code class="ruby">def test_add_rule
+</code></pre>
+
+<pre><code class="ruby">def test_add_rules
+</code></pre>
+
+<pre><code class="ruby">def test_add_multiple_rules_on_same_trigger
+</code></pre>
+
+<h3>After</h3>
+
+<pre><code class="ruby">it &quot;adds a single rule&quot; do
+</code></pre>
+
+<pre><code class="ruby">it &quot;adds multiple rules with different triggers&quot; do
+</code></pre>
+
+<pre><code class="ruby">it &quot;adds several rules all on the same trigger&quot; do
+</code></pre>
+
+<p>Our revised test is now:</p>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+
+describe Minibot do
+  def setup
+    @minibot = Minibot.new
+  end
+
+  describe :add do
+    it &quot;adds a single rule&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+    end
+
+    it &quot;adds multiple rules with different triggers&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+      assert_equal 2, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+      assert_includes @minibot.triggers, &quot;wtf&quot;
+    end
+
+    it &quot;adds several rules all on the same trigger&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+      assert_equal 1, @minibot.triggers.size
+      assert_includes @minibot.triggers, &quot;zomg&quot;
+    end
+  end
+
+  it &quot;has an empty trigger list by default&quot; do
+    assert_equal 0, @minibot.triggers.size
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>Under the covers Minitest is creating a <em>test method</em> that uses the string provided to the <code>it</code> block. So the contents of the <code>it &quot;adds a single rule&quot;</code> block is used to create a method named &ldquo;<code>test_0001_adds a single rule</code>&rdquo; and contents of the <code>it &quot;adds multiple rules with different triggers&quot;</code> block is used to create a method named &ldquo;<code>test_0002_adds multiple rules with different triggers</code>&rdquo;.</p>
+
+<p>The <code>it</code> block is just another way to create a <em>test methods</em> in your tests. The output of the spec DSL are methods using the Minitest API.</p>
+
+<h2>Expectations</h2>
+
+<p>Instead of passing calculated values to the main <code>assert</code> method, or using special case assertions such as <code>assert_equal</code> or <code>assert_match</code>, we can use call the assertions using an alternate API(?) called <strong>expectations</strong>.</p>
+
+<p>The common order of arguments for assertions is expected, then actual. Consider the argument names for the <code>assert_equal</code> method as defined in Minitest:</p>
+
+<pre><code>def assert_equal exp, act, msg = nil
+  msg = message(msg, &quot;&quot;) { diff exp, act }
+  assert exp == act, msg
+end
+</code></pre>
+
+<p>In the assertion method the position of the arguments is important, but expectations are called on the actual value eliminating the need to remember the positioning. In our tests, the <code>assert_equal</code> assertion:</p>
+
+<pre><code class="ruby">assert_equal 1, @minibot.triggers.size
+</code></pre>
+
+<p>Can be written with the <code>must_equal</code> expectation:</p>
+
+<pre><code class="ruby">@minibot.triggers.size.must_equal 1
+</code></pre>
+
+<p>Our revised test is now:</p>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+
+describe Minibot do
+  def setup
+    @minibot = Minibot.new
+  end
+
+  describe :add do
+    it &quot;adds a single rule&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+      @minibot.triggers.size.must_equal 1
+      @minibot.triggers.must_include &quot;zomg&quot;
+    end
+
+    it &quot;adds multiple rules with different triggers&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+      @minibot.triggers.size.must_equal 2
+      @minibot.triggers.must_include &quot;zomg&quot;
+      @minibot.triggers.must_include &quot;wtf&quot;
+    end
+
+    it &quot;adds several rules all on the same trigger&quot; do
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+      @minibot.triggers.size.must_equal 1
+      @minibot.triggers.must_include &quot;zomg&quot;
+    end
+  end
+
+  it &quot;has an empty trigger list by default&quot; do
+    @minibot.triggers.size.must_equal 0
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>Under the covers Minitest is calling <em>assertion methods</em> from the <em>expectations</em>. <em>Expectations</em> are just another way to call <em>assertion methods</em> in your tests. The output of the spec DSL are methods using the Minitest API.</p>
+
+<h2>The <code>before</code> and <code>after</code> Blocks</h2>
+
+<p>The spec DSL has analogs for the <code>setup</code> and <code>teardown</code> support methods. They are expressed as <code>before</code> and <code>after</code> blocks. The contents of the <code>setup</code> and <code>teardown</code> support methods will transfer directly to the <code>before</code> and <code>after</code> blocks.</p>
+
+<h3>Before</h3>
+
+<pre><code class="ruby">def setup
+  @minibot = Minibot.new
+end
+</code></pre>
+
+<h3>After</h3>
+
+<pre><code class="ruby">before do
+  @minibot = Minibot.new
+end
+</code></pre>
+
+<h2>The <code>let</code> Block</h2>
+
+<p>Since the test was only using the <code>setup</code> and <code>teardown</code> methods to initialize an instance variable in our <em>test class</em>, the spec DSL provides a way to declare this outside of the the <code>before</code> and <code>after</code> blocks. This is the <code>let</code> block.</p>
+
+<p>The <code>let</code> block will create a support method that returns the result of the given block. And it will execute the block only once per test. So while it can be called several times in a test the block will only be executed the first time. And unlike the <code>setup</code> method or the <code>before</code> block it is lazy evaluated so if it is never called the block will never be invoked.</p>
+
+<p>Under the covers the <code>let</code> block Minitest is creates a memoized accessor method that clears the value between tests. So the following test-style code:</p>
+
+<pre><code class="ruby">def setup
+  @foo = nil
+end
+
+def foo
+  @foo ||= Foo.new
+end
+
+def teardown
+  @foo = nil
+end
+</code></pre>
+
+<p>Can be replaced with the spec-style code:</p>
+
+<pre><code class="ruby">let(:foo) { Foo.new }
+</code></pre>
+
+<p>We can replace our use of the <code>before</code> block with a <code>let</code> block and then update all instances of the instance variable with calls to the accessor method within the test methods.</p>
+
+<h3>Before</h3>
+
+<pre><code class="ruby">before do
+  @minibot = Minibot.new
+end
+</code></pre>
+
+<h3>After</h3>
+
+<pre><code class="ruby">let(:minibot) { Minibot.new }
+</code></pre>
+
+<p>This is one of the advantages (???) <code>let</code> blocks can call other let block, because they just </p>
+
+<p>The <code>before</code> and <code>after</code> and <code>let</code> blocks are more ways to create a <em>support methods</em> in your tests. The output of the spec DSL are methods using the Minitest API.</p>
+
+<h2>Conclusion</h2>
+
+<p>Our revised test is now:</p>
+
+<pre><code class="ruby">gem &quot;minitest&quot;
+require &quot;minitest/autorun&quot;
+
+describe Minibot do
+  let(:minibot) { Minibot.new }
+
+  describe :add do
+    it &quot;adds a single rule&quot; do
+      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+      minibot.triggers.size.must_equal 1
+      minibot.triggers.must_include &quot;zomg&quot;
+    end
+
+    it &quot;adds multiple rules with different triggers&quot; do
+      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+      minibot.triggers.size.must_equal 2
+      minibot.triggers.must_include &quot;zomg&quot;
+      minibot.triggers.must_include &quot;wtf&quot;
+    end
+
+    it &quot;adds several rules all on the same trigger&quot; do
+      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+      minibot.triggers.size.must_equal 1
+      minibot.triggers.must_include &quot;zomg&quot;
+    end
+  end
+
+  it &quot;has an empty trigger list by default&quot; do
+    minibot.triggers.size.must_equal 0
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>You&rsquo;ve now converted your test from the Minitest API to the spec DSL. </p>
+
+<p>You&rsquo;ve created <em>test classes</em> using <strong><code>describe</code> blocks</strong>, created <em>test methods</em> using <strong><code>it</code> blocks</strong>, called <em>assertion methods</em> using <strong>expectations</strong>, and created <em>support methods</em> using <strong><code>before</code></strong> and <strong><code>after</code></strong> and <strong><code>let</code> blocks</strong>.</p>
+
+<p>The spec DSL allows for an english-like/high-level abstraction for creating objects and methods using the Minitest API. Minitest tests can use a combination of the spec DSL and the Minitest API. You can use <code>it</code> blocks with <em>test classes</em>, and <em>assertions</em> with <code>let</code> blocks. The spec DSL generates objects and methods according to the Minitest API that Minitest uses.</p>
+<h1>Assertions</h1>
+
+<p>Go here.</p>
+<h1>API Changes</h1>
+
+<p>Info here.</p>
+Creative Commons Legal Code
+
+Attribution-NonCommercial-NoDerivs 3.0 Unported
+
+    CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE
+    LEGAL SERVICES. DISTRIBUTION OF THIS LICENSE DOES NOT CREATE AN
+    ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS
+    INFORMATION ON AN "AS-IS" BASIS. CREATIVE COMMONS MAKES NO WARRANTIES
+    REGARDING THE INFORMATION PROVIDED, AND DISCLAIMS LIABILITY FOR
+    DAMAGES RESULTING FROM ITS USE.
+
+License
+
+THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE
+COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS PROTECTED BY
+COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS
+AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+
+BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE
+TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE MAY
+BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS
+CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND
+CONDITIONS.
+
+1. Definitions
+
+ a. "Adaptation" means a work based upon the Work, or upon the Work and
+    other pre-existing works, such as a translation, adaptation,
+    derivative work, arrangement of music or other alterations of a
+    literary or artistic work, or phonogram or performance and includes
+    cinematographic adaptations or any other form in which the Work may be
+    recast, transformed, or adapted including in any form recognizably
+    derived from the original, except that a work that constitutes a
+    Collection will not be considered an Adaptation for the purpose of
+    this License. For the avoidance of doubt, where the Work is a musical
+    work, performance or phonogram, the synchronization of the Work in
+    timed-relation with a moving image ("synching") will be considered an
+    Adaptation for the purpose of this License.
+ b. "Collection" means a collection of literary or artistic works, such as
+    encyclopedias and anthologies, or performances, phonograms or
+    broadcasts, or other works or subject matter other than works listed
+    in Section 1(f) below, which, by reason of the selection and
+    arrangement of their contents, constitute intellectual creations, in
+    which the Work is included in its entirety in unmodified form along
+    with one or more other contributions, each constituting separate and
+    independent works in themselves, which together are assembled into a
+    collective whole. A work that constitutes a Collection will not be
+    considered an Adaptation (as defined above) for the purposes of this
+    License.
+ c. "Distribute" means to make available to the public the original and
+    copies of the Work through sale or other transfer of ownership.
+ d. "Licensor" means the individual, individuals, entity or entities that
+    offer(s) the Work under the terms of this License.
+ e. "Original Author" means, in the case of a literary or artistic work,
+    the individual, individuals, entity or entities who created the Work
+    or if no individual or entity can be identified, the publisher; and in
+    addition (i) in the case of a performance the actors, singers,
+    musicians, dancers, and other persons who act, sing, deliver, declaim,
+    play in, interpret or otherwise perform literary or artistic works or
+    expressions of folklore; (ii) in the case of a phonogram the producer
+    being the person or legal entity who first fixes the sounds of a
+    performance or other sounds; and, (iii) in the case of broadcasts, the
+    organization that transmits the broadcast.
+ f. "Work" means the literary and/or artistic work offered under the terms
+    of this License including without limitation any production in the
+    literary, scientific and artistic domain, whatever may be the mode or
+    form of its expression including digital form, such as a book,
+    pamphlet and other writing; a lecture, address, sermon or other work
+    of the same nature; a dramatic or dramatico-musical work; a
+    choreographic work or entertainment in dumb show; a musical
+    composition with or without words; a cinematographic work to which are
+    assimilated works expressed by a process analogous to cinematography;
+    a work of drawing, painting, architecture, sculpture, engraving or
+    lithography; a photographic work to which are assimilated works
+    expressed by a process analogous to photography; a work of applied
+    art; an illustration, map, plan, sketch or three-dimensional work
+    relative to geography, topography, architecture or science; a
+    performance; a broadcast; a phonogram; a compilation of data to the
+    extent it is protected as a copyrightable work; or a work performed by
+    a variety or circus performer to the extent it is not otherwise
+    considered a literary or artistic work.
+ g. "You" means an individual or entity exercising rights under this
+    License who has not previously violated the terms of this License with
+    respect to the Work, or who has received express permission from the
+    Licensor to exercise rights under this License despite a previous
+    violation.
+ h. "Publicly Perform" means to perform public recitations of the Work and
+    to communicate to the public those public recitations, by any means or
+    process, including by wire or wireless means or public digital
+    performances; to make available to the public Works in such a way that
+    members of the public may access these Works from a place and at a
+    place individually chosen by them; to perform the Work to the public
+    by any means or process and the communication to the public of the
+    performances of the Work, including by public digital performance; to
+    broadcast and rebroadcast the Work by any means including signs,
+    sounds or images.
+ i. "Reproduce" means to make copies of the Work by any means including
+    without limitation by sound or visual recordings and the right of
+    fixation and reproducing fixations of the Work, including storage of a
+    protected performance or phonogram in digital form or other electronic
+    medium.
+
+2. Fair Dealing Rights. Nothing in this License is intended to reduce,
+limit, or restrict any uses free from copyright or rights arising from
+limitations or exceptions that are provided for in connection with the
+copyright protection under copyright law or other applicable laws.
+
+3. License Grant. Subject to the terms and conditions of this License,
+Licensor hereby grants You a worldwide, royalty-free, non-exclusive,
+perpetual (for the duration of the applicable copyright) license to
+exercise the rights in the Work as stated below:
+
+ a. to Reproduce the Work, to incorporate the Work into one or more
+    Collections, and to Reproduce the Work as incorporated in the
+    Collections; and,
+ b. to Distribute and Publicly Perform the Work including as incorporated
+    in Collections.
+
+The above rights may be exercised in all media and formats whether now
+known or hereafter devised. The above rights include the right to make
+such modifications as are technically necessary to exercise the rights in
+other media and formats, but otherwise you have no rights to make
+Adaptations. Subject to 8(f), all rights not expressly granted by Licensor
+are hereby reserved, including but not limited to the rights set forth in
+Section 4(d).
+
+4. Restrictions. The license granted in Section 3 above is expressly made
+subject to and limited by the following restrictions:
+
+ a. You may Distribute or Publicly Perform the Work only under the terms
+    of this License. You must include a copy of, or the Uniform Resource
+    Identifier (URI) for, this License with every copy of the Work You
+    Distribute or Publicly Perform. You may not offer or impose any terms
+    on the Work that restrict the terms of this License or the ability of
+    the recipient of the Work to exercise the rights granted to that
+    recipient under the terms of the License. You may not sublicense the
+    Work. You must keep intact all notices that refer to this License and
+    to the disclaimer of warranties with every copy of the Work You
+    Distribute or Publicly Perform. When You Distribute or Publicly
+    Perform the Work, You may not impose any effective technological
+    measures on the Work that restrict the ability of a recipient of the
+    Work from You to exercise the rights granted to that recipient under
+    the terms of the License. This Section 4(a) applies to the Work as
+    incorporated in a Collection, but this does not require the Collection
+    apart from the Work itself to be made subject to the terms of this
+    License. If You create a Collection, upon notice from any Licensor You
+    must, to the extent practicable, remove from the Collection any credit
+    as required by Section 4(c), as requested.
+ b. You may not exercise any of the rights granted to You in Section 3
+    above in any manner that is primarily intended for or directed toward
+    commercial advantage or private monetary compensation. The exchange of
+    the Work for other copyrighted works by means of digital file-sharing
+    or otherwise shall not be considered to be intended for or directed
+    toward commercial advantage or private monetary compensation, provided
+    there is no payment of any monetary compensation in connection with
+    the exchange of copyrighted works.
+ c. If You Distribute, or Publicly Perform the Work or Collections, You
+    must, unless a request has been made pursuant to Section 4(a), keep
+    intact all copyright notices for the Work and provide, reasonable to
+    the medium or means You are utilizing: (i) the name of the Original
+    Author (or pseudonym, if applicable) if supplied, and/or if the
+    Original Author and/or Licensor designate another party or parties
+    (e.g., a sponsor institute, publishing entity, journal) for
+    attribution ("Attribution Parties") in Licensor's copyright notice,
+    terms of service or by other reasonable means, the name of such party
+    or parties; (ii) the title of the Work if supplied; (iii) to the
+    extent reasonably practicable, the URI, if any, that Licensor
+    specifies to be associated with the Work, unless such URI does not
+    refer to the copyright notice or licensing information for the Work.
+    The credit required by this Section 4(c) may be implemented in any
+    reasonable manner; provided, however, that in the case of a
+    Collection, at a minimum such credit will appear, if a credit for all
+    contributing authors of Collection appears, then as part of these
+    credits and in a manner at least as prominent as the credits for the
+    other contributing authors. For the avoidance of doubt, You may only
+    use the credit required by this Section for the purpose of attribution
+    in the manner set out above and, by exercising Your rights under this
+    License, You may not implicitly or explicitly assert or imply any
+    connection with, sponsorship or endorsement by the Original Author,
+    Licensor and/or Attribution Parties, as appropriate, of You or Your
+    use of the Work, without the separate, express prior written
+    permission of the Original Author, Licensor and/or Attribution
+    Parties.
+ d. For the avoidance of doubt:
+
+     i. Non-waivable Compulsory License Schemes. In those jurisdictions in
+        which the right to collect royalties through any statutory or
+        compulsory licensing scheme cannot be waived, the Licensor
+        reserves the exclusive right to collect such royalties for any
+        exercise by You of the rights granted under this License;
+    ii. Waivable Compulsory License Schemes. In those jurisdictions in
+        which the right to collect royalties through any statutory or
+        compulsory licensing scheme can be waived, the Licensor reserves
+        the exclusive right to collect such royalties for any exercise by
+        You of the rights granted under this License if Your exercise of
+        such rights is for a purpose or use which is otherwise than
+        noncommercial as permitted under Section 4(b) and otherwise waives
+        the right to collect royalties through any statutory or compulsory
+        licensing scheme; and,
+   iii. Voluntary License Schemes. The Licensor reserves the right to
+        collect royalties, whether individually or, in the event that the
+        Licensor is a member of a collecting society that administers
+        voluntary licensing schemes, via that society, from any exercise
+        by You of the rights granted under this License that is for a
+        purpose or use which is otherwise than noncommercial as permitted
+        under Section 4(b).
+ e. Except as otherwise agreed in writing by the Licensor or as may be
+    otherwise permitted by applicable law, if You Reproduce, Distribute or
+    Publicly Perform the Work either by itself or as part of any
+    Collections, You must not distort, mutilate, modify or take other
+    derogatory action in relation to the Work which would be prejudicial
+    to the Original Author's honor or reputation.
+
+5. Representations, Warranties and Disclaimer
+
+UNLESS OTHERWISE MUTUALLY AGREED BY THE PARTIES IN WRITING, LICENSOR
+OFFERS THE WORK AS-IS AND MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY
+KIND CONCERNING THE WORK, EXPRESS, IMPLIED, STATUTORY OR OTHERWISE,
+INCLUDING, WITHOUT LIMITATION, WARRANTIES OF TITLE, MERCHANTIBILITY,
+FITNESS FOR A PARTICULAR PURPOSE, NONINFRINGEMENT, OR THE ABSENCE OF
+LATENT OR OTHER DEFECTS, ACCURACY, OR THE PRESENCE OF ABSENCE OF ERRORS,
+WHETHER OR NOT DISCOVERABLE. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION
+OF IMPLIED WARRANTIES, SO SUCH EXCLUSION MAY NOT APPLY TO YOU.
+
+6. Limitation on Liability. EXCEPT TO THE EXTENT REQUIRED BY APPLICABLE
+LAW, IN NO EVENT WILL LICENSOR BE LIABLE TO YOU ON ANY LEGAL THEORY FOR
+ANY SPECIAL, INCIDENTAL, CONSEQUENTIAL, PUNITIVE OR EXEMPLARY DAMAGES
+ARISING OUT OF THIS LICENSE OR THE USE OF THE WORK, EVEN IF LICENSOR HAS
+BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+7. Termination
+
+ a. This License and the rights granted hereunder will terminate
+    automatically upon any breach by You of the terms of this License.
+    Individuals or entities who have received Collections from You under
+    this License, however, will not have their licenses terminated
+    provided such individuals or entities remain in full compliance with
+    those licenses. Sections 1, 2, 5, 6, 7, and 8 will survive any
+    termination of this License.
+ b. Subject to the above terms and conditions, the license granted here is
+    perpetual (for the duration of the applicable copyright in the Work).
+    Notwithstanding the above, Licensor reserves the right to release the
+    Work under different license terms or to stop distributing the Work at
+    any time; provided, however that any such election will not serve to
+    withdraw this License (or any other license that has been, or is
+    required to be, granted under the terms of this License), and this
+    License will continue in full force and effect unless terminated as
+    stated above.
+
+8. Miscellaneous
+
+ a. Each time You Distribute or Publicly Perform the Work or a Collection,
+    the Licensor offers to the recipient a license to the Work on the same
+    terms and conditions as the license granted to You under this License.
+ b. If any provision of this License is invalid or unenforceable under
+    applicable law, it shall not affect the validity or enforceability of
+    the remainder of the terms of this License, and without further action
+    by the parties to this agreement, such provision shall be reformed to
+    the minimum extent necessary to make such provision valid and
+    enforceable.
+ c. No term or provision of this License shall be deemed waived and no
+    breach consented to unless such waiver or consent shall be in writing
+    and signed by the party to be charged with such waiver or consent.
+ d. This License constitutes the entire agreement between the parties with
+    respect to the Work licensed here. There are no understandings,
+    agreements or representations with respect to the Work not specified
+    here. Licensor shall not be bound by any additional provisions that
+    may appear in any communication from You. This License may not be
+    modified without the mutual written agreement of the Licensor and You.
+ e. The rights granted under, and the subject matter referenced, in this
+    License were drafted utilizing the terminology of the Berne Convention
+    for the Protection of Literary and Artistic Works (as amended on
+    September 28, 1979), the Rome Convention of 1961, the WIPO Copyright
+    Treaty of 1996, the WIPO Performances and Phonograms Treaty of 1996
+    and the Universal Copyright Convention (as revised on July 24, 1971).
+    These rights and subject matter take effect in the relevant
+    jurisdiction in which the License terms are sought to be enforced
+    according to the corresponding provisions of the implementation of
+    those treaty provisions in the applicable national law. If the
+    standard suite of rights granted under applicable copyright law
+    includes additional rights not granted under this License, such
+    additional rights are deemed to be included in the License; this
+    License is not intended to restrict the license of any rights under
+    applicable law.
+
+
+Creative Commons Notice
+
+    Creative Commons is not a party to this License, and makes no warranty
+    whatsoever in connection with the Work. Creative Commons will not be
+    liable to You or any party on any legal theory for any damages
+    whatsoever, including without limitation any general, special,
+    incidental or consequential damages arising in connection to this
+    license. Notwithstanding the foregoing two (2) sentences, if Creative
+    Commons has expressly identified itself as the Licensor hereunder, it
+    shall have all rights and obligations of Licensor.
+
+    Except for the limited purpose of indicating to the public that the
+    Work is licensed under the CCPL, Creative Commons does not authorize
+    the use by either party of the trademark "Creative Commons" or any
+    related trademark or logo of Creative Commons without the prior
+    written consent of Creative Commons. Any permitted use will be in
+    compliance with Creative Commons' then-current trademark usage
+    guidelines, as may be published on its website or otherwise made
+    available upon request from time to time. For the avoidance of doubt,
+    this trademark restriction does not form part of this License.
+
+    Creative Commons may be contacted at http://creativecommons.org/.
+
+<script>var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function c(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function j(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function g(t,s){var r="";for(var q=0;q<t.childNodes.length;q++){if(t.childNodes[q].nodeType==3){var p=t.childNodes[q].nodeValue;if(s){p=p.replace(/\n/g,"")}r+=p}else{if(t.childNodes[q].nodeName=="BR"){r+="\n"}else{r+=g(t.childNodes[q])}}}if(/MSIE [678]/.test(navigator.userAgent)){r=r.replace(/\r/g,"\n")}return r}function a(s){var q=s.className.split(/\s+/);q=q.concat(s.parentNode.className.split(/\s+/));for(var p=0;p<q.length;p++){var r=q[p].replace(/^language-/,"");if(d[r]||r=="no-highlight"){return r}}}function b(p){var q=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{q.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);q.push({event:"stop",offset:t,node:s.childNodes[r]})}}}return t})(p,0);return q}function l(y,z,x){var r=0;var w="";var t=[];function u(){if(y.length&&z.length){if(y[0].offset!=z[0].offset){return(y[0].offset<z[0].offset)?y:z}else{return z[0].event=="start"?y:z}}else{return y.length?y:z}}function s(C){var D="<"+C.nodeName.toLowerCase();for(var A=0;A<C.attributes.length;A++){var B=C.attributes[A];D+=" "+B.nodeName.toLowerCase();if(B.nodeValue!=undefined&&B.nodeValue!=false&&B.nodeValue!=null){D+='="'+m(B.nodeValue)+'"'}}return D+">"}while(y.length||z.length){var v=u().splice(0,1)[0];w+=m(x.substr(r,v.offset-r));r=v.offset;if(v.event=="start"){w+=s(v.node);t.push(v.node)}else{if(v.event=="stop"){var q=t.length;do{q--;var p=t[q];w+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);t.splice(q,1);while(q<t.length){w+=s(t[q]);q++}}}}w+=x.substr(r);return w}function i(){function p(u,t,v){if(u.compiled){return}if(!v){u.bR=c(t,u.b?u.b:"\\B|\\b");if(!u.e&&!u.eW){u.e="\\B|\\b"}if(u.e){u.eR=c(t,u.e)}}if(u.i){u.iR=c(t,u.i)}if(u.r==undefined){u.r=1}if(u.k){u.lR=c(t,u.l||hljs.IR,true)}for(var s in u.k){if(!u.k.hasOwnProperty(s)){continue}if(u.k[s] instanceof Object){u.kG=u.k}else{u.kG={keyword:u.k}}break}if(!u.c){u.c=[]}u.compiled=true;for(var r=0;r<u.c.length;r++){p(u.c[r],t,false)}if(u.starts){p(u.starts,t,false)}}for(var q in d){if(!d.hasOwnProperty(q)){continue}p(d[q].dM,d[q],true)}}function e(J,D){if(!i.called){i();i.called=true}function z(r,M){for(var L=0;L<M.c.length;L++){if(M.c[L].bR.test(r)){return M.c[L]}}}function w(L,r){if(C[L].e&&C[L].eR.test(r)){return 1}if(C[L].eW){var M=w(L-1,r);return M?M+1:0}return 0}function x(r,L){return L.iR&&L.iR.test(r)}function A(O,N){var M=[];for(var L=0;L<O.c.length;L++){M.push(O.c[L].b)}var r=C.length-1;do{if(C[r].e){M.push(C[r].e)}r--}while(C[r+1].eW);if(O.i){M.push(O.i)}return c(N,"("+M.join("|")+")",true)}function s(M,L){var N=C[C.length-1];if(!N.t){N.t=A(N,H)}N.t.lastIndex=L;var r=N.t.exec(M);if(r){return[M.substr(L,r.index-L),r[0],false]}else{return[M.substr(L),"",true]}}function p(O,r){var L=H.cI?r[0].toLowerCase():r[0];for(var N in O.kG){if(!O.kG.hasOwnProperty(N)){continue}var M=O.kG[N].hasOwnProperty(L);if(M){return[N,M]}}return false}function F(M,O){if(!O.k){return m(M)}var N="";var P=0;O.lR.lastIndex=0;var L=O.lR.exec(M);while(L){N+=m(M.substr(P,L.index-P));var r=p(O,L);if(r){t+=r[1];N+='<span class="'+r[0]+'">'+m(L[0])+"</span>"}else{N+=m(L[0])}P=O.lR.lastIndex;L=O.lR.exec(M)}N+=m(M.substr(P,M.length-P));return N}function K(r,M){if(M.sL&&d[M.sL]){var L=e(M.sL,r);t+=L.keyword_count;return L.value}else{return F(r,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){q+=L;M.buffer=""}else{if(M.eB){q+=m(r)+L;M.buffer=""}else{q+=L;M.buffer=r}}C.push(M);B+=M.r}function E(O,L,Q){var R=C[C.length-1];if(Q){q+=K(R.buffer+O,R);return false}var M=z(L,R);if(M){q+=K(R.buffer+O,R);I(M,L);return M.rB}var r=w(C.length-1,L);if(r){var N=R.cN?"</span>":"";if(R.rE){q+=K(R.buffer+O,R)+N}else{if(R.eE){q+=K(R.buffer+O,R)+N+m(L)}else{q+=K(R.buffer+O+L,R)+N}}while(r>1){N=C[C.length-2].cN?"</span>":"";q+=N;r--;C.length--}var P=C[C.length-1];C.length--;C[C.length-1].buffer="";if(P.starts){I(P.starts,"")}return R.rE}if(x(L,R)){throw"Illegal"}}var H=d[J];var C=[H.dM];var B=0;var t=0;var q="";try{var v=0;H.dM.buffer="";do{var y=s(D,v);var u=E(y[0],y[1],y[2]);v+=y[0].length;if(!u){v+=y[1].length}}while(!y[2]);if(C.length>1){throw"Illegal"}return{r:B,keyword_count:t,value:q}}catch(G){if(G=="Illegal"){return{r:0,keyword_count:0,value:m(D)}}else{throw G}}}function f(t){var r={keyword_count:0,r:0,value:m(t)};var q=r;for(var p in d){if(!d.hasOwnProperty(p)){continue}var s=e(p,t);s.language=p;if(s.keyword_count+s.r>q.keyword_count+q.r){q=s}if(s.keyword_count+s.r>r.keyword_count+r.r){q=r;r=s}}if(q.language){r.second_best=q}return r}function h(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function o(u,x,q){var y=g(u,q);var s=a(u);if(s=="no-highlight"){return}if(s){var w=e(s,y)}else{var w=f(y);s=w.language}var p=b(u);if(p.length){var r=document.createElement("pre");r.innerHTML=w.value;w.value=l(p,b(r),y)}w.value=h(w.value,x,q);var t=u.className;if(!t.match("(\\s|^)(language-)?"+s+"(\\s|$)")){t=t?(t+" "+s):s}if(/MSIE [678]/.test(navigator.userAgent)&&u.tagName=="CODE"&&u.parentNode.tagName=="PRE"){var r=u.parentNode;var v=document.createElement("div");v.innerHTML="<pre><code>"+w.value+"</code></pre>";u=v.firstChild.firstChild;v.firstChild.cN=r.cN;r.parentNode.replaceChild(v.firstChild,r)}else{u.innerHTML=w.value}u.className=t;u.result={language:s,kw:w.keyword_count,re:w.r};if(w.second_best){u.second_best={language:w.second_best.language,kw:w.second_best.keyword_count,re:w.second_best.r}}}function k(){if(k.called){return}k.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=j(r[p]);if(q){o(q,hljs.tabReplace)}}}function n(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",k,false);window.addEventListener("load",k,false)}else{if(window.attachEvent){window.attachEvent("onload",k)}else{window.onload=k}}}var d={};this.LANGUAGES=d;this.highlight=e;this.highlightAuto=f;this.fixMarkup=h;this.highlightBlock=o;this.initHighlighting=k;this.initHighlightingOnLoad=n;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0x[A-Za-z0-9]+|\\d+(\\.\\d+)?)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.inherit=function(p,s){var r={};for(var q in p){r[q]=p[q]}if(s){for(var q in s){r[q]=s[q]}}return r}}();hljs.LANGUAGES.bash=function(){var d={"true":1,"false":1};var b={cN:"variable",b:"\\$([a-zA-Z0-9_]+)\\b"};var a={cN:"variable",b:"\\$\\{(([^}])|(\\\\}))+\\}",c:[hljs.CNM]};var c={cN:"string",b:'"',e:'"',i:"\\n",c:[hljs.BE,b,a],r:0};var e={cN:"test_condition",b:"",e:"",c:[c,b,a,hljs.CNM],k:{literal:d},r:0};return{dM:{k:{keyword:{"if":1,then:1,"else":1,fi:1,"for":1,"break":1,"continue":1,"while":1,"in":1,"do":1,done:1,echo:1,exit:1,"return":1,set:1,declare:1},literal:d},c:[{cN:"shebang",b:"(#!\\/bin\\/bash)|(#!\\/bin\\/sh)",r:10},hljs.HCM,hljs.CNM,c,b,a,hljs.inherit(e,{b:"\\[ ",e:" \\]",r:0}),hljs.inherit(e,{b:"\\[\\[ ",e:" \\]\\]"})]}}}();hljs.LANGUAGES.cs={dM:{k:{"abstract":1,as:1,base:1,bool:1,"break":1,"byte":1,"case":1,"catch":1,"char":1,checked:1,"class":1,"const":1,"continue":1,decimal:1,"default":1,delegate:1,"do":1,"do":1,"double":1,"else":1,"enum":1,event:1,explicit:1,extern:1,"false":1,"finally":1,fixed:1,"float":1,"for":1,foreach:1,"goto":1,"if":1,implicit:1,"in":1,"int":1,"interface":1,internal:1,is:1,lock:1,"long":1,namespace:1,"new":1,"null":1,object:1,operator:1,out:1,override:1,params:1,"private":1,"protected":1,"public":1,readonly:1,ref:1,"return":1,sbyte:1,sealed:1,"short":1,sizeof:1,stackalloc:1,"static":1,string:1,struct:1,"switch":1,"this":1,"throw":1,"true":1,"try":1,"typeof":1,uint:1,ulong:1,unchecked:1,unsafe:1,ushort:1,using:1,virtual:1,"volatile":1,"void":1,"while":1,ascending:1,descending:1,from:1,get:1,group:1,into:1,join:1,let:1,orderby:1,partial:1,select:1,set:1,value:1,"var":1,where:1,yield:1},c:[{cN:"comment",b:"///",e:"$",rB:true,c:[{cN:"xmlDocTag",b:"///|<!--|-->"},{cN:"xmlDocTag",b:"</?",e:">"}]},hljs.CLCM,hljs.CBLCLM,{cN:"string",b:'@"',e:'"',c:[{b:'""'}]},hljs.ASM,hljs.QSM,hljs.CNM]}};hljs.LANGUAGES.ruby=function(){var g="[a-zA-Z_][a-zA-Z0-9_]*(\\!|\\?)?";var a="[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?";var n={keyword:{and:1,"false":1,then:1,defined:1,module:1,"in":1,"return":1,redo:1,"if":1,BEGIN:1,retry:1,end:1,"for":1,"true":1,self:1,when:1,next:1,until:1,"do":1,begin:1,unless:1,END:1,rescue:1,nil:1,"else":1,"break":1,undef:1,not:1,"super":1,"class":1,"case":1,require:1,yield:1,alias:1,"while":1,ensure:1,elsif:1,or:1,def:1},keymethods:{__id__:1,__send__:1,abort:1,abs:1,"all?":1,allocate:1,ancestors:1,"any?":1,arity:1,assoc:1,at:1,at_exit:1,autoload:1,"autoload?":1,"between?":1,binding:1,binmode:1,"block_given?":1,call:1,callcc:1,caller:1,capitalize:1,"capitalize!":1,casecmp:1,"catch":1,ceil:1,center:1,chomp:1,"chomp!":1,chop:1,"chop!":1,chr:1,"class":1,class_eval:1,"class_variable_defined?":1,class_variables:1,clear:1,clone:1,close:1,close_read:1,close_write:1,"closed?":1,coerce:1,collect:1,"collect!":1,compact:1,"compact!":1,concat:1,"const_defined?":1,const_get:1,const_missing:1,const_set:1,constants:1,count:1,crypt:1,"default":1,default_proc:1,"delete":1,"delete!":1,delete_at:1,delete_if:1,detect:1,display:1,div:1,divmod:1,downcase:1,"downcase!":1,downto:1,dump:1,dup:1,each:1,each_byte:1,each_index:1,each_key:1,each_line:1,each_pair:1,each_value:1,each_with_index:1,"empty?":1,entries:1,eof:1,"eof?":1,"eql?":1,"equal?":1,"eval":1,exec:1,exit:1,"exit!":1,extend:1,fail:1,fcntl:1,fetch:1,fileno:1,fill:1,find:1,find_all:1,first:1,flatten:1,"flatten!":1,floor:1,flush:1,for_fd:1,foreach:1,fork:1,format:1,freeze:1,"frozen?":1,fsync:1,getc:1,gets:1,global_variables:1,grep:1,gsub:1,"gsub!":1,"has_key?":1,"has_value?":1,hash:1,hex:1,id:1,include:1,"include?":1,included_modules:1,index:1,indexes:1,indices:1,induced_from:1,inject:1,insert:1,inspect:1,instance_eval:1,instance_method:1,instance_methods:1,"instance_of?":1,"instance_variable_defined?":1,instance_variable_get:1,instance_variable_set:1,instance_variables:1,"integer?":1,intern:1,invert:1,ioctl:1,"is_a?":1,isatty:1,"iterator?":1,join:1,"key?":1,keys:1,"kind_of?":1,lambda:1,last:1,length:1,lineno:1,ljust:1,load:1,local_variables:1,loop:1,lstrip:1,"lstrip!":1,map:1,"map!":1,match:1,max:1,"member?":1,merge:1,"merge!":1,method:1,"method_defined?":1,method_missing:1,methods:1,min:1,module_eval:1,modulo:1,name:1,nesting:1,"new":1,next:1,"next!":1,"nil?":1,nitems:1,"nonzero?":1,object_id:1,oct:1,open:1,pack:1,partition:1,pid:1,pipe:1,pop:1,popen:1,pos:1,prec:1,prec_f:1,prec_i:1,print:1,printf:1,private_class_method:1,private_instance_methods:1,"private_method_defined?":1,private_methods:1,proc:1,protected_instance_methods:1,"protected_method_defined?":1,protected_methods:1,public_class_method:1,public_instance_methods:1,"public_method_defined?":1,public_methods:1,push:1,putc:1,puts:1,quo:1,raise:1,rand:1,rassoc:1,read:1,read_nonblock:1,readchar:1,readline:1,readlines:1,readpartial:1,rehash:1,reject:1,"reject!":1,remainder:1,reopen:1,replace:1,require:1,"respond_to?":1,reverse:1,"reverse!":1,reverse_each:1,rewind:1,rindex:1,rjust:1,round:1,rstrip:1,"rstrip!":1,scan:1,seek:1,select:1,send:1,set_trace_func:1,shift:1,singleton_method_added:1,singleton_methods:1,size:1,sleep:1,slice:1,"slice!":1,sort:1,"sort!":1,sort_by:1,split:1,sprintf:1,squeeze:1,"squeeze!":1,srand:1,stat:1,step:1,store:1,strip:1,"strip!":1,sub:1,"sub!":1,succ:1,"succ!":1,sum:1,superclass:1,swapcase:1,"swapcase!":1,sync:1,syscall:1,sysopen:1,sysread:1,sysseek:1,system:1,syswrite:1,taint:1,"tainted?":1,tell:1,test:1,"throw":1,times:1,to_a:1,to_ary:1,to_f:1,to_hash:1,to_i:1,to_int:1,to_io:1,to_proc:1,to_s:1,to_str:1,to_sym:1,tr:1,"tr!":1,tr_s:1,"tr_s!":1,trace_var:1,transpose:1,trap:1,truncate:1,"tty?":1,type:1,ungetc:1,uniq:1,"uniq!":1,unpack:1,unshift:1,untaint:1,untrace_var:1,upcase:1,"upcase!":1,update:1,upto:1,"value?":1,values:1,values_at:1,warn:1,write:1,write_nonblock:1,"zero?":1,zip:1}};var h={cN:"yardoctag",b:"@[A-Za-z]+"};var d={cN:"comment",b:"#",e:"$",c:[h]};var c={cN:"comment",b:"^\\=begin",e:"^\\=end",c:[h],r:10};var b={cN:"comment",b:"^__END__",e:"\\n$"};var u={cN:"subst",b:"#\\{",e:"}",l:g,k:n};var p=[hljs.BE,u];var s={cN:"string",b:"'",e:"'",c:p,r:0};var r={cN:"string",b:'"',e:'"',c:p,r:0};var q={cN:"string",b:"%[qw]?\\(",e:"\\)",c:p,r:10};var o={cN:"string",b:"%[qw]?\\[",e:"\\]",c:p,r:10};var m={cN:"string",b:"%[qw]?{",e:"}",c:p,r:10};var l={cN:"string",b:"%[qw]?<",e:">",c:p,r:10};var k={cN:"string",b:"%[qw]?/",e:"/",c:p,r:10};var j={cN:"string",b:"%[qw]?%",e:"%",c:p,r:10};var i={cN:"string",b:"%[qw]?-",e:"-",c:p,r:10};var t={cN:"string",b:"%[qw]?\\|",e:"\\|",c:p,r:10};var e={cN:"function",b:"\\bdef\\s+",e:" |$|;",l:g,k:n,c:[{cN:"title",b:a,l:g,k:n},{cN:"params",b:"\\(",e:"\\)",l:g,k:n},d,c,b]};var f={cN:"identifier",b:g,l:g,k:n,r:0};var v=[d,c,b,s,r,q,o,m,l,k,j,i,t,{cN:"class",b:"\\b(class|module)\\b",e:"$|;",k:{"class":1,module:1},c:[{cN:"title",b:"[A-Za-z_]\\w*(::\\w+)*(\\?|\\!)?",r:0},{cN:"inheritance",b:"<\\s*",c:[{cN:"parent",b:"("+hljs.IR+"::)?"+hljs.IR}]},d,c,b]},e,{cN:"constant",b:"(::)?([A-Z]\\w*(::)?)+",r:0},{cN:"symbol",b:":",c:[s,r,q,o,m,l,k,j,i,t,f],r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{cN:"number",b:"\\?\\w"},{cN:"variable",b:"(\\$\\W)|((\\$|\\@\\@?)(\\w+))"},f,{b:"("+hljs.RSR+")\\s*",c:[d,c,b,{cN:"regexp",b:"/",e:"/[a-z]*",i:"\\n",c:[hljs.BE]}],r:0}];u.c=v;e.c[1].c=v;return{dM:{l:g,k:n,c:v}}}();hljs.LANGUAGES.diff={cI:true,dM:{c:[{cN:"chunk",b:"^\\@\\@ +\\-\\d+,\\d+ +\\+\\d+,\\d+ +\\@\\@$",r:10},{cN:"chunk",b:"^\\*\\*\\* +\\d+,\\d+ +\\*\\*\\*\\*$",r:10},{cN:"chunk",b:"^\\-\\-\\- +\\d+,\\d+ +\\-\\-\\-\\-$",r:10},{cN:"header",b:"Index: ",e:"$"},{cN:"header",b:"=====",e:"=====$"},{cN:"header",b:"^\\-\\-\\-",e:"$"},{cN:"header",b:"^\\*{3} ",e:"$"},{cN:"header",b:"^\\+\\+\\+",e:"$"},{cN:"header",b:"\\*{5}",e:"\\*{5}$"},{cN:"addition",b:"^\\+",e:"$"},{cN:"deletion",b:"^\\-",e:"$"},{cN:"change",b:"^\\!",e:"$"}]}};hljs.LANGUAGES.javascript={dM:{k:{keyword:{"in":1,"if":1,"for":1,"while":1,"finally":1,"var":1,"new":1,"function":1,"do":1,"return":1,"void":1,"else":1,"break":1,"catch":1,"instanceof":1,"with":1,"throw":1,"case":1,"default":1,"try":1,"this":1,"switch":1,"continue":1,"typeof":1,"delete":1},literal:{"true":1,"false":1,"null":1}},c:[hljs.ASM,hljs.QSM,hljs.CLCM,hljs.CBLCLM,hljs.CNM,{b:"("+hljs.RSR+"|case|return|throw)\\s*",k:{"return":1,"throw":1,"case":1},c:[hljs.CLCM,hljs.CBLCLM,{cN:"regexp",b:"/",e:"/[gim]*",c:[{b:"\\\\/"}]}],r:0},{cN:"function",b:"\\bfunction\\b",e:"{",k:{"function":1},c:[{cN:"title",b:"[A-Za-z$_][0-9A-Za-z$_]*"},{cN:"params",b:"\\(",e:"\\)",c:[hljs.ASM,hljs.QSM,hljs.CLCM,hljs.CBLCLM]}]}]}};hljs.LANGUAGES.css=function(){var a={cN:"function",b:hljs.IR+"\\(",e:"\\)",c:[{eW:true,eE:true,c:[hljs.NM,hljs.ASM,hljs.QSM]}]};return{cI:true,dM:{i:"[=/|']",c:[hljs.CBLCLM,{cN:"id",b:"\\#[A-Za-z0-9_-]+"},{cN:"class",b:"\\.[A-Za-z0-9_-]+",r:0},{cN:"attr_selector",b:"\\[",e:"\\]",i:"$"},{cN:"pseudo",b:":(:)?[a-zA-Z0-9\\_\\-\\+\\(\\)\\\"\\']+"},{cN:"at_rule",b:"@(font-face|page)",l:"[a-z-]+",k:{"font-face":1,page:1}},{cN:"at_rule",b:"@",e:"[{;]",eE:true,k:{"import":1,page:1,media:1,charset:1},c:[a,hljs.ASM,hljs.QSM,hljs.NM]},{cN:"tag",b:hljs.IR,r:0},{cN:"rules",b:"{",e:"}",i:"[^\\s]",r:0,c:[hljs.CBLCLM,{cN:"rule",b:"[^\\s]",rB:true,e:";",eW:true,c:[{cN:"attribute",b:"[A-Z\\_\\.\\-]+",e:":",eE:true,i:"[^\\s]",starts:{cN:"value",eW:true,eE:true,c:[a,hljs.NM,hljs.QSM,hljs.ASM,hljs.CBLCLM,{cN:"hexcolor",b:"\\#[0-9A-F]+"},{cN:"important",b:"!important"}]}}]}]}]}}}();hljs.LANGUAGES.xml=function(){var b="[A-Za-z0-9\\._:-]+";var a={eW:true,c:[{cN:"attribute",b:b,r:0},{b:'="',rB:true,e:'"',c:[{cN:"value",b:'"',eW:true}]},{b:"='",rB:true,e:"'",c:[{cN:"value",b:"'",eW:true}]},{b:"=",c:[{cN:"value",b:"[^\\s/>]+"}]}]};return{cI:true,dM:{c:[{cN:"pi",b:"<\\?",e:"\\?>",r:10},{cN:"doctype",b:"<!DOCTYPE",e:">",r:10,c:[{b:"\\[",e:"\\]"}]},{cN:"comment",b:"<!--",e:"-->",r:10},{cN:"cdata",b:"<\\!\\[CDATA\\[",e:"\\]\\]>",r:10},{cN:"tag",b:"<style",e:">",k:{title:{style:1}},c:[a],starts:{cN:"css",e:"</style>",rE:true,sL:"css"}},{cN:"tag",b:"<script",e:">",k:{title:{script:1}},c:[a],starts:{cN:"javascript",e:"<\/script>",rE:true,sL:"javascript"}},{cN:"vbscript",b:"<%",e:"%>",sL:"vbscript"},{cN:"tag",b:"</?",e:"/?>",c:[{cN:"title",b:"[^ />]+"},a]}]}}}();hljs.LANGUAGES.java={dM:{k:{"false":1,"synchronized":1,"int":1,"abstract":1,"float":1,"private":1,"char":1,"interface":1,"boolean":1,"static":1,"null":1,"if":1,"const":1,"for":1,"true":1,"while":1,"long":1,"throw":1,strictfp:1,"finally":1,"protected":1,"extends":1,"import":1,"native":1,"final":1,"implements":1,"return":1,"void":1,"enum":1,"else":1,"break":1,"transient":1,"new":1,"catch":1,"instanceof":1,"byte":1,"super":1,"class":1,"volatile":1,"case":1,assert:1,"short":1,"package":1,"default":1,"double":1,"public":1,"try":1,"this":1,"switch":1,"continue":1,"throws":1},c:[{cN:"javadoc",b:"/\\*\\*",e:"\\*/",c:[{cN:"javadoctag",b:"@[A-Za-z]+"}],r:10},hljs.CLCM,hljs.CBLCLM,hljs.ASM,hljs.QSM,{cN:"class",b:"(class |interface )",e:"{",k:{"class":1,"interface":1},i:":",c:[{b:"(implements|extends)",k:{"extends":1,"implements":1},r:10},{cN:"title",b:hljs.UIR}]},hljs.CNM,{cN:"annotation",b:"@[A-Za-z]+"}]}};hljs.LANGUAGES.php={cI:true,dM:{k:{and:1,include_once:1,list:1,"abstract":1,global:1,"private":1,echo:1,"interface":1,as:1,"static":1,endswitch:1,array:1,"null":1,"if":1,endwhile:1,or:1,"const":1,"for":1,endforeach:1,self:1,"var":1,"while":1,isset:1,"public":1,"protected":1,exit:1,foreach:1,"throw":1,elseif:1,"extends":1,include:1,__FILE__:1,empty:1,require_once:1,"function":1,"do":1,xor:1,"return":1,"implements":1,parent:1,clone:1,use:1,__CLASS__:1,__LINE__:1,"else":1,"break":1,print:1,"eval":1,"new":1,"catch":1,__METHOD__:1,"class":1,"case":1,exception:1,php_user_filter:1,"default":1,die:1,require:1,__FUNCTION__:1,enddeclare:1,"final":1,"try":1,"this":1,"switch":1,"continue":1,endfor:1,endif:1,declare:1,unset:1,"true":1,"false":1,namespace:1},c:[hljs.CLCM,hljs.HCM,{cN:"comment",b:"/\\*",e:"\\*/",c:[{cN:"phpdoc",b:"\\s@[A-Za-z]+",r:10}]},hljs.CNM,hljs.inherit(hljs.ASM,{i:null}),hljs.inherit(hljs.QSM,{i:null}),{cN:"variable",b:"\\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*"},{cN:"preprocessor",b:"<\\?php",r:10},{cN:"preprocessor",b:"\\?>"}]}};hljs.LANGUAGES.python=function(){var c={cN:"string",b:"(u|b)?r?'''",e:"'''",r:10};var b={cN:"string",b:'(u|b)?r?"""',e:'"""',r:10};var a={cN:"string",b:"(u|r|ur|b|br)'",e:"'",c:[hljs.BE],r:10};var f={cN:"string",b:'(u|r|ur|b|br)"',e:'"',c:[hljs.BE],r:10};var d={cN:"title",b:hljs.UIR};var e={cN:"params",b:"\\(",e:"\\)",c:[c,b,a,f,hljs.ASM,hljs.QSM]};return{dM:{k:{keyword:{and:1,elif:1,is:1,global:1,as:1,"in":1,"if":1,from:1,raise:1,"for":1,except:1,"finally":1,print:1,"import":1,pass:1,"return":1,exec:1,"else":1,"break":1,not:1,"with":1,"class":1,assert:1,yield:1,"try":1,"while":1,"continue":1,del:1,or:1,def:1,lambda:1,nonlocal:10},built_in:{None:1,True:1,False:1,Ellipsis:1,NotImplemented:1}},i:"(</|->|\\?)",c:[hljs.HCM,c,b,a,f,hljs.ASM,hljs.QSM,{cN:"function",b:"\\bdef ",e:":",i:"$",k:{def:1},c:[d,e],r:10},{cN:"class",b:"\\bclass ",e:":",i:"[${]",k:{"class":1},c:[d,e],r:10},hljs.CNM,{cN:"decorator",b:"@",e:"$"}]}}}();hljs.LANGUAGES.sql={cI:true,dM:{i:"[^\\s]",c:[{cN:"operator",b:"(begin|start|commit|rollback|savepoint|lock|alter|create|drop|rename|call|delete|do|handler|insert|load|replace|select|truncate|update|set|show|pragma)\\b",e:";|$",k:{keyword:{all:1,partial:1,global:1,month:1,current_timestamp:1,using:1,go:1,revoke:1,smallint:1,indicator:1,"end-exec":1,disconnect:1,zone:1,"with":1,character:1,assertion:1,to:1,add:1,current_user:1,usage:1,input:1,local:1,alter:1,match:1,collate:1,real:1,then:1,rollback:1,get:1,read:1,timestamp:1,session_user:1,not:1,integer:1,bit:1,unique:1,day:1,minute:1,desc:1,insert:1,execute:1,like:1,ilike:2,level:1,decimal:1,drop:1,"continue":1,isolation:1,found:1,where:1,constraints:1,domain:1,right:1,national:1,some:1,module:1,transaction:1,relative:1,second:1,connect:1,escape:1,close:1,system_user:1,"for":1,deferred:1,section:1,cast:1,current:1,sqlstate:1,allocate:1,intersect:1,deallocate:1,numeric:1,"public":1,preserve:1,full:1,"goto":1,initially:1,asc:1,no:1,key:1,output:1,collation:1,group:1,by:1,union:1,session:1,both:1,last:1,language:1,constraint:1,column:1,of:1,space:1,foreign:1,deferrable:1,prior:1,connection:1,unknown:1,action:1,commit:1,view:1,or:1,first:1,into:1,"float":1,year:1,primary:1,cascaded:1,except:1,restrict:1,set:1,references:1,names:1,table:1,outer:1,open:1,select:1,size:1,are:1,rows:1,from:1,prepare:1,distinct:1,leading:1,create:1,only:1,next:1,inner:1,authorization:1,schema:1,corresponding:1,option:1,declare:1,precision:1,immediate:1,"else":1,timezone_minute:1,external:1,varying:1,translation:1,"true":1,"case":1,exception:1,join:1,hour:1,"default":1,"double":1,scroll:1,value:1,cursor:1,descriptor:1,values:1,dec:1,fetch:1,procedure:1,"delete":1,and:1,"false":1,"int":1,is:1,describe:1,"char":1,as:1,at:1,"in":1,varchar:1,"null":1,trailing:1,any:1,absolute:1,current_time:1,end:1,grant:1,privileges:1,when:1,cross:1,check:1,write:1,current_date:1,pad:1,begin:1,temporary:1,exec:1,time:1,update:1,catalog:1,user:1,sql:1,date:1,on:1,identity:1,timezone_hour:1,natural:1,whenever:1,interval:1,work:1,order:1,cascade:1,diagnostics:1,nchar:1,having:1,left:1,call:1,"do":1,handler:1,load:1,replace:1,truncate:1,start:1,lock:1,show:1,pragma:1},aggregate:{count:1,sum:1,min:1,max:1,avg:1}},c:[{cN:"string",b:"'",e:"'",c:[hljs.BE,{b:"''"}],r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE,{b:'""'}],r:0},{cN:"string",b:"`",e:"`",c:[hljs.BE]},hljs.CNM,{b:"\\n"}]},hljs.CBLCLM,{cN:"comment",b:"--",e:"$"}]}};hljs.LANGUAGES.ini={cI:true,dM:{i:"[^\\s]",c:[{cN:"comment",b:";",e:"$"},{cN:"title",b:"^\\[",e:"\\]"},{cN:"setting",b:"^[a-z0-9_\\[\\]]+[ \\t]*=[ \\t]*",e:"$",c:[{cN:"value",eW:true,k:{on:1,off:1,"true":1,"false":1,yes:1,no:1},c:[hljs.QSM,hljs.NM]}]}]}};hljs.LANGUAGES.perl=function(){var c={getpwent:1,getservent:1,quotemeta:1,msgrcv:1,scalar:1,kill:1,dbmclose:1,undef:1,lc:1,ma:1,syswrite:1,tr:1,send:1,umask:1,sysopen:1,shmwrite:1,vec:1,qx:1,utime:1,local:1,oct:1,semctl:1,localtime:1,readpipe:1,"do":1,"return":1,format:1,read:1,sprintf:1,dbmopen:1,pop:1,getpgrp:1,not:1,getpwnam:1,rewinddir:1,qq:1,fileno:1,qw:1,endprotoent:1,wait:1,sethostent:1,bless:1,s:1,opendir:1,"continue":1,each:1,sleep:1,endgrent:1,shutdown:1,dump:1,chomp:1,connect:1,getsockname:1,die:1,socketpair:1,close:1,flock:1,exists:1,index:1,shmget:1,sub:1,"for":1,endpwent:1,redo:1,lstat:1,msgctl:1,setpgrp:1,abs:1,exit:1,select:1,print:1,ref:1,gethostbyaddr:1,unshift:1,fcntl:1,syscall:1,"goto":1,getnetbyaddr:1,join:1,gmtime:1,symlink:1,semget:1,splice:1,x:1,getpeername:1,recv:1,log:1,setsockopt:1,cos:1,last:1,reverse:1,gethostbyname:1,getgrnam:1,study:1,formline:1,endhostent:1,times:1,chop:1,length:1,gethostent:1,getnetent:1,pack:1,getprotoent:1,getservbyname:1,rand:1,mkdir:1,pos:1,chmod:1,y:1,substr:1,endnetent:1,printf:1,next:1,open:1,msgsnd:1,readdir:1,use:1,unlink:1,getsockopt:1,getpriority:1,rindex:1,wantarray:1,hex:1,system:1,getservbyport:1,endservent:1,"int":1,chr:1,untie:1,rmdir:1,prototype:1,tell:1,listen:1,fork:1,shmread:1,ucfirst:1,setprotoent:1,"else":1,sysseek:1,link:1,getgrgid:1,shmctl:1,waitpid:1,unpack:1,getnetbyname:1,reset:1,chdir:1,grep:1,split:1,require:1,caller:1,lcfirst:1,until:1,warn:1,"while":1,values:1,shift:1,telldir:1,getpwuid:1,my:1,getprotobynumber:1,"delete":1,and:1,sort:1,uc:1,defined:1,srand:1,accept:1,"package":1,seekdir:1,getprotobyname:1,semop:1,our:1,rename:1,seek:1,"if":1,q:1,chroot:1,sysread:1,setpwent:1,no:1,crypt:1,getc:1,chown:1,sqrt:1,write:1,setnetent:1,setpriority:1,foreach:1,tie:1,sin:1,msgget:1,map:1,stat:1,getlogin:1,unless:1,elsif:1,truncate:1,exec:1,keys:1,glob:1,tied:1,closedir:1,ioctl:1,socket:1,readlink:1,"eval":1,xor:1,readline:1,binmode:1,setservent:1,eof:1,ord:1,bind:1,alarm:1,pipe:1,atan2:1,getgrent:1,exp:1,time:1,push:1,setgrent:1,gt:1,lt:1,or:1,ne:1,m:1};var d={cN:"subst",b:"[$@]\\{",e:"}",k:c,r:10};var b={cN:"variable",b:"\\$\\d"};var a={cN:"variable",b:"[\\$\\%\\@\\*](\\^\\w\\b|#\\w+(\\:\\:\\w+)*|[^\\s\\w{]|{\\w+}|\\w+(\\:\\:\\w*)*)"};var g=[hljs.BE,d,b,a];var f={b:"->",c:[{b:hljs.IR},{b:"{",e:"}"}]};var e=[b,a,hljs.HCM,{cN:"comment",b:"^(__END__|__DATA__)",e:"\\n$",r:5},f,{cN:"string",b:"q[qwxr]?\\s*\\(",e:"\\)",c:g,r:5},{cN:"string",b:"q[qwxr]?\\s*\\[",e:"\\]",c:g,r:5},{cN:"string",b:"q[qwxr]?\\s*\\{",e:"\\}",c:g,r:5},{cN:"string",b:"q[qwxr]?\\s*\\|",e:"\\|",c:g,r:5},{cN:"string",b:"q[qwxr]?\\s*\\<",e:"\\>",c:g,r:5},{cN:"string",b:"qw\\s+q",e:"q",c:g,r:5},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"string",b:'"',e:'"',c:g,r:0},{cN:"string",b:"`",e:"`",c:[hljs.BE]},{cN:"string",b:"{\\w+}",r:0},{cN:"string",b:"-?\\w+\\s*\\=\\>",r:0},{cN:"number",b:"(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",r:0},{cN:"regexp",b:"(s|tr|y)/(\\\\.|[^/])*/(\\\\.|[^/])*/[a-z]*",r:10},{cN:"regexp",b:"(m|qr)?/",e:"/[a-z]*",c:[hljs.BE],r:0},{cN:"sub",b:"\\bsub\\b",e:"(\\s*\\(.*?\\))?[;{]",k:{sub:1},r:5},{cN:"operator",b:"-\\w\\b",r:0},{cN:"pod",b:"\\=\\w",e:"\\=cut"}];d.c=e;f.c[1].c=e;return{dM:{k:c,c:e}}}();hljs.LANGUAGES.cpp=function(){var b={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};var a={cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:b,r:10};a.c=[a];return{dM:{k:b,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'",e:"[^\\\\]'",i:"[^\\\\][^']"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},a]}}}();</script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+    </div>
+</body>
+</html>

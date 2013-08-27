@@ -19,7 +19,7 @@ Adding a rule to the bot
 
 Let's add one of the Minibot features from our TODO as described in the [introduction](introduction). I want to register a rule that a message can match. So any messages that include the word "zomg" in them would get an appropriate animated gif response. If you sent the message "zomg this is amazing!", the bot would respond "http://i.imgur.com/49ORL0o.gif".
 
-We are going to write a test *before* we write the code. This is known as test-first, as opposed to test-after. Test Driven Development is a test-first approach, while Quality Assurance is typically a test-after approach. We will be writing tests before writing code.
+We are going to write a test *before* we write the code. This is known as **test-first**. If we had written the code first and the test after, it would be considered **test-after**. Test Driven Development is a test-first approach, while Quality Assurance is typically a test-after approach. We will be using test-first and write tests before code.
 
 Test Class
 ----------

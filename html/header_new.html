@@ -1,0 +1,172 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Minitest Book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://raw.github.com/necolas/normalize.css/master/normalize.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <style>
+h1{color:#000;font-size:36px;line-height:54px;}
+h2{color:#111;font-size:28px;line-height:42px;}
+h3{color:#111;font-size:24px;line-height:36px;}
+body,p,td,div{color:#111;font-size:16px;font-family:"Liberation Sans";line-height:1.5em;font-weight: normal; word-wrap:break-word;}
+h1,h2,h3,h4,h5,h6{font-family:"Liberation Sans";line-height:1.5em;margin:0.5em 0;}
+ul li {line-height: 24px}
+pre, code, tt { font-size:14px;line-height:24px;font-family:"Menlo" }
+
+h1 code{font-size:34px; background-color: rgb(248, 248, 255);}
+h2 code{font-size:26px; background-color: rgb(248, 248, 255);}
+h3 code{font-size:22px; background-color: rgb(248, 248, 255);}
+p code {font-weight: bold; background-color: rgb(248, 248, 255);}
+
+pre code {
+  display: block; padding: 0.5em;
+  color: #000;
+  background: #f8f8ff
+}
+
+pre .comment,
+pre .template_comment,
+pre .diff .header,
+pre .javadoc {
+  color: #998;
+  font-style: italic
+}
+
+pre .keyword,
+pre .css .rule .keyword,
+pre .winutils,
+pre .javascript .title,
+pre .lisp .title,
+pre .subst {
+  color: #000;
+  font-weight: bold
+}
+
+pre .ruby .keyword {
+  font-weight: normal
+}
+
+pre .number,
+pre .hexcolor {
+  color: #40a070
+}
+
+pre .string,
+pre .tag .value,
+pre .phpdoc,
+pre .tex .formula {
+  color: #d14
+}
+
+pre .title,
+pre .id {
+  color: #900;
+  font-weight: bold
+}
+
+pre .javascript .title,
+pre .lisp .title,
+pre .subst {
+  font-weight: normal
+}
+
+pre .class .title,
+pre .haskell .label,
+pre .tex .command {
+  color: #458;
+  font-weight: bold
+}
+
+pre .class .params {
+  color: #000;
+}
+
+pre .tag,
+pre .tag .title,
+pre .rules .property,
+pre .django .tag .keyword {
+  color: #000080;
+  font-weight: normal
+}
+
+pre .attribute,
+pre .variable,
+pre .instancevar,
+pre .lisp .body {
+  color: #008080
+}
+
+pre .regexp {
+  color: #009926
+}
+
+pre .class {
+  color: #458;
+  font-weight: bold
+}
+
+pre .symbol,
+pre .ruby .symbol .string,
+pre .ruby .symbol .keyword,
+pre .ruby .symbol .keymethods,
+pre .lisp .keyword,
+pre .tex .special,
+pre .input_number {
+  color: #0086b3
+}
+
+pre .ruby .identifier .keyword,
+pre .ruby .identifier .keymethods {
+  color: #0086b3;
+}
+
+pre .ruby .constant {
+  color: #008080;
+}
+
+pre .builtin,
+pre .built_in,
+pre .lisp .title {
+  color: #0086b3
+}
+
+pre .preprocessor,
+pre .pi,
+pre .doctype,
+pre .shebang,
+pre .cdata {
+  color: #999;
+  font-weight: bold
+}
+
+pre .deletion {
+  background: #fdd
+}
+
+pre .addition {
+  background: #dfd
+}
+
+pre .diff .change {
+  background: #0086b3
+}
+
+pre .chunk {
+  color: #aaa
+}
+
+pre .tex .formula {
+  opacity: 0.5;
+}
+
+.page_break {
+  page-break-before: always;
+}
+
+</style>
+<style>#wrapper { max-width:700px; margin:0 auto }</style>
+</head>
+<body class="normal">
+  <div id="wrapper">

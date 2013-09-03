@@ -5,14 +5,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Minitest Book</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://raw.github.com/necolas/normalize.css/master/normalize.css" type="text/css" media="screen" title="no title" charset="utf-8">
   <style>
-body{-webkit-font-smoothing:antialiased;font:normal .8764em/1.5em Arial,Verdana,sans-serif;margin:0}html>body{font-size:16px}li{font-size:110%}li li{font-size:100%}li p{font-size:100%;margin:.5em 0}h1{color:#000;font-size:2.2857em;line-height:.6563em;margin:.6563em 0}h2{color:#111;font-size:1.7143em;line-height:.875em;margin:.875em 0}h3{color:#111;font-size:1.5em;line-height:1em;margin:1em 0}h4{color:#111;font-size:1.2857em;line-height:1.1667em;margin:1.1667em 0}h5{color:#111;font-size:1.15em;line-height:1.3em;margin:1.3em 0}h6{font-size:1em;line-height:1.5em;margin:1.5em 0}body,p,td,div{color:#111;font-family:"Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;word-wrap:break-word}h1,h2,h3,h4,h5,h6{line-height:1.5em}a{-webkit-transition:color .2s ease-in-out;color:#0d6ea1;text-decoration:none}a:hover{color:#3593d9}.footnote{color:#0d6ea1;font-size:.8em;vertical-align:super}#wrapper img{max-width:100%;height:auto}dd{margin-bottom:1em}li>p:first-child{margin:0}ul ul,ul ol{margin-bottom:.4em}caption,col,colgroup,table,tbody,td,tfoot,th,thead,tr{border-spacing:0}table{border:1px solid rgba(0,0,0,0.25);border-collapse:collapse;display:table;empty-cells:hide;margin:-1px 0 23px;padding:0;table-layout:fixed}caption{display:table-caption;font-weight:700}col{display:table-column}colgroup{display:table-column-group}tbody{display:table-row-group}tfoot{display:table-footer-group}thead{display:table-header-group}td,th{display:table-cell}tr{display:table-row}table th,table td{font-size:1.1em;line-height:23px;padding:0 1em}table thead{background:rgba(0,0,0,0.15);border:1px solid rgba(0,0,0,0.15);border-bottom:1px solid rgba(0,0,0,0.2)}table tbody{background:rgba(0,0,0,0.05)}table tfoot{background:rgba(0,0,0,0.15);border:1px solid rgba(0,0,0,0.15);border-top:1px solid rgba(0,0,0,0.2)}figure{display:inline-block;margin-bottom:1.2em;position:relative;margin:1em 0}figcaption{font-style:italic;text-align:center;background:rgba(0,0,0,.9);color:rgba(255,255,255,1);position:absolute;left:0;bottom:-24px;width:98%;padding:1%;-webkit-transition:all .2s ease-in-out}.poetry pre{display:block;font-family:Georgia,Garamond,serif!important;font-size:110%!important;font-style:italic;line-height:1.6em;margin-left:1em}.poetry pre code{font-family:Georgia,Garamond,serif!important}blockquote p{font-size:110%;font-style:italic;line-height:1.6em}sup,sub,a.footnote{font-size:1.4ex;height:0;line-height:1;position:relative;vertical-align:super}sub{vertical-align:sub;top:-1px}p,h5{font-size:1.1429em;line-height:1.3125em;margin:1.3125em 0}dt,th{font-weight:700}table tr:nth-child(odd),table th:nth-child(odd),table td:nth-child(odd){background:rgba(255,255,255,0.06)}table tr:nth-child(even),table td:nth-child(even){background:rgba(0,0,0,0.06)}@media print{body{overflow:auto}img,pre,blockquote,table,figure,p{page-break-inside:avoid}#wrapper{background:#fff;color:#303030;font-size:85%;padding:10px;position:relative;text-indent:0}}@media screen{.inverted #wrapper,.inverted{background:rgba(37,42,42,1)}.inverted hr{border-color:rgba(51,63,64,1)!important}.inverted p,.inverted td,.inverted li,.inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5,.inverted h6,.inverted th,.inverted .math,.inverted caption,.inverted dd,.inverted dt{color:#eee!important}.inverted table tr:nth-child(odd),.inverted table th:nth-child(odd),.inverted table td:nth-child(odd){background:0}.inverted pre code{color:#111}.inverted a{color:rgba(172,209,213,1)}#wrapper{padding:20px}::selection{background:rgba(157,193,200,.5)}h1::selection{background-color:rgba(45,156,208,.3)}h2::selection{background-color:rgba(90,182,224,.3)}h3::selection,h4::selection,h5::selection,h6::selection,li::selection,ol::selection{background-color:rgba(133,201,232,.3)}code::selection{background-color:rgba(0,0,0,.7);color:#eee}code span::selection{background-color:rgba(0,0,0,.7)!important;color:#eee!important}a::selection{background-color:rgba(255,230,102,.2)}.inverted a::selection{background-color:rgba(255,230,102,.6)}td::selection,th::selection,caption::selection{background-color:rgba(180,237,95,.5)}}/*
+h1{color:#000;font-size:36px;line-height:54px;}
+h2{color:#111;font-size:28px;line-height:42px;}
+h3{color:#111;font-size:24px;line-height:36px;}
+body,p,td,div{color:#111;font-size:16px;font-family:"Liberation Sans";line-height:1.5em;font-weight: normal; word-wrap:break-word;}
+h1,h2,h3,h4,h5,h6{font-family:"Liberation Sans";line-height:1.5em;margin:0.5em 0;}
+ul li {line-height: 24px}
+pre, code, tt { font-size:14px;line-height:24px;font-family:"Menlo" }
 
-github.com style (c) Vasily Polovnyov <vast@whiteants.net>
-
-*/
-
-code { font-family:"Menlo"; }
+h1 code{font-size:34px; background-color: rgb(248, 248, 255);}
+h2 code{font-size:26px; background-color: rgb(248, 248, 255);}
+h3 code{font-size:22px; background-color: rgb(248, 248, 255);}
+p code {font-weight: bold; background-color: rgb(248, 248, 255);}
 
 pre code {
   display: block; padding: 0.5em;
@@ -74,7 +80,7 @@ pre .tex .command {
 }
 
 pre .class .params {
-	color: #000;
+  color: #000;
 }
 
 pre .tag,
@@ -164,40 +170,48 @@ pre .tex .formula {
 </head>
 <body class="normal">
   <div id="wrapper">
-<h1>Minitest Book</h1>
+<h1><big><big>Minitest Book</big></big></h1>
 
 <p>by Mike Moore</p>
+
+<h2>For Reviewers:</h2>
+
+<p>Thank you for reading this very early version of The Minitest Book. I am looking for any and all feedback. I am particularly interested in whether or not the structure of the book works. Does it feel like a book? An online tutorial? A screencast transcript? Please let me know what you think works and what you think does not work.</p>
+
+<p>Thanks!<br>
+~Mike</p>
 <div class="page_break"></div>
 <h1>Table of Contents</h1>
 
 <ul>
-<li><a href="preface">Preface</a></li>
-<li><a href="prerequitites">Prerequitites</a></li>
-<li><a href="introduction">Introduction</a></li>
-<li><a href="part1">Part I - Getting Started</a>
+<li><a href="#preface">Preface</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#part1">Part I - Getting Started</a>
 
 <ul>
-<li><a href="ch1-write-a-test">Chapter 1 - Write a Test</a></li>
-<li><a href="ch2-tdd-red">Chapter 2 - TDD: Make it Red</a></li>
-<li><a href="ch3-tdd-green">Chapter 3 - TDD: Make it Green</a></li>
-<li><a href="ch4-tdd-right">Chapter 4 - TDD: Make it Right</a></li>
-<li><a href="ch5-spec-dsl">Chapter 5 - Minitest::Spec DSL</a></li>
+<li><a href="#ch1-write-a-test">Chapter 1 - Write a Test</a></li>
+<li><a href="#ch2-tdd-red-green">Chapter 2 - TDD Cycle: Red and Green</a></li>
+<li><a href="#ch3-minibot-rules">Chapter 3 - Minibot: Adding Rules</a></li>
+<li><a href="#ch4-minibot-responses">Chapter 4 - Minibot: Responses</a></li>
+<li><a href="#ch5-tdd-refactor">Chapter 5 - TDD Cycle: Refactor</a></li>
+<li><a href="#ch6-tdd-refactor-redux">Chapter 6 - TDD Cycle: Refactor Redux</a></li>
+<li><a href="#ch7-spec-dsl">Chapter 7 - Minitest::Spec DSL</a></li>
 </ul></li>
-<li>Part II - Building Minibot
+<li>Part II - Extending Minibot
 
 <ul>
-<li>Chapter 6 - ???</li>
+<li>Chapter 8 - ???</li>
 </ul></li>
 <li>Part III - Extending Minitest
 
 <ul>
-<li>Chapter 10 - ???</li>
+<li>Chapter 16 - ???</li>
 </ul></li>
 <li>Reference
 
 <ul>
-<li><a href="appendix/assertions">Appendix A - Assertions</a></li>
-<li><a href="appendix/api-changes">Appendix B - API Changes</a></li>
+<li><a href="#appendix/assertions">Appendix A - Assertions</a></li>
+<li><a href="#appendix/api-changes">Appendix B - API Changes</a></li>
 </ul></li>
 </ul>
 <div class="page_break"></div>
@@ -211,109 +225,36 @@ Successfully installed minitest-5.0.6
 1 gem installed
 </code></pre>
 <div class="page_break"></div>
-<h1>Prerequisites</h1>
-
-<p><strong>NOTE</strong>: Work in progress</p>
-
-<p>You need to get your system configured.</p>
-
-<h2>Installing Ruby 2.0</h2>
-
-<p>Install it.</p>
-
-<h2>Installing Minitest 5</h2>
-
-<pre><code class="shell">$ gem install minitest
-</code></pre>
-
-<p><code>terminal</code></p>
-<div class="page_break"></div>
 <h1>Introduction</h1>
+
+<h2>Why Testing?</h2>
+
+<p>Have you ever had to maintain an application or library and were utterly and completely unable to make sense of it? Have you ever tried to add a feature to an existing codebase but every change you made broke the app in multiple places? Have you noticed that the older a codebase is the harder it is to make changes? Have you ever found yourself several days into a task only to come to the conclusion that the available documentation and comments in the code were horribly outdated at best and incompetent at worst?</p>
+
+<p>I&rsquo;ve done all of that. And I&rsquo;ve done it to teammates and myself. I used to think that if I could get better at thinking like a computer or acquire a deeper understanding of design patterns I could cure myself (and others) from making such a mess in the code. But these approaches only addressed the surface issues. The core problem was that the code I was working in and contributing was lacking design. Not necessarily lacking design on the high-level architecture scale, but at the micro scale. Lines and methods. Which, coincidentally, is where we spend most of our time.</p>
 
 <h2>Why Minitest?</h2>
 
-<p><strong>NOTE</strong>: Here is where we sell the reader on testing and what benefits testing has.</p>
+<p>Minitest is a full-featured testing library that comes in Ruby&rsquo;s standard library. It provides the classical testing API, a spec DSL, mocks, stubs, and performance testing. Minitest is fast. Not only in running tests, but in writing and maintaining them. Minitest is also a considerably smaller codebase than other testing libraries, which means its easier to understand and extend.</p>
 
-<p>Is your code hard to maintain? Does it take longer to add a feature the older your code is? This is a common situation, and testing is a wonderful way to write better code that is easier to change and you can have more confidence in.</p>
+<p>Minitest also carries a philosophy that informs it&rsquo;s design. Like Ruby, it acknowledges that there is usually more than one way to accomplish a task. [Something about flexibility vs. guidance.] Minitest is more than a testing library. It embodies a specific philosophy for testing code. It also embodies a larger philosophy of how software should be designed. (Unix, TDD, XP) Minitest embodies these philosophies, but that doesn&rsquo;t mean you can&rsquo;t use Minitest if you have a different view. Minitest is intended to be used, and so it doesn&rsquo;t force these views on you. But, if you are receptive, you will find Minitest is a great ally.</p>
 
-<p><strong>NOTE</strong>: Explain what Minitest&rsquo;s philosophy is and what value it will give the user.</p>
+<h2>Versions</h2>
 
-<p>Minitest is more than a testing library. It embodies a specific philosophy for testing code. It also embodies a larger philosophy of how software should be designed. Unix, TDD, XP</p>
+<p>This book is written using Ruby 2 and Minitest 5. Ruby 2 comes with Minitest 4.3.2, which means you will have to install the latest Minitest from rubygems.</p>
 
-<p>Minitest embodies these philosophies, but that doesn&rsquo;t mean you can&rsquo;t use Minitest if you have a different view. Minitest is intended to be used, and so it doesn&rsquo;t </p>
-
-<h2>Getting Started</h2>
-
-<h2>Project Layout</h2>
-
-<p>In order to use Minitest we need to require the library in our code. We also want to make sure we are using the gem version of Minitest and not the one that is distributed with Ruby. To do that we use the <code>gem</code> command.</p>
-
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
+<pre><code class="shell">$ gem install minitest
+Fetching: minitest-5.0.6.gem (100%)
+Successfully installed minitest-5.0.6
+1 gem installed
 </code></pre>
 
-<p><code>test/helper.rb</code></p>
-
-<h2>Running Tests</h2>
-
-<h2>Building Minibot</h2>
-
-<p>I love bots, all kids of bots. IRC bots. Campfire bots. Twitter bots. They make smile (for the most part). I want to build a bot that is well designed, and I&rsquo;m going to use Minitest to help me get there.</p>
-
-<p>Since I don&rsquo;t want to get lots in the weeds of all the things that a bot can do, let&rsquo;s start simple. Here is a TODO list of the things I want this bot to do. We will work off this list and add to it as we progress.</p>
-
-<pre><code class="plain">Minibot
-=======
-
-A simple bot for storing and matching memes.
-
-- [ ] Add a new matching rule
-- [ ] List all matching rules
-- [ ] Remove a matching rule
-- [ ] Match an given string to an existing rule
-</code></pre>
-
-<p><code>todo.md</code></p>
-
-<ol>
-<li>Directly through the command line</li>
-<li>Rake#testtask</li>
-<li>m gem</li>
-<li>autotest</li>
-</ol>
-
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
-
-class TestMinitest &lt; Minitest::Test
-  def test_minitest
-    assert &quot;Minitest is pretty great!&quot;
-  end
-end
-</code></pre>
-
-<p><code>test_minitest.rb</code></p>
-
-<pre><code class="shell">$ ruby test_minitest.rb
-Run options: --seed 32365
-
-.
-
-Finished in 0.000784s, 1275.5102 runs/s, 1275.5102 assertions/s.
-
-1 runs, 1 assertions, 0 failures, 0 errors, 0 skips
-</code></pre>
-
-<p><code>terminal</code></p>
-
-<p>So far we have been passing <code>-r minitest/autorun</code> to ruby when we want to run the tests in a file. But what if we want to run all the tests in our application? Or what if we want to run just one test method in a file?</p>
-
-<p>Minitest provides an object called a Runner that will run the tests for us and print the output. This makes running tests very easy. All we need to do is to load the runner with our code. Let&rsquo;s do this by passing <code>-r minitest/autorun</code> to Ruby to tell it to load the runner as we load our code:</p>
-<div class="page_break"></div>
+<p>Some details are different between Minitest 5 and 4.3.2, but the general approach is the same.</p>
+<div if="part1" class="page_break"></div>
 <h1>Part I - Getting Started</h1>
 
 <p>EXPLAIN WHAT IS COVERED IN PART I HERE.</p>
-<div class="page_break"></div>
+<div id="ch1-write-a-test" class="page_break"></div>
 <h1>Write a Test</h1>
 
 <p>When you get right down to it, Minitest is pretty simple. If you are familiar with testing software it does what you would expect, and if you are new to testing software it is easy to learn thanks to its small surface area. That isn&rsquo;t to say Minitest isn&rsquo;t powerful, or full featured, just that it was designed to do it&rsquo;s job and to get out of the way. Writing tests with Minitest is easy. And, as it turns out, pretty fun.</p>
@@ -327,23 +268,47 @@ Finished in 0.000784s, 1275.5102 runs/s, 1275.5102 assertions/s.
 <li>Create support methods</li>
 </ol>
 
-<p>These steps are encompassed by the Minitest API, or Application Programming Interface. You use Minitest the way you would use any other software library. The best way to learn something is to use it, not read about it. So let&rsquo;s build something! We will use Minitest and explain its features as we go.</p>
+<p>These steps are encompassed by the <strong>Minitest API</strong>, or Application Programming Interface. You use Minitest the way you would use any other software library. The best way to learn something is to use it, not read about it. So let&rsquo;s build something! We will use Minitest and explain its features as we go.</p>
 
-<p><strong>NOTE</strong>: When I was first learning how to test I was confused and intimidated by the API. I think those reading this may also be in the same boat. What do I say here to let them know I am on their side and we can learn this together?</p>
+<h2>Building Minibot</h2>
 
-<h2>Adding a rule to the bot</h2>
+<p>I love bots, all kids of bots. IRC bots. Campfire bots. Twitter bots. They make smile (for the most part). So let&rsquo;s use Minitest to help us build a bot! We don&rsquo;t want to get lost in the weeds of all the things that a bot can do, let&rsquo;s start simple. Here is a TODO list of bot features. Let&rsquo;s will work off this list and add to it as we progress.</p>
 
-<p>Let&rsquo;s add one of the Minibot features from our TODO as described in the <a href="introduction">introduction</a>. I want to register a rule that a message can match. So any messages that include the word &ldquo;zomg&rdquo; in them would get an appropriate animated gif response. If you sent the message &ldquo;zomg this is amazing!&rdquo;, the bot would respond &ldquo;http://i.imgur.com/49ORL0o.gif&rdquo;.</p>
+<pre><code class="plain">Minibot
+=======
 
-<p>We are going to write a test <em>before</em> we write the code. This is known as <strong>test-first</strong>. If we had written the code first and the test after, it would be considered <strong>test-after</strong>. Test Driven Development is a test-first approach, while Quality Assurance is typically a test-after approach. We will be using test-first and write tests before code.</p>
+A simple bot for storing and matching memes.
+
+- [ ] Match a message string to a rule
+</code></pre>
+
+<p><code>todo.md</code></p>
+
+<p>To start with we will match a message to one of the bot&rsquo;s rules. For example, a messages that includes the word &ldquo;zomg&rdquo; in it would get an animated gif in response. If you sent the message &ldquo;ZOMG! This is cool!&rdquo;, the bot would respond &ldquo;http://i.imgur.com/49ORL0o.gif&rdquo;.</p>
+
+<p>Right away we know we will have the following pieces of data:</p>
+
+<table>
+  <tr>
+    <td><strong>trigger</strong></td><td>&ldquo;zomg&rdquo;</td>
+  </tr>
+  <tr>
+    <td><strong>response</strong></td><td>&ldquo;http://i.imgur.com/49ORL0o.gif&rdquo;</td>
+  </tr>
+  <tr>
+    <td><strong>message</strong></td><td>&ldquo;ZOMG! This is cool!&rdquo;</td>
+  </tr>
+</table>
+
+<p>We are going to write a test <em>before</em> we write the code. This is known as <strong>test-first</strong>. If we write the code first and the test after it would be considered <strong>test-after</strong>. Test Driven Development is a test-first approach, while Quality Assurance is typically a test-after approach. We will be using test-first and write tests before code.</p>
 
 <h2>Test Class</h2>
 
-<p>Let&rsquo;s create a new file in our <code>test</code> directory named <code>test/test_minibot.rb</code> to hold our test code. To create a test we need to create a new class that inherits from <code>Minitest::Test</code>. This will be our <strong>Test Class</strong>. Some projects, like <a href="http://rubyonrails.org/">Ruby on Rails</a>, will provide other test classes that provide project-specific functionality. The testing behavior of these classes is shared through inheritance. Your test classes don&rsquo;t need to inherit directly from <code>Minitest::Test</code>, but it needs to have <code>Minitest::Test</code> in its ancestry.</p>
+<p>Let&rsquo;s create a new file in our <code>test</code> directory named <code>test/test_minibot.rb</code> to hold our test code. To create a test we need to create a new class that inherits from <code>Minitest::Test</code>. This will be our <strong>Test Class</strong>. Some projects, like <a href="http://rubyonrails.org/">Ruby on Rails</a>, may provide other test classes with project-specific functionality. The testing behavior of your test class is provided by inheritance. Your test classes don&rsquo;t need to inherit directly from <code>Minitest::Test</code>, but it needs to have <code>Minitest::Test</code> in its ancestry.</p>
 
 <p>It is common for the test class name to describe the subject of the test. Let&rsquo;s create a new test class named <code>TestMinibot</code>.</p>
 
-<pre><code class="ruby">require &quot;helper&quot;
+<pre><code class="ruby">require &quot;minitest/autorun&quot;
 
 class TestMinibot &lt; Minitest::Test
 
@@ -364,10 +329,10 @@ end
 
 <p>Let&rsquo;s create a test method. Like test classes, test methods should have a descriptive name. We don&rsquo;t know what a &ldquo;minibot&rdquo; is just yet, so the only requirement is that it starts with <code>test_</code>. How about <code>test_minibot</code>?</p>
 
-<pre><code class="ruby">require &quot;helper&quot;
+<pre><code class="ruby">require &quot;minitest/autorun&quot;
 
 class TestMinibot &lt; Minitest::Test
-  def test_add_rule
+  def test_match
 
   end
 end
@@ -375,36 +340,79 @@ end
 
 <p><code>test/test_minibot.rb</code></p>
 
-<p>Like our <strong>Test Class</strong>, the <strong>Test Methods</strong> are containers tests. So far we have been creating locations for the test, but haven&rsquo;t actually tested anything. To do this we will use one of the many <strong>Assertion Methods</strong> that Minitest provides.</p>
+<p>Like our <strong>Test Class</strong>, the <strong>Test Methods</strong> are containers tests. So far we have been creating locations for the test, but haven&rsquo;t actually tested anything. One of the common approaches to a test method is <a href="http://c2.com/cgi/wiki?ArrangeActAssert">Arrange Act Assert</a>.</p>
+
+<h3>Arrange Act Assert</h3>
+
+<p>A test method is intended to perform a unit of work, and verify that the code behaves as expected. One way to organize this is to perform the following steps within the test method:</p>
+
+<ol>
+<li><strong>Arrange</strong> the necessary inputs and preconditions.</li>
+<li><strong>Act</strong> the intended behavior.</li>
+<li><strong>Assert</strong> the results are as expected.</li>
+</ol>
+
+<p>What does this mean for our &ldquo;Match a message string to a rule&rdquo; task? We need to arrange a rule in Minibot to be matched, act on Minibot to match the message with the rule, and assert that the response to the message is what we expect. Because we are doing test-first we get to decide what Minibot&rsquo;s API will be as we write this test. So we can write the code that we want to use.</p>
+
+<p>Here is what the <em>arrange</em> step may look like, creating a new Minibot object and registering a rule for &ldquo;zomg&rdquo; trigger and response:</p>
+
+<pre><code class="ruby">minibot = Minibot.new
+minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+</code></pre>
+
+<p>And here is what the <em>act</em> step may look like, matching the message and returning the response:</p>
+
+<pre><code class="ruby">response = minibot.match &quot;ZOMG! This is cool!&quot;
+</code></pre>
+
+<p>To perform the <em>assert</em> step we need to use one of the many <strong>Assertion Methods</strong> that Minitest provides.</p>
 
 <h2>Assertion Methods</h2>
 
-<p>Minitest checks for correctness by asserting that behavior is correct. If an assertion fails then Minitest will log it as a failure. The base assertion is the <code>assert</code> method. It evaluates the value passed to it, and if the value is <code>nil</code> or <code>false</code> the assertion will fail. For now, let&rsquo;s create the most basic assertion we can.</p>
+<p>Minitest checks for correctness by asserting that behavior is correct. If an assertion fails then Minitest will log it as a failure. The base assertion is the <code>assert</code> method. It evaluates the value passed to it, and if the value is <code>nil</code> or <code>false</code> the assertion will fail. This is what the most basic assertion would look like:</p>
 
-<pre><code class="ruby">require &quot;helper&quot;
+<pre><code class="ruby">assert(response == &quot;http://i.imgur.com/49ORL0o.gif&quot;)
+</code></pre>
+
+<p>In this code we are calling the <code>assert</code> method and passing it a boolean value. If the value is <code>true</code> the test will pass. If it is <code>false</code> the test will fail. We can also provide an optional second argument to describe the circumstances should the assertion fail:</p>
+
+<pre><code class="ruby">assert(response == &quot;http://i.imgur.com/49ORL0o.gif&quot;,
+       &quot;Expected #{response} to equal http://i.imgur.com/49ORL0o.gif&quot;)
+</code></pre>
+
+<p>As you might expect, a good deal of value is found in the the error message. So much so that there are special-case assertion methods that generate this message for you. The assertion method <code>assert_equal</code> provides the logic and error message for checking the equality of two variables:</p>
+
+<pre><code class="ruby">assert_equal &quot;http://i.imgur.com/49ORL0o.gif&quot;, response
+</code></pre>
+
+<p><aside>
+  <h3>Assertion argument order</h3>
+  <p>The order of arguments in most specialized assertions is &ldquo;expected, actual&rdquo;, which is opposite of what you would use for variable assignment. The first argument is the value you expect, and the second is the value created earlier in the test method. This order can be the source of a good deal of confusion when learning the Minitest API. But don&rsquo;t get too frustrated, In my experience this order is internalized quicker than most expect.</p>
+</aside></p>
+
+<p>Minitest provides several additional specialied assertion methods, such as <code>assert_includes</code>, <code>assert_in_delta</code>, and <code>assert_kind_of</code>. A full list of assertions with examples is found in <a href="appendix/assertions">appendix A</a>.</p>
+
+<p>Now that we have our test method and assertion, this is what our test file looks like:</p>
+
+<pre><code class="ruby">require &quot;minitest/autorun&quot;
 
 class TestMinibot &lt; Minitest::Test
-  def test_add_rule
+  def test_match
     minibot = Minibot.new
     minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    assert_equal 1, minibot.triggers.size
+    response = minibot.match &quot;ZOMG! This is cool!&quot;
+    assert_equal &quot;http://i.imgur.com/49ORL0o.gif&quot;, response
   end
 end
 </code></pre>
 
 <p><code>test/test_minibot.rb</code></p>
 
-<p>In our Test Method we are calling the <code>assert</code> method, and passing it a boolean value. If the value is <code>true</code>, the test till pass. If it is <code>false</code>, the test will fail.</p>
-
-<p>Minitest also provides several specialied assertion methods, such as <code>assert_equal</code>, <code>assert_in_delta</code>, and <code>assert_kind_of</code>. A full list of assertions with examples is found in <a href="appendix/assertions">appendix A</a>.</p>
-
 <p>So far we have introduced a <strong>Test Class</strong>, created a <strong>Test Method</strong>, used an <strong>Assertion Method</strong> to specify our expectations. But there is one last component to the Minitest API: <strong>Support Methods</strong>.</p>
-
-<p><strong>NOTE</strong>: Probably should explain the &ldquo;expected, actual&rdquo; order in assertions somewhere. This seems like a good place&hellip;</p>
 
 <h2>Support Methods</h2>
 
-<p>Minitest provides methods to execute code before and after a <em>test method</em> is run. These methods are <code>setup</code> and <code>teardown</code>, respectively. They can be used for anything from initializing common collaborators in your tests to to creating and rolling back database transactions.</p>
+<p>Minitest provides hook methods to execute code before and after a <em>test method</em> is run. These methods are <code>setup</code> and <code>teardown</code>, respectively. They can be used for anything from initializing common collaborators in your tests to to creating and rolling back database transactions.</p>
 
 <pre><code class="ruby">def setup
   # I get called before every test method
@@ -415,20 +423,21 @@ def teardown
 end
 </code></pre>
 
-<p>For our purpose, let&rsquo;s use an instance variable named <code>@minibot</code>. The <code>setup</code> method will be called before every test method, setting <code>@minibot</code> to <code>true</code> before each test. And the <code>teardown</code> method will be called after each test, setting <code>@minibot</code> to nil. The test methods can use <code>@minibot</code> in the assertions.</p>
+<p>For our purpose, we can create an instance variable named <code>@minibot</code>. The <code>setup</code> method will be called before every test method, setting <code>@minibot</code> to <code>Minibot.new</code> before each test. And the <code>teardown</code> method will be called after each test, setting <code>@minibot</code> to nil. The test methods can use <code>@minibot</code> and call assertions on it.</p>
 
-<p>Let&rsquo;s ???</p>
+<p>This is an example of what our test file could look like using the <code>setup</code> and <code>teardown</code> support methods:</p>
 
-<pre><code class="ruby">require &quot;helper&quot;
+<pre><code class="ruby">require &quot;minitest/autorun&quot;
 
 class TestMinibot &lt; Minitest::Test
   def setup
-    @minibot = true
+    @minibot = Minibot.new
   end
 
-  def test_add_rule
+  def test_match
     @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    assert_equal 1, @minibot.triggers.size
+    response = @minibot.match &quot;ZOMG! This is cool!&quot;
+    assert_equal &quot;http://i.imgur.com/49ORL0o.gif&quot;, response
   end
 
   def teardown
@@ -439,21 +448,17 @@ end
 
 <p><code>test/test_minibot.rb</code></p>
 
-<p>The <code>teardown</code> method here is to illustrate how it can be used, but it isn&rsquo;t really needed for this test code to work.</p>
+<p>The <code>teardown</code> method here is to illustrate how it can be used, but it isn&rsquo;t really needed for this test code to work as the value is reset in <code>setup</code>. One use for the <code>teardown</code> method would be to perform a rollback on a database transaction created in <code>setup</code>.</p>
 
-<p>One way to improve the readability of your tests is to move shared functionality out of the test methods and into new methods. Because Minitest is using normal Ruby classes you can use all the approaches you would use to remove duplication in your test classes as you would your application classes. But be careful, the purpose of the test code is to clearly describe the application&rsquo;s API and intent, and too much indirection may hurt readability. I generally prefer a little more duplication in my tests than I prefer in my application code.</p>
+<p>One way to improve the readability of your tests is to move shared functionality out of the test methods and into new methods. Because Minitest is using normal Ruby classes you can use all the approaches you would use to remove duplication in your test classes as you would your application classes. But be careful, the purpose of the test code is to clearly describe the application&rsquo;s API and intent, and too much indirection may hurt readability. I generally prefer a little more duplication in my tests than I prefer in my application code. I will remove duplication in my code after repeating the same logic 2-3 times, but I won&rsquo;t remove duplication in my tests until I&rsquo;ve repeated the same logic 5-7 times.</p>
 
-<h2>Conclusion</h2>
+<h2>Recap</h2>
 
 <p>You&rsquo;ve created your own <strong>test class</strong>, added a <strong>test method</strong>, and called an <strong>assertion method</strong> on an object created by the <strong>support methods</strong>. Simple, right? This is really all there is to it. Tests are just classes with methods that verify the behavior of your code with assertions.</p>
 
 <p>You are now familiar with the Minitest API. The notion of API is important: it communicates how the software is expected to be used. Your tests will also communicate how your code is expected to be used by verifying how the API works.</p>
-<div class="page_break"></div>
-<h1>TDD Cycle: Make it Red</h1>
-
-<p><strong>NOTE</strong>: We want to go from red to green as quickly as possible. We should make changes so small that we can be red for only a moment, and quickly turn it around and be back to green. Green is our safe zone. We want to stay there.</p>
-
-<p><strong>NOTE</strong>: How do we approach the difference between note writing any code until you have a failing test vs. being free to make any refactorings as long as the tests stay green? How do we know when we can refactor vs. adding new tests?</p>
+<div id="ch2-tdd-red-green" class="page_break"></div>
+<h1>TDD Cycle: Red and Green</h1>
 
 <p>I&rsquo;ve often been asked, &ldquo;How is writing code with tests any different than just writing code?&rdquo;. This is one of my favorite questions to answer, and by the end of this chapter you will be able to answer it too.</p>
 
@@ -463,49 +468,39 @@ end
 
 <h2>Step 1: Make it Red</h2>
 
-<p>Let&rsquo;s start by adding a new <em>test method</em> for the first TODO: &ldquo;Add a new matching rule&rdquo;. When writing this new test method we have a decision to make: What do we want the Minibot API to be for adding a new rule? What information do we nee dto provide to add the rule? How do we know that a rule was added? We need to put ourselves in the mindset of those that consume our library: how would we want to use this code? This process is key: by consuming the code first we get to change our mindset and consider what the most appropriate API should be. We are not conscerned with implementation details, we are performing a <em>design</em> excercise.</p>
+<p>In chapter 1 we adding a new <em>test method</em> for the first TODO: &ldquo;Match a message string to a rule&rdquo;. When writing this new test method we had a decision to make: What do we want the Minibot API to be for adding a rule, matching a message, and returning the response? What information do we need to provide to add the rule? How do we know that a rule was added? We need to put ourselves in the mindset of those that consume our library: how would we want to use this code? This process is key: by consuming the code first we get to change our mindset and consider what the most appropriate API should be. We are not concerned with implementation details, we are performing a <em>design</em> exercise.</p>
 
-<p>We know decide that for Minibot to register a new rule the client needs to provide a trigger for the rule (the text &ldquo;zomg&rdquo;), and the message to be returned (the text &ldquo;http://i.imgur.com/49ORL0o.gif&rdquo;) when the rule is triggered. Let&rsquo;s pass both of those values to an <code>add</code> method.</p>
+<p>Here is what our test file looks like now:</p>
 
-<pre><code class="ruby">minibot = Minibot.new
-minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-</code></pre>
-
-<p>But how can we tell the rule was added? We aren&rsquo;t making any assertions, which means if this functionality fails we have no way to tell. Let&rsquo;s add a check that the <code>minibot</code> object knows about the trigger by asserting that the trigger size is 1.</p>
-
-<pre><code class="ruby">minibot = Minibot.new
-minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-assert_equal 1, minibot.triggers.size
-</code></pre>
-
-<p>Here is what our file looks like now.</p>
-
-<pre><code class="ruby">require &quot;helper&quot;
+<pre><code class="ruby">require &quot;minitest/autorun&quot;
 
 class TestMinibot &lt; Minitest::Test
-  def test_add_rule
+  def test_match
     minibot = Minibot.new
     minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    assert_equal 1, minibot.triggers.size
+    response = minibot.match &quot;ZOMG! This is cool!&quot;
+    assert_equal &quot;http://i.imgur.com/49ORL0o.gif&quot;, response
   end
 end
 </code></pre>
 
 <p><code>test/test_minibot.rb</code></p>
 
-<p>So far we have only changed our <em>test class</em>, so we expect our tests to fail:</p>
+<p>So far the only code we have written in our <em>test class</em>, so we expect our tests to fail. To run the test we pass the file to ruby:</p>
 
-<pre><code class="shell">$ ruby minibot.rb
-Run options: --seed 43987
+<pre><code class="shell">$ ruby test/test_minibot.rb
+Run options: --seed 44520
+
+# Running:
 
 E
 
-Finished in 0.000808s, 1237.6238 runs/s, 0.0000 assertions/s.
+Finished in 0.000739s, 1353.1800 runs/s, 0.0000 assertions/s.
 
 1) Error:
-TestMinibot#test_add_rule:
+TestMinibot#test_match:
 NameError: uninitialized constant TestMinibot::Minibot
-minibot.rb:6:in `test_add_rule&#39;
+test/test_minibot.rb:5:in `test_match&#39;
 
 1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
 </code></pre>
@@ -514,206 +509,478 @@ minibot.rb:6:in `test_add_rule&#39;
 
 <p>Interestingly, instead of generating a failure it generated an error. The error occurred because our new test method is trying to create an new object from a class that does not exist. This is okay, Minitest expects errors to happen and will display the appropriate information.</p>
 
-<p>Handling errors is part of our design process. We want to wrote tests to use our code before we write our code. And we want to make this test pass by writing as little code as possible. Let&rsquo;s start by fixing the &lsquo;uninitialized constant TestMinibot::Minibot&rsquo; error by adding a class definition for Minibot:</p>
+<p>Handling errors is part of our design process. We want to wrote tests to use our code before we write our code. And we want to make this test pass by writing as little code as possible. Let&rsquo;s start by fixing the &lsquo;uninitialized constant TestMinibot::Minibot&rsquo; error by adding a class definition for Minibot in our &lsquo;lib/minibot.rb` file:</p>
 
 <pre><code class="ruby">class Minibot
 
 end
+</code></pre>
 
-require &quot;helper&quot;
+<p><code>lib/minibot.rb</code></p>
 
-class TestMinibot &lt; Minitest::Test
-  def test_add_rule
-    minibot = Minibot.new
-    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    assert_equal 1, minibot.triggers.size
-  end
-end
+<p>And requiring the class definition in our test file after the Miniitest require:</p>
+
+<pre><code class="ruby">require &quot;minitest/autorun&quot;
+require &quot;minibot&quot;
 </code></pre>
 
 <p><code>test/test_minibot.rb</code></p>
 
-<p>Okay, let&rsquo;s rerun the tests and see if that helps:</p>
+<p>That should take care of the missing constant error. To run this test now we also need to tell Ruby to load the lib directory as well as the test directory. We do this with the <code>-Ilib:test</code> option:</p>
 
-<pre><code class="shell">1) Error:
-TestMinibot#test_add_rule:
-NoMethodError: undefined method `add&#39; for #&lt;Minibot:0x007fc224eb2100&gt;
-minibot.rb:11:in `test_add_rule&#39;
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
 
-1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
-</code></pre>
+Run options: --seed 8675
 
-<p>Now we have a different error, this time because the test is calling a method that does not exist. The Minibot constant exists, but the <code>add</code> method does not. Let&rsquo;s add the method, but not the implementation, and rerun the test:</p>
+# Running:
 
-<pre><code class="ruby">class Minibot
-  def add(trigger, response)
+E
 
-  end
-end
-</code></pre>
+Finished in 0.000790s, 1265.8228 runs/s, 0.0000 assertions/s.
 
-<pre><code class="shell">1) Error:
-TestMinibot#test_add_rule:
-NoMethodError: undefined method `triggers&#39; for #&lt;Minibot:0x007fb494eb1ea0&gt;
-minibot.rb:14:in `test_add_rule&#39;
+1) Error:
+TestMinibot#test_match:
+NoMethodError: undefined method `add&#39; for #&lt;Minibot:0x007f90f6df89f8&gt;
+test/test_minibot.rb:7:in `test_match&#39;
 
 1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
 </code></pre>
 
-<p>Another undefined method. This time for <code>triggers</code> that we are going to use to verify that the rule was added successfully. Our test is going to ask the object returned from <code>triggers</code> for its size, but let&rsquo;s not implement that now since that isn&rsquo;t the error that Minitest is telling us about. Let&rsquo;s add an empty method to clear this error:</p>
+<p>Now we have a different error, this time because the test is calling a method that does not exist. The Minibot constant exists, but the <code>Minibot#add</code> method does not. Let&rsquo;s create the <code>add</code> the method, but not the implementation, and rerun the test:</p>
 
 <pre><code class="ruby">class Minibot
-  def add(trigger, response)
-
-  end
-
-  def triggers
-
+  def add trigger, response
+    # TODO: Save this data
   end
 end
 </code></pre>
 
-<pre><code class="shell">1) Error:
-TestMinibot#test_add_rule:
-NoMethodError: undefined method `size&#39; for nil:NilClass
-minibot.rb:18:in `test_add_rule&#39;
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+Run options: --seed 4935
+
+E
+
+Finished in 0.000866s, 1154.7344 runs/s, 0.0000 assertions/s.
+
+1) Error:
+TestMinibot#test_match:
+NoMethodError: undefined method `match&#39; for #&lt;Minibot:0x007fadc3eb87f0&gt;
+test/test_minibot.rb:8:in `test_match&#39;
 
 1 runs, 0 assertions, 0 failures, 1 errors, 0 skips
 </code></pre>
 
-<p>As we expected, another error. It may not seem like such a small test method could generate this many errors, but it can and should. If we had started implementation without tests who knows what we would be implementing now. There is safety in letting the tests drive our implementation because we are only implementing what we know needs to be added.</p>
-
-<p>Let&rsquo;s add an object that responds to <code>size</code> from the <code>Minibot#triggers</code> method to clear this error. We should expect that <code>triggers</code> is going to return a list of triggers, so let&rsquo;s return an empty array and see if our output changes.</p>
+<p>Another undefined method, this time for <code>Minibot#match</code>. Our test is asking the Minibot object to match a message and return a response, but that method has not yet been implemented and Minitest is telling us this. Let&rsquo;s add an empty method to clear this error:</p>
 
 <pre><code class="ruby">class Minibot
-  def add(trigger, response)
-
+  def add trigger, response
+    # TODO: Save this data
   end
 
-  def triggers
-    []
-  end
-end
-
-require &quot;helper&quot;
-
-class TestMinibot &lt; Minitest::Test
-  def test_add_rule
-    minibot = Minibot.new
-    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    assert_equal 1, minibot.triggers.size
+  def match message
+    # TODO: Match message to triggers
   end
 end
 </code></pre>
 
-<p><code>test/test_minibot.rb</code></p>
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+Run options: --seed 43768
 
-<pre><code class="shell">$ ruby minibot.rb
-Run options: --seed 55576
+# Running:
 
 F
 
-Finished in 0.026938s, 37.1223 runs/s, 37.1223 assertions/s.
+Finished in 0.033050s, 30.2572 runs/s, 30.2572 assertions/s.
 
 1) Failure:
-TestMinibot#test_add_rule [minibot.rb:18]:
-Expected: 1
-Actual: 0
+TestMinibot#test_match [test/test_minibot.rb:9]:
+--- expected
++++ actual
+@@ -1 +1 @@
+-&quot;http://i.imgur.com/49ORL0o.gif&quot;
++nil
 
 1 runs, 1 assertions, 1 failures, 0 errors, 0 skips
 </code></pre>
 
-<p><code>terminal</code></p>
+<p>Ahh, the output is slightly different. Instead of displaying an &ldquo;Error&rdquo;, Minitest is now displaying a &ldquo;Failure&rdquo;. This is considered <em>Red</em>. Before we had <em>errors</em>; classes or methods that were called by did not exist. Now we have a <em>failure</em>, the code&rsquo;s behavior does not meet the test&rsquo;s expectations. In this case, the test expected a URL value to be returned, but got nil instead. We want our tests to drive our code from error to failure to pass. Let&rsquo;s fix this failure and get our test passing.</p>
 
-<p>Ahh, now we have our first failure. This is considered <em>Red</em>. Before we had <em>errors</em>; classes or methods that were called by did not exist. Now we have a <em>failure</em>, the code&rsquo;s behavior does not meet the test&rsquo;s expectations. In this case, the test expected a value of 1, but got 0 instead. We want our tests to drive our code from error to failure to pass. Let&rsquo;s fix this failure and get our test passing.</p>
-<div class="page_break"></div>
-<h1>TDD Cycle: Make it Green</h1>
+<p>Now that we are in a failure state, we can focus on moving into the passing state. Like the previous step, we want to move from failure to pass as quickly as possible. We don&rsquo;t want to get bogged down in implementation details.</p>
 
-<p>???</p>
+<p>When we were writing our tests we put ourselves in the mindset of the consumers of our code. We thought through what API we wanted to use, not just what was easy to expose. Now we are changing the code to fulfill the expectations we have placed on the API, and we need change mindset once again. instead of focusing on implementation and correctness of our code, we want to focus on how quickly we can get the tests to pass and return to the customer mindset. To do this we need to put on the personality of the Worst Programmer in the World. We want to take any and all shortcuts needed to get the test to pass, even if this means intentionally writting bad or buggy code that won&rsquo;t work outside of our tests.</p>
 
-<h2>Worst Programmer Mindset</h2>
+<h2>Step 2: Make it Green</h2>
 
-<p>When we were writing our tests we put ourselves in the mindset of the consumers of our code. We thought through what API we wanted to use, not just what was easy to expose. Now that we are changing our code I want to change mindset once again. I want to put on the personality of the Worst Programmer in the World. I want to take any and all shortcuts needed to get the test to pass. I want to intentionally write bad or buggy code.</p>
-
-<p>How would the Worst Programmer in the World make this test pass? Probably hard code the implementation so it matches the expectations of the test. So let&rsquo;s do that by making the <code>triggers</code> method return an object that has a size of 1. How about an array with a single nil value?</p>
+<p>How would the Worst Programmer in the World make this test pass? Probably hard code the implementation so it matches the expectations of the test. Let&rsquo;s do this by having the <code>match</code> method return the response string that the test is expecting.</p>
 
 <pre><code class="ruby">class Minibot
-  def add(trigger, response)
-
+  def add trigger, response
+    # TODO: Save this data
   end
 
-  def triggers
-    []
-  end
-end
-
-require &quot;helper&quot;
-
-class TestMinibot &lt; Minitest::Test
-  def test_add_rule
-    minibot = Minibot.new
-    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    assert_equal 1, minibot.triggers.size
+  def match message
+    # TODO: Refactor. Response is coupled to test.
+    &quot;http://i.imgur.com/49ORL0o.gif&quot;
   end
 end
 </code></pre>
 
-<p><code>minibot.rb</code></p>
+<p><code>lib/minibot.rb</code></p>
 
 <p>What an awful solution! Surely Minitest wouldn&rsquo;t allow something as bad as that to pass, right?</p>
 
-<pre><code class="shell">$ ruby minibot.rb
-Run options: --seed 32365
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 8245
 
 .
 
-Finished in 0.000784s, 1275.5102 runs/s, 1275.5102 assertions/s.
+Finished in 0.000786s, 1272.2646 runs/s, 1272.2646 assertions/s.
 
 1 runs, 1 assertions, 0 failures, 0 errors, 0 skips
 </code></pre>
 
 <p><code>terminal</code></p>
 
-<p>It passes! Our terrible code passes! Passing is considered <em>Green</em>. But the code feels dirty, doesn&rsquo;t it? The <code>add</code> method doesn&rsquo;t do anything and the <code>triggers</code> method is hardcoded to the test expectation. Surely this isn&rsquo;t how we want our code to be.</p>
+<p>It passes! Our terrible code passes! Passing is considered <em>Green</em>. But the code feels dirty, doesn&rsquo;t it? The <code>add</code> method doesn&rsquo;t do anything and the <code>match</code> method is hardcoded to the test expectation. Surely this isn&rsquo;t how we want our code to be.</p>
 
-<p>Time for another mindset change. We want to return to our Consumer Mindset and write more tests that flesh out all more of the expected behavior. Can we add multiple rules? Can we add multiple rules on the same trigger? Let&rsquo;s find out by writing some more tests. First, let&rsquo;s add to our existing test methods and add a second rule and a second trigger size assertion.</p>
+<h3>No Match</h3>
 
-<pre><code class="ruby">def test_add_rules
+<p>Time for another mindset change. We want to return to our Consumer Mindset and write more tests that flesh out more of the expected behavior. What if the message doesn&rsquo;t match the added rule? What are our expectations for <code>Minibot#add</code>? Can we add multiple rules? Can we add multiple rules on the same trigger? Let&rsquo;s find out by writing some more tests. First, let&rsquo;s add another test for what should happen when the message doesn&rsquo;t match a rule:</p>
+
+<pre><code class="ruby">def test_no_match
   minibot = Minibot.new
   minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-  assert_equal 1, minibot.triggers.size
-  minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
-  assert_equal 2, minibot.triggers.size
+  response = minibot.match &quot;ZOINKS! This doesn&#39;t match!&quot;
+  assert_nil response
 end
 </code></pre>
 
-<p>Let&rsquo;s also add a second test method that adds multiple rules on the same trigger, and makes sure the fact that all these rules share the same trigger is reflected in the trigger size.</p>
+<p>We&rsquo;ve decided that Minibot will return nil if the message doesn&rsquo;t match a rule. Running the tests now puts us back into <em>Red</em>.</p>
 
-<pre><code class="ruby">def test_add_multiple_rules_on_same_trigger
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 2222
+
+# Running:
+
+.F
+
+Finished in 0.001220s, 1639.3443 runs/s, 1639.3443 assertions/s.
+
+1) Failure:
+TestMinibot#test_no_match [test/test_minibot.rb:16]:
+Expected &quot;http://i.imgur.com/49ORL0o.gif&quot; to be nil.
+
+2 runs, 2 assertions, 1 failures, 0 errors, 0 skips
+</code></pre>
+
+<p>The <code>test_match</code> test passes, but <code>test_no_match</code> doesn&rsquo;t. We want to get back to <em>Green</em> quickly. How can we do it? Let&rsquo;s change mindset back to the Worst Programmer and find the most expedient way possible, sacrificing correctness for <strong>???</strong> In this case, we can have <code>Minibot#match</code> check for message and return the expected URL only when the message is the one from <code>test_match</code>. Let&rsquo;s try that to get this test passing:</p>
+
+<pre><code class="ruby">def match message
+  # TODO: Refactor. Response is coupled to test.
+  &quot;http://i.imgur.com/49ORL0o.gif&quot; if message == &quot;ZOMG! This is cool!&quot;
+end
+</code></pre>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 9954
+
+# Running:
+
+..
+
+Finished in 0.000816s, 2450.9804 runs/s, 2450.9804 assertions/s.
+
+2 runs, 2 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
+
+<p>With this change both the <code>test_match</code> and <code>test_no_match</code> tests pass! We let the tests drive our code implementation and we are <em>Green</em> again. We are starting to describe a usable API for Minibot, but I have no confidence in this code because it is so specific to the tests.</p>
+
+<h2>Recap</h2>
+
+<p>The first step in TDD is to get your tests into a Red state. Tests are written with the Customer in mind, meaning they are focused on the API design and not the implementation. Any errors in your tests need to be turned into failures as quickly as possible. You want to do as little coding as possible to move from an error state to a failure state.</p>
+
+<p>The second step in TDD is to get your tests into a Green state as quickly as possible. To do that use the Worse Programmer mindset and take any and all shortcuts necessary to get the tests passing. Think of the Red state as a game, you want to get out of Red to Green as quickly as you can. But once you are Green you want to return to Red as quickly as you can.</p>
+<div id="ch3-minibot-rules" class="page_break"></div>
+<h1>Minibot: Adding Rules</h1>
+
+<p>Our goal in TDD is to move from <em>Red</em> to <em>Green</em> as quickly as possible. To move from the <em>Consumer</em> to <em>worst Programmer</em> minsets as quickly as possible. The failing test gives us guidance and direction on what to implement, and the passing test allows us to explore new areas of behavior for our code.</p>
+
+<p>To illustrate this let&rsquo;s revisit our TODO. We can check off the initial task, but in doing so we found it neccessary to have a way to add a rule. Let&rsquo;s add a new task for adding a rule, and one for deleting a rule. We don&rsquo;t know if we will ever need to delete a rule, but we might so its a good idea to commit that to the list.</p>
+
+<pre><code class="plain">Minibot
+=======
+
+A simple bot for storing and matching memes.
+
+- [x] Match a message string to a rule
+- [ ] Add a rule
+- [ ] Remove a rule
+</code></pre>
+
+<p><code>todo.md</code></p>
+
+<h2>Add a rule</h2>
+
+<p>How do we test that a rule has been added? We know a rule is a &ldquo;trigger&rdquo;, that when matched will return a &ldquo;response&rdquo;. So how do we verify that a rule was added? We probably need some way of asking Minibot what triggers have been added. How does this work? What if multiple rules are added for the same trigger? What if different rules are added for different triggers?</p>
+
+<p>Let&rsquo;s write a few tests that cover those possibilities. Minibot should return a list of the triggers added to it. Multiple rules can be added to the same trigger. And Minibot can have more than one rule added to it. Here is how these tests can be implemented:</p>
+
+<pre><code class="ruby">def test_adding_one_rule
+  minibot = Minibot.new
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+  assert_equal 1, minibot.triggers.size
+  assert_includes minibot.triggers, &quot;zomg&quot;
+end
+
+def test_adding_multiple_rules
   minibot = Minibot.new
   minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
   minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
   minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
   assert_equal 1, minibot.triggers.size
+  assert_includes minibot.triggers, &quot;zomg&quot;
+end
+
+def test_adding_different_rules
+  minibot = Minibot.new
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+  minibot.add &quot;wtf&quot;,  &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+  assert_equal 2, minibot.triggers.size
+  assert_includes minibot.triggers, &quot;zomg&quot;
+  assert_includes minibot.triggers, &quot;wtf&quot;
 end
 </code></pre>
 
-<p>Running the tests now puts us back into <em>Red</em>.</p>
+<p>Unfortunately, all three tests fail when run.</p>
 
-<pre><code class="shell">  1) Failure:
-TestMinibot#test_add_rules [minibot.rb:20]:
-Expected: 2
-  Actual: 1
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
 
-2 runs, 3 assertions, 1 failures, 0 errors, 0 skips
+Run options: --seed 41171
+
+.EE.E
+
+Finished in 0.000937s, 5336.1793 runs/s, 2134.4717 assertions/s.
+
+1) Error:
+TestMinibot#test_adding_multiple_rules:
+NoMethodError: undefined method `triggers&#39; for #&lt;Minibot:0x007f8e4bed2368&gt;
+test/test_minibot.rb:33:in `test_adding_multiple_rules&#39;
+
+2) Error:
+TestMinibot#test_adding_one_rule:
+NoMethodError: undefined method `triggers&#39; for #&lt;Minibot:0x007f8e4bed12d8&gt;
+test/test_minibot.rb:23:in `test_adding_one_rule&#39;
+
+3) Error:
+TestMinibot#test_adding_different_rules:
+NoMethodError: undefined method `triggers&#39; for #&lt;Minibot:0x007f8e4bed12d8&gt;
+test/test_minibot.rb:42:in `test_adding_different_rules&#39;
+
+5 runs, 2 assertions, 0 failures, 3 errors, 0 skips
 </code></pre>
 
-<p>The <code>test_add_multiple_rules_on_same_trigger</code> test passes, but <code>test_add_rules</code> doesn&rsquo;t. We want to get back to <em>Green</em> quckly. How can we do it? The way the tests are written we&rsquo;ll have to actually implement some logic here. We could save the trigger sent to <code>add</code> in a list and return that from the <code>triggers</code> method. Let&rsquo;s try that to get this test passing.</p>
+<p>Our goal is to be <em>Green</em> as quickly as possible, but we can only focus on one test at a time. To help us focus on ust one test, let&rsquo;s skip the latter test by calling <code>skip</code> within them:</p>
+
+<pre><code class="ruby">def test_adding_multiple_rules
+  skip &quot;Skipping adding multiple for now&quot;
+
+  minibot = Minibot.new
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+  assert_equal 1, minibot.triggers.size
+  assert_includes minibot.triggers, &quot;zomg&quot;
+end
+
+def test_adding_different_rules
+  skip &quot;Skipping adding different for now&quot;
+
+  minibot = Minibot.new
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+  minibot.add &quot;wtf&quot;,  &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+  assert_equal 2, minibot.triggers.size
+  assert_includes minibot.triggers, &quot;zomg&quot;
+  assert_includes minibot.triggers, &quot;wtf&quot;
+end
+</code></pre>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 14649
+
+ESS..
+
+Finished in 0.000963s, 5192.1080 runs/s, 2076.8432 assertions/s.
+
+1) Error:
+TestMinibot#test_adding_one_rule:
+NoMethodError: undefined method `triggers&#39; for #&lt;Minibot:0x007f9643ed31a0&gt;
+test/test_minibot.rb:23:in `test_adding_one_rule&#39;
+
+5 runs, 2 assertions, 0 failures, 1 errors, 2 skips
+</code></pre>
+
+<p>Now we can focus on getting <code>test_adding_one_rule</code> passing. This test is failing because it is making a call to <code>Minibot#triggers</code>, which doesn&rsquo;t exist yet. Let&rsquo;s add this method and rerun the tests:</p>
 
 <pre><code class="ruby">class Minibot
-  def add(trigger, response)
+  def add trigger, response
+    # TODO: Save this data
+  end
+
+  def match message
+    # TODO: Refactor. Response is coupled to test.
+    &quot;http://i.imgur.com/49ORL0o.gif&quot; if message == &quot;ZOMG! This is cool!&quot;
+  end
+
+  def triggers
+    # TODO: Return all the added triggers
+  end
+end
+</code></pre>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 8097
+
+# Running:
+
+ESS..
+
+Finished in 0.000993s, 5035.2467 runs/s, 2014.0987 assertions/s.
+
+1) Error:
+TestMinibot#test_adding_one_rule:
+NoMethodError: undefined method `size&#39; for nil:NilClass
+test/test_minibot.rb:23:in `test_adding_one_rule&#39;
+
+5 runs, 2 assertions, 0 failures, 1 errors, 2 skips
+</code></pre>
+
+<p>As we may have expected, another error. It may feel uncomfortable to generate this many errors, but this is an important part of TDD. We want feedback so we know what to do next. Feedback on what our code is doing gives us confidence. If we had started implementation without tests who knows what we would be implementing now. There is safety in letting the tests drive our implementation because we are only implementing what we know needs to be added.</p>
+
+<p>Let&rsquo;s add an object that responds to <code>size</code> from the <code>Minibot#triggers</code> method to clear this error. We should expect that <code>triggers</code> is going to return a list of triggers, so let&rsquo;s return an empty array and see if our test output changes.</p>
+
+<pre><code class="ruby">def triggers
+  # TODO: Return all the added triggers
+  []
+end
+</code></pre>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 25885
+
+# Running:
+
+S..FS
+
+Finished in 0.027610s, 181.0938 runs/s, 108.6563 assertions/s.
+
+1) Failure:
+TestMinibot#test_adding_one_rule [test/test_minibot.rb:23]:
+Expected: 1
+Actual: 0
+
+5 runs, 3 assertions, 1 failures, 0 errors, 2 skips
+</code></pre>
+
+<p>We have gone from <em>Error</em> to <em>Failure</em>. We know our Minibot implementation now implements the structure of the API our tests are describing, now we need to implement the behavior as well. Our tests expect the trigger &ldquo;zomg&rdquo; to be returned, so let&rsquo;s return it. Again, the Worst Programmer mindset says the fastest way to get this test to pass is to hardcode the implementation.</p>
+
+<pre><code class="ruby">def triggers
+  # TODO: Return all the added triggers
+  [&quot;zomg&quot;]
+end
+</code></pre>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 51218
+
+# Running:
+
+.S..S
+
+Finished in 0.001060s, 4716.9811 runs/s, 4716.9811 assertions/s.
+
+5 runs, 5 assertions, 0 failures, 0 errors, 2 skips
+</code></pre>
+
+<p>Success! We are back to <em>Green</em>! Let&rsquo;s remove the <code>skip</code> call from the <code>test_adding_multiple_rules</code> test and see if it also passes:</p>
+
+<pre><code class="ruby">def test_adding_multiple_rules
+  minibot = Minibot.new
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+  assert_equal 1, minibot.triggers.size
+  assert_includes minibot.triggers, &quot;zomg&quot;
+end
+</code></pre>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 2163
+
+# Running:
+
+S....
+
+Finished in 0.000962s, 5197.5052 runs/s, 8316.0083 assertions/s.
+
+5 runs, 8 assertions, 0 failures, 0 errors, 1 skips
+</code></pre>
+
+<p>It passes and our Worst Programmer mindset is happy because there are no changes needed. Let;s remove the last <code>skip</code> from the <code>test_adding_different_rules</code> test. Looking at the implementation I expect this test to fail.</p>
+
+<pre><code class="ruby">def test_adding_different_rules
+  minibot = Minibot.new
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+  minibot.add &quot;wtf&quot;,  &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+  assert_equal 2, minibot.triggers.size
+  assert_includes minibot.triggers, &quot;zomg&quot;
+  assert_includes minibot.triggers, &quot;wtf&quot;
+end
+</code></pre>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 49489
+
+F....
+
+Finished in 0.020623s, 242.4478 runs/s, 436.4060 assertions/s.
+
+1) Failure:
+TestMinibot#test_adding_different_rules [test/test_minibot.rb:42]:
+Expected: 2
+Actual: 1
+
+5 runs, 9 assertions, 1 failures, 0 errors, 0 skips
+</code></pre>
+
+<p>The goal is to quickly get back to Green. But here is where I struggle. I want to take a few minites and think through the possibilities for how to implement this. My Engineering mindset starts to take over. But you need to push that away. Now is not the time for thinking about implementation. We are focusing on the Consumer API and using the rapid Red/Green feedback to help us design that API. There is no time for contemplating implementation now. So with a renewed focus let&rsquo;s figure out how to get the <code>test_adding_different_rules</code> test to pass as quickly as possible.</p>
+
+<p>We know we want to return only the triggers sent to Minibot. So let&rsquo;s store the triggers in an <code>@triggers</code> instance variable and return them in the <code>Minibot#triggers</code> method:</p>
+
+<pre><code class="ruby">class Minibot
+  def add trigger, response
     @triggers ||= []
     @triggers &lt;&lt; trigger
+  end
+
+  def match message
+    # TODO: Refactor. Response is coupled to test.
+    &quot;http://i.imgur.com/49ORL0o.gif&quot; if message == &quot;ZOMG! This is cool!&quot;
   end
 
   def triggers
@@ -722,257 +989,748 @@ Expected: 2
 end
 </code></pre>
 
-<pre><code class="shell">  1) Failure:
-TestMinibot#test_add_multiple_rules_on_same_trigger [minibot.rb:29]:
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 38859
+
+# Running:
+
+.F...
+
+Finished in 0.019181s, 260.6746 runs/s, 573.4842 assertions/s.
+
+1) Failure:
+TestMinibot#test_adding_multiple_rules [test/test_minibot.rb:33]:
 Expected: 1
-  Actual: 3
+Actual: 3
 
-2 runs, 3 assertions, 1 failures, 0 errors, 0 skips
+5 runs, 11 assertions, 1 failures, 0 errors, 0 skips
 </code></pre>
 
-<p>This makes the <code>test_add_rules</code> test pass, but now the <code>test_add_multiple_rules_on_same_trigger</code> test fails. We are still <em>Red</em>. We are failing because now we have duplicate triggers in the list. The quickest way to get the test passing and us back into <em>green</em> is to return a list of unique triggers.</p>
+<p>This change gets the <code>test_adding_different_rules</code> test passing, but now the <code>test_adding_multiple_rules</code> test is failing. It is expecting one trigger for all three rules added. Again, how can we get this test passing with the least amount of code? We could return only unique triggers.</p>
 
 <pre><code class="ruby">def triggers
   @triggers.uniq
 end
 </code></pre>
 
-<p>With that change we can run our tests again and see that they are all passing.</p>
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
 
-<pre><code class="shell">$ ruby minibot.rb
-Run options: --seed 8669
+Run options: --seed 4569
 
-# Running:
+.....
 
-..
+Finished in 0.000948s, 5274.2616 runs/s, 13713.0802 assertions/s.
 
-Finished in 0.001366s, 1464.1288 runs/s, 2196.1933 assertions/s.
-
-2 runs, 3 assertions, 0 failures, 0 errors, 0 skips
+5 runs, 13 assertions, 0 failures, 0 errors, 0 skips
 </code></pre>
 
-<p>We let the tests drive our code implementation and we are <em>Green</em> again. We are starting to describe a functional and usable API for Minibot, but I have low confidence in this code. If a client calls <code>triggers</code> before <code>add</code> then the <code>@triggers</code> list will be nil, causing an error. So let&rsquo;s add a failing test for that.</p>
+<p>With these tests we have specified the expected behavior for adding rules to Minibot. And we have discovered more behavior around exposing a list of triggers that have been added to Minibot.</p>
 
-<pre><code class="ruby">def test_triggers_is_empty
+<h2>Recap</h2>
+
+<p>How do you feel about the code you&rsquo;ve written? If you are anything like me then you probably don&rsquo;t feel very good about it. You&rsquo;ve possibly been shouting down the voice inside of your head complaining about duplicate code and design patterns. The truth is, you should feel like this. The Worst Programmer mindset takes all the shortcuts I&rsquo;ve spend my career trying to avoid. This style of programming makes me feels like I&rsquo;m trolling myself. (Or trolling my pair when pair programming, which is <em>so very fun</em>.)</p>
+
+<p>We have a few more features to design before we are done with Minibot&rsquo;s design.</p>
+<div id="ch4-minibot-responses" class="page_break"></div>
+<h1>Minibot: Responses</h1>
+
+<p>In chapter 3 we used TDD to move rapidly from Red to Green on the Minibot API for adding rules. Let&rsquo;s update our TODO by marking the &ldquo;Add a rule&rdquo; task complete. We can also add a couple more tasks for listing triggers and listing a trigger&rsquo;s responses. We already have coverage for listing triggers, so let&rsquo;s mark that task as complete as well.</p>
+
+<pre><code class="plain">Minibot
+=======
+
+A simple bot for storing and matching memes.
+
+- [x] Match a message string to a rule
+- [x] Add a rule
+- [ ] Remove a rule
+- [x] List triggers
+- [ ] List responses for a trigger
+</code></pre>
+
+<p><code>todo.md</code></p>
+
+<h2>List responses for a trigger</h2>
+
+<p>Now the question is how do we allow users to list the responses for a trigger? Given the design on Minibot so far, it probably makes sense to implement a <code>Minibot#responses</code> method that takes <code>trigger</code> as an argument.</p>
+
+<p>As we start to implement a test that uses this new method we notice a common data usage patten emerge in our tests. We can add the same three &ldquo;zomg&rdquo; rules and the one &ldquo;wtf&rdquo; rule as we have done in the other tests, and assert the responses behavior according to those rules.</p>
+
+<pre><code class="ruby">def test_responses
   minibot = Minibot.new
-  assert_equal 0, minibot.triggers.size
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+  minibot.add &quot;wtf&quot;,  &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+  responses = minibot.responses &quot;zomg&quot;
+  assert_equal 3, responses.size
+  assert_includes responses, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+  assert_includes responses, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+  assert_includes responses, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+  responses = minibot.responses &quot;wtf&quot;
+  assert_equal 1, responses.size
+  assert_includes responses, &quot;http://i.imgur.com/ULQl7.gif&quot;
 end
 </code></pre>
 
-<pre><code class="shell">  1) Error:
-TestMinibot#test_triggers_is_empty:
-NoMethodError: undefined method `uniq&#39; for nil:NilClass
-    minibot.rb:8:in `triggers&#39;
-    minibot.rb:34:in `test_triggers_is_empty&#39;
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
 
-3 runs, 3 assertions, 0 failures, 1 errors, 0 skips
+Run options: --seed 43364
+
+....E.
+
+Finished in 0.001100s, 5454.5455 runs/s, 11818.1818 assertions/s.
+
+1) Error:
+TestMinibot#test_responses:
+NoMethodError: undefined method `responses&#39; for #&lt;Minibot:0x007f85a3e194e0&gt;
+test/test_minibot.rb:54:in `test_responses&#39;
+
+6 runs, 13 assertions, 0 failures, 1 errors, 0 skips
 </code></pre>
 
-<p>Again, our goal is to be <em>Green</em> as quickly as possible. Part of me wants to write some code to initailize <code>@triggers</code> in the initializer, but My Worse Programmer mindset needs to win here. The fastest way to make this test pass is to add some duplicate code to the <code>triggers</code> method and instantiate the list there. The speed of writing one line of bad code wins out over writing three lines of better code.</p>
+<p>We are back in the error state. Let&rsquo;s add the missing <code>Minibot#responses</code> method and see if we can into the failure state. This should start to feel very familiar to you by now. Remember how foreign this felt before? Now it feels natural and comforting. The test output is telling us what we should do next.</p>
 
-<pre><code class="ruby">def triggers
-  @triggers ||= []
-  @triggers.uniq
+<pre><code class="ruby">def responses trigger
+  # TODO: Return responses
 end
 </code></pre>
 
-<pre><code class="shell">$ ruby minibot.rb
-Run options: --seed 11535
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 46312
 
 # Running:
 
-...
+.....E
 
-Finished in 0.001904s, 1575.6303 runs/s, 2100.8403 assertions/s.
+Finished in 0.000962s, 6237.0062 runs/s, 13513.5135 assertions/s.
 
-3 runs, 4 assertions, 0 failures, 0 errors, 0 skips
+1) Error:
+TestMinibot#test_responses:
+NoMethodError: undefined method `size&#39; for nil:NilClass
+test/test_minibot.rb:55:in `test_responses&#39;
+
+6 runs, 13 assertions, 0 failures, 1 errors, 0 skips
 </code></pre>
 
-<p>How do you feel about the code you&rsquo;ve written? If you are anything like me then you probably don&rsquo;t feel very good about it. You&rsquo;ve possibly been shouting down the voice inside of your head complaining about duplicate code and design patterns. The truth is, you should feel like this. The Worst Programmer mindset takes all the shortcuts I&rsquo;ve spend my career trying to avoid. This style of programming makes me feels like I&rsquo;m trolling myself. (Or trolling my pair programmer, which is <em>so very fun</em>.)</p>
+<p>Still in the error state. Let&rsquo;s return an object from <code>Minibot#responses</code> that has the method <code>size</code>. We can use an empty array like we have done for this error before.</p>
+
+<pre><code class="ruby">def responses trigger
+  # TODO: Return responses
+  []
+end
+</code></pre>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 14687
+
+# Running:
+
+...F..
+
+Finished in 0.027992s, 214.3470 runs/s, 500.1429 assertions/s.
+
+1) Failure:
+TestMinibot#test_responses [test/test_minibot.rb:55]:
+Expected: 3
+Actual: 0
+
+6 runs, 14 assertions, 1 failures, 0 errors, 0 skips
+</code></pre>
+
+<p>Back into the failure state. Now we can start working on the behavior. We need to return a list of 3 responses when given the trigger &ldquo;zomg&rdquo;, and a list of one response when given the trigger &ldquo;wtf&rdquo;. The correct way to do this is to collect the responses as they are added, but that would require changing code in both <code>Minibot#add</code> and <code>Minibot#responses</code>. My Worst Programmer mindset thinks there is a chance I could stumble on that implementation. It is probably faster to hardcode the data in the <code>responses</code> method based on the <code>trigger</code> argument.</p>
+
+<pre><code class="ruby">def responses trigger
+  if trigger == &quot;zomg&quot;
+    [ &quot;http://i.imgur.com/49ORL0o.gif&quot;,
+      &quot;http://i.imgur.com/KqCfQPR.gif&quot;,
+      &quot;http://i.imgur.com/fc5LmfO.gif&quot; ]
+  elsif trigger == &quot;wtf&quot;
+    [ &quot;http://i.imgur.com/ULQl7.gif&quot; ]
+  end
+end
+</code></pre>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 59221
+
+......
+
+Finished in 0.001000s, 6000.0000 runs/s, 23000.0000 assertions/s.
+
+6 runs, 23 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
+
+<p>From error to failure to passing. We can check the &ldquo;List responses for a trigger&rdquo; task as complete. The TDD Cycle we are following is working for us and we are moving faster and faster.</p>
+
+<h2>Random Responses</h2>
+
+<p>If we take a look at our tests, we have some good coverage for adding rules, listing triggers, and listing responses. But we don&rsquo;t have great coverage for matching responses. For instance, we don&rsquo;t specify how Minibot should behave when there are multiple responses on a matched trigger. We want Minibot to pick a random response, so let&rsquo;s write a test for that.</p>
+
+<p>Testing random behavior is not as easy as you might think. There are always anomalies to how random Ruby&rsquo;s <code>rand</code> can be. If we matched the &ldquo;zomg&rdquo; trigger 300 times, we would expect to match all three triggers ~100 times. But in reality the actual count can vary wildly. This is where another specialized assertion method, <code>assert_in_delta</code>,  comes in handy.</p>
+
+<p>The <code>assert_in_delta</code> method takes 3 arguments, the expected value, the actual value, and the delta that the values can vary while still passing the assertion. The default delta is 0.001, but we will need this to be larger, much larger.</p>
+
+<p>We will run the match 300 times, and expect that all three responses are returned 100 times. But we will set the delta to be 33. So if each responses total is between 67 and 133 the test will pass.</p>
+
+<pre><code class="ruby">def test_match_returns_random_response
+  minibot = Minibot.new
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+  minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+  sample = 300.times.map { minibot.match &quot;ZOMG! This is cool!&quot; }
+  responses = Hash[sample.group_by{|i| i }.map{|k,v| [k,v.size]}]
+
+  assert_in_delta 100, responses[&quot;http://i.imgur.com/49ORL0o.gif&quot;], 33
+  assert_in_delta 100, responses[&quot;http://i.imgur.com/KqCfQPR.gif&quot;], 33
+  assert_in_delta 100, responses[&quot;http://i.imgur.com/fc5LmfO.gif&quot;], 33
+end
+</code></pre>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 7881
+
+# Running:
+
+....F..
+
+Finished in 0.001241s, 5640.6124 runs/s, 19339.2425 assertions/s.
+
+1) Failure:
+TestMinibot#test_match_returns_random_response [test/test_minibot.rb:21]:
+Expected |100 - 300| (200) to be &lt;= 33.
+
+7 runs, 24 assertions, 1 failures, 0 errors, 0 skips
+</code></pre>
+
+<p>The <code>test_match_returns_random_response</code> test fails because we are only returning one response. We need to make <code>Minibot#match</code> return a random response instead.</p>
+
+<pre><code class="ruby">def match message
+  # TODO: Refactor. Response is coupled to test.
+  if message == &quot;ZOMG! This is cool!&quot;
+    responses(&quot;zomg&quot;).sample
+  end
+end
+</code></pre>
+
+<p>But now the <code>test_match</code> test fails most of the time:</p>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 34178
+
+....F..
+
+Finished in 0.027894s, 250.9500 runs/s, 932.1001 assertions/s.
+
+  1) Failure:
+TestMinibot#test_match [test/test_minibot.rb:9]:
+--- expected
++++ actual
+@@ -1 +1 @@
+-&quot;http://i.imgur.com/49ORL0o.gif&quot;
++&quot;http://i.imgur.com/KqCfQPR.gif&quot;
+
+7 runs, 26 assertions, 1 failures, 0 errors, 0 skips
+</code></pre>
+
+<p>Although occasionally, the test will pass:</p>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 33754
+
+.......
+
+Finished in 0.001362s, 5139.5007 runs/s, 19089.5742 assertions/s.
+
+7 runs, 26 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
+
+<p>The <code>test_match</code> test passes occasionally because that test is only registering one rule, and is expecting only that response. It is possible change the test to make it aware of all three responses, but violates the purpose of these tests. What quick change can we make to get this test passing again?</p>
+
+<p>We can make this test pass by capturing the responses in <code>Minibot#add</code> the same way we capture the triggers. This certainly seems like the eventual solution, but again involves changes in multiple methods. This seems to be too big of a change to make during a failing test. We want to get to Green as fast as possible, and we know that if there are more than one &ldquo;zomg&rdquo; in <code>@trigger</code> then we can use a random response. Otherwise we must use the hardcoded URL from before. So let&rsquo;s add a call to <code>@triggers.count(&quot;zomg&quot;)</code> in <code>Minibot#match</code> to determine if we return a random value or the hardcoded one.</p>
+
+<pre><code class="ruby">def match message
+  # TODO: Refactor. Response is coupled to test.
+  if message == &quot;ZOMG! This is cool!&quot;
+    # TODO: Remove @trigger count
+    if @triggers.count(&quot;zomg&quot;) &gt; 1
+      responses(&quot;zomg&quot;).sample
+    else
+      &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    end
+  end
+end
+</code></pre>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 57173
+
+# Running:
+
+.......
+
+Finished in 0.001329s, 5267.1181 runs/s, 19563.5816 assertions/s.
+
+7 runs, 26 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
+
+<p>This is the worst code added so far. Nobody should feel good about this code. That pride you feel for finding a quick and elegant way to get that test passing? Squash it. That is the Worst Programmer mindset. The only good news here is that all the tests are passing, and that we now have enough test coverage to give us confidence that we can change the implementation without breaking the API. And take heart in knowing that this code will not survive the final step of the TDD Cycle: Refactoring.</p>
+
+<h2>Recap</h2>
 
 <p>The Customer mindset wants to ensure that the API works in the &ldquo;Make it Red&rdquo; step, but the Worst Programmer wants to ensure that we spend as little time being <em>Red</em> as possible, taking any and every shortcut to get back to <em>Green</em>. The result is a very rapid feedback cycle on the design if the API that you are providing at the cost of your code quality.</p>
 
-<p>It should feel like you are trolling yourself. The Consumer mindset excersizes your creativity by finding the edges of what is acceptable behavior for your API, while the Worst Programmer mindset excercises your cretical thinking by takeing every short cut possible to keep the code passing the tests. The result is a suite of tests that describe the API. The focus is all on API design and test coverage. The tests enforce the design the API. Now we are ready to move on to the final phase of the TDD Cycle.</p>
-<div class="page_break"></div>
-<h1>TDD Cycle: Make it Right</h1>
+<p>It should feel like you are trolling yourself. The Consumer mindset exercises your creativity by finding the edges of what is acceptable behavior for your API, while the Worst Programmer mindset exercises your critical thinking by taking every short cut possible to keep the code passing the tests. The result is rapid feedback on the design of the API, and a suite of tests that check the API implementation for correctness. The focus is all on API design and test coverage. The tests enforce the design the API. Now we are ready to move on to the final phase of the TDD Cycle.</p>
+<div id="ch5-tdd-refactor" class="page_break"></div>
+<h1>TDD Cycle: Refactor</h1>
 
-<p>???</p>
+<p>So far we have been racing between Red and Green, driving our code from error to failure to passing and back again. We&rsquo;ve been focusing on the API we are exposing to the consumers of our code, and intentionally not focusing on the quality of that code. We&rsquo;ve been supressing the desire to make the code right, but that is finally about to change.</p>
 
 <h2>Step 3: Make it Right</h2>
 
-<p>Now that the Customer and Worst Programmer mindsets have gone rounds we have a suite of tests that demonstrate the API and show how it is intended to work. Now we can focus on changing the code so that it is correct. This step is also known as the <em>Refactoring</em> step, because we want to be able to make changes to how our code is implemented without changing the API we have defined. Let&rsquo;s switch to the Engineer mindset and start thinking about what improvements we should make to the code. Luckilly, we have some good test coverage so that we will know if we change the expected behavior the next time we run the tests.</p>
+<p>Now that the Customer and Worst Programmer mindsets have gone rounds we have a suite of tests that demonstrate the API and show how it is intended to work. Now we can focus on changing the code so that it is correct. This step is also known as the <em>Refactoring</em> step, because we want to be able to make changes to how our code is implemented without changing the API we have defined. Let&rsquo;s switch from the Consumer and Worst Programmer mindsets to the Engineer mindset and start thinking about what improvements we should make to the code. Because of our hard work so far we have some good test coverage so that we will know if we change the expected behavior the next time we run the tests.</p>
 
-<p>Right now HelloWorld#hello has five conditional branches. My Engineer mindset doesn&rsquo;t like that. How can we change the implementation without changing the API? We could use a different default value and use string interpolation.</p>
+<p>Let&rsquo;s take a look at the state of our code up to this point:</p>
+
+<pre><code class="ruby">class Minibot
+  def add trigger, response
+    @triggers ||= []
+    @triggers &lt;&lt; trigger
+  end
+
+  def match message
+    # TODO: Refactor. Response is coupled to test.
+    if message == &quot;ZOMG! This is cool!&quot;
+      # TODO: Remove @trigger count
+      if @triggers.count(&quot;zomg&quot;) &gt; 1
+        responses(&quot;zomg&quot;).sample
+      else
+        &quot;http://i.imgur.com/49ORL0o.gif&quot;
+      end
+    end
+  end
+
+  def triggers
+    @triggers.uniq
+  end
+
+  def responses trigger
+    if trigger == &quot;zomg&quot;
+      [ &quot;http://i.imgur.com/49ORL0o.gif&quot;,
+        &quot;http://i.imgur.com/KqCfQPR.gif&quot;,
+        &quot;http://i.imgur.com/fc5LmfO.gif&quot; ]
+    elsif trigger == &quot;wtf&quot;
+      [ &quot;http://i.imgur.com/ULQl7.gif&quot; ]
+    end
+  end
+end
+</code></pre>
+
+<p><code>lib/minibot.rb</code></p>
+
+<p>As I look at the state of our code, the first thing I want to change is to remove the <code>@triggers</code> list and the hardcoded responses. My Engineer mindset doesn&rsquo;t like that. How can we change the implementation without changing the API? We should collect the rules as they are added. I think a Hash with a default Array value would be perfect for this. It will return an empty array if the key does not exist in the array, and you can add values to a key.</p>
+
+<pre><code class="ruby">rules = Hash.new { |hash, key| hash[key] = [] }
+
+rules[&quot;zomg&quot;] #=&gt; []
+rules[&quot;zomg&quot;] &lt;&lt; &quot;response 1&quot;
+rules[&quot;zomg&quot;] &lt;&lt; &quot;response 2&quot;
+rules[&quot;zomg&quot;] #=&gt; [&quot;response 1&quot;, &quot;response 2&quot;]
+
+rules[&quot;wtf&quot;] #=&gt; []
+rules[&quot;wtf&quot;] &lt;&lt; &quot;response A&quot;
+rules[&quot;wtf&quot;] #=&gt; [&quot;response A&quot;]
+</code></pre>
+
+<p>Because the tests are passing, and we have some pretty good coverage of the API we are providing, I&rsquo;m comfortable making some significant changes to <code>lib/minibot.rb</code> to use this data structure. As long as the tests continue to pass. I think we should instantiate this hash in Minibot&rsquo;s <code>initialize</code> method, and use it to store triggers and responses.</p>
 
 <pre><code class="ruby">class Minibot
   def initialize
     @rules = Hash.new { |hash, key| hash[key] = [] }
   end
 
-  def add(trigger, response)
+  def add trigger, response
     @rules[trigger] &lt;&lt; response
+  end
+
+  def match message
+    # TODO: Refactor. Response is coupled to test.
+    if message == &quot;ZOMG! This is cool!&quot;
+      @rules[&quot;zomg&quot;].sample
+    end
   end
 
   def triggers
     @rules.keys
   end
+
+  def responses trigger
+    @rules[trigger]
+  end
 end
 </code></pre>
 
-<p><code>test/test_minibot.rb</code></p>
+<p><code>lib/minibot.rb</code></p>
 
 <p>Much better! Does it continue to pass?</p>
 
-<pre><code class="shell">$ ruby minibot.rb
-Run options: --seed 64926
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 34829
 
 # Running:
 
-...
+.......
 
-Finished in 0.001264s, 2373.4177 runs/s, 3164.5570 assertions/s.
+Finished in 0.001313s, 5331.3024 runs/s, 19801.9802 assertions/s.
 
-3 runs, 4 assertions, 0 failures, 0 errors, 0 skips
+7 runs, 26 assertions, 0 failures, 0 errors, 0 skips
 </code></pre>
 
 <p><code>terminal</code></p>
 
-<p>Yep, it passes and all is right with the world. If I had ideas of design patterns to use I would implement them now. But the key in this phase is to only change the code, not the tests. If you change the tests in this phase you are redesigning and not refactoring.</p>
+<p>Yep, it passes and my confidence is growing. I feel much better about the quality of the code. It&rsquo;s not perfect, as we are still coupled to the test data for matching a rule. We really should make that better as well. I&rsquo;m surprised we got this far by faking the matching of a message to a rule.</p>
 
-<p><strong>NOTE</strong>: Tests need to be written and rewritten. Far too often I see tests that were written once and never revisited again. If you to the TDD Cycle right, you will be revisiting and updateing your tests <em>more</em> than you change your code.</p>
+<p>I think the easiest way to match a trigger to a message is to use the <code>String#include?</code> method. The only wrinkle with this is that it is case sensitive. The API we are exposing must matching triggers to messages in a case insensitive way. For now I would downcase both the message and the trigger on the check.</p>
 
-<p>I said that the Refactoring step was to make changes to the code, and that&rsquo;s true. But once we have all the code right its a good idea to revisit the design of the tests. We have a fair bit of duplication in our tests, like creating a Minibot object for each test method. We can extract that out to a <code>setup</code> method.</p>
+<pre><code class="ruby">trigger = &quot;zomg&quot;
+message = &quot;ZOMG! This is cool!&quot;
 
-<pre><code class="ruby"> class TestMinibot &lt; Minitest::Test
-  def setup
-    @minibot = Minibot.new
+message.include? trigger #=&gt; false
+message.downcase.include? trigger.downcase #=&gt; true
+</code></pre>
+
+<p>To match the message to the rules, let&rsquo;s iterate through the rules hash and if the trigger matches the message, return a random response. Here is what that could look like:</p>
+
+<pre><code class="ruby">def match message
+  @rules.each do |trigger, responses|
+    if message.downcase.include? trigger.downcase
+      return responses.sample
+    end
   end
-
-  def test_add_rules
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    assert_equal 1, @minibot.triggers.size
-    @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
-    assert_equal 2, @minibot.triggers.size
-  end
-
-  def test_add_multiple_rules_on_same_trigger
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-    assert_equal 1, @minibot.triggers.size
-  end
-
-  def test_triggers_is_empty
-    assert_equal 0, @minibot.triggers.size
-  end
+  nil
 end
 </code></pre>
 
-<p>The other thing that stands out to me is that we only checking the size of the triggers, and not the contents. We can probably add some more test coverage around the intended behavior of the triggers. I think it would be sufficent to state that the triggers list includes the trigger that was added.</p>
+<p>I am starting to love this code. Its clear and obvious, and I&rsquo;m very confident in it right now. Does it still pass?</p>
 
-<pre><code class="ruby">class TestMinibot &lt; Minitest::Test
-  def setup
-    @minibot = Minibot.new
-  end
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
 
-  def test_add_rule
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-
-    assert_equal 1, @minibot.triggers.size
-    assert_includes @minibot.triggers, &quot;zomg&quot;
-  end
-
-  def test_add_rules
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
-
-    assert_equal 2, @minibot.triggers.size
-    assert_includes @minibot.triggers, &quot;zomg&quot;
-    assert_includes @minibot.triggers, &quot;wtf&quot;
-  end
-
-  def test_add_multiple_rules_on_same_trigger
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-
-    assert_equal 1, @minibot.triggers.size
-    assert_includes @minibot.triggers, &quot;zomg&quot;
-  end
-
-  def test_triggers_is_empty
-    assert_equal 0, @minibot.triggers.size
-  end
-end
-</code></pre>
-
-<p>Much better! While there is some data duplication across some of the tests, I&rsquo;m happy with the behavior they describe. And best of all the tests still pass cleanly:</p>
-
-<pre><code class="shell">$ ruby minibot.rb
-Run options: --seed 42383
+Run options: --seed 9405
 
 # Running:
 
-....
+.......
 
-Finished in 0.000963s, 4153.6864 runs/s, 12461.0592 assertions/s.
+Finished in 0.001610s, 4347.8261 runs/s, 16149.0683 assertions/s.
 
-4 runs, 12 assertions, 0 failures, 0 errors, 0 skips
+7 runs, 26 assertions, 0 failures, 0 errors, 0 skips
 </code></pre>
 
-<p><code>terminal</code></p>
+<p>If I had additional ideas for design patterns or other implementation details I would implement them now. But the key in this phase is to only change the code, not the tests. If you change the tests in this phase you are redesigning and not refactoring.</p>
 
-<p>Again, we only let our Engineering mindset consider the test design after all code under test is properly refactored, while all the tests continue to pass cleanly. And by delaying our Engineering mindset until the <em>Refactoring</em> step we have given our Consumer mindset the ability to design the optimum API.</p>
-
-<h2>Conclusion</h2>
+<h2>Recap</h2>
 
 <p>You&rsquo;ve now written tests to go from <strong>Error</strong> to <strong>Failure</strong> to <strong>Passing</strong> through TDD&rsquo;s <strong>Red</strong>, <strong>Green, **Refactor</strong> steps. The dirty little secret is that you will to <em>Red</em> <em>Green</em> <em>Red</em> <em>Green</em> <em>Red</em> <em>Green</em> and then <em>Refactor</em>. In this process the tests provide sufficent coverage for the API you design for your code&rsquo;s consumers. You then use the feedback your tests provide to make changes. The end result is you will have the confidence to make improvements to your software because you enjoy the assurance that you aren&rsquo;t breaking behavior.</p>
 
-<p>The TDD Cycle also promotes looking at your code from difference mindsets. You look at your code from multiple perspectives, from the Consumer to the Engineer, from the Designer to the Maintainer, allowing you to entertain both your creativity and your focus/completeness/something (!!). The more you practice TDD, the better at these mindsets you get, and the better code you will write.</p>
-<div class="page_break"></div>
-<h1>Chapter 5: Minitest Spec DSL</h1>
+<p>The TDD Cycle also promotes looking at your code from difference mindsets. You look at your code from multiple perspectives, from the Consumer to the Engineer, from the Designer to the Maintainer, allowing you to entertain both your creativity and your focus/completeness/something (<strong>!!</strong>). The more you practice TDD, the better at these mindsets you get, and the better code you will write.</p>
+<div id="ch6-tdd-refactor-redux" class="page_break"></div>
+<h1>TDD Cycle: Refactor Redux</h1>
+
+<p>We have iterated on our tests and driven the design of our code. We have refactored our code while keeping the tests passing, and without altering the tests. Our code is cleaner and better for this, but what about our tests?</p>
+
+<p>Far too often the criticisms I hear about tests are that the tests themselves are too difficult or time-consuming to maintain. Your tests are part of your application&rsquo;s codebase. They have a cost the same as the rest of your code. Bad tests can cost more than the benefit they provide.</p>
+
+<p>I think I know why this happens. It is very easy to think of your tests as write-only code. Code that is not revisited after it is first created. But nothing can be further from the truth. Your tests need as much care and thought put into them as the rest of your code. This is why I like to take a moment after refactoring my code using passing tests to refactor my tests using well designed code.</p>
+
+<h2>Step 3: Make it Right Again</h2>
+
+<p>Now that we are happy with the design and implementation of Minibot, we can take a look at the tests. Here is the state of our tests up to this point:</p>
+
+<pre><code class="ruby">require &quot;minitest/autorun&quot;
+require &quot;minibot&quot;
+
+class TestMinibot &lt; Minitest::Test
+  def test_match
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    response = minibot.match &quot;ZOMG! This is cool!&quot;
+    assert_equal &quot;http://i.imgur.com/49ORL0o.gif&quot;, response
+  end
+
+  def test_match_returns_random_response
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+    sample = 300.times.map { minibot.match &quot;ZOMG! This is cool!&quot; }
+    responses = Hash[sample.group_by{|i| i }.map{|k,v| [k,v.size]}]
+
+    assert_in_delta 100, responses[&quot;http://i.imgur.com/49ORL0o.gif&quot;], 33
+    assert_in_delta 100, responses[&quot;http://i.imgur.com/KqCfQPR.gif&quot;], 33
+    assert_in_delta 100, responses[&quot;http://i.imgur.com/fc5LmfO.gif&quot;], 33
+  end
+
+  def test_no_match
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    response = minibot.match &quot;ZOINKS! This doesn&#39;t match!&quot;
+    assert_nil response
+  end
+
+  def test_adding_one_rule
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+
+    assert_equal 1, minibot.triggers.size
+    assert_includes minibot.triggers, &quot;zomg&quot;
+  end
+
+  def test_adding_multiple_rules
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+    assert_equal 1, minibot.triggers.size
+    assert_includes minibot.triggers, &quot;zomg&quot;
+  end
+
+  def test_adding_different_rules
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    minibot.add &quot;wtf&quot;,  &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+    assert_equal 2, minibot.triggers.size
+    assert_includes minibot.triggers, &quot;zomg&quot;
+    assert_includes minibot.triggers, &quot;wtf&quot;
+  end
+
+  def test_responses
+    minibot = Minibot.new
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+    minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+    minibot.add &quot;wtf&quot;,  &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+    responses = minibot.responses &quot;zomg&quot;
+    assert_equal 3, responses.size
+    assert_includes responses, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+    assert_includes responses, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
+    assert_includes responses, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
+
+    responses = minibot.responses &quot;wtf&quot;
+    assert_equal 1, responses.size
+    assert_includes responses, &quot;http://i.imgur.com/ULQl7.gif&quot;
+  end
+end
+</code></pre>
+
+<p><code>test/test_minibot.rb</code></p>
+
+<p>There is a good amount of duplication in these tests. Enough that I want to spend a little time revising the design of the tests so that the next person that works in this code has an easier time understanding the expectations. Especially if the next person is a future me. If you to the TDD Cycle right, you will be revisiting and updating your tests <em>more</em> than you change your code.</p>
+
+<h3>Implement <code>setup</code> method</h3>
+
+<p>The majority of the duplication I see has to do with test setup. We are adding the same rules in nearly every test. I wonder if we could find a common set of rules for all our tests and set it in the <code>setup</code> method. How about creating a Minibot instance with the 3 &ldquo;zomg&rdquo; rules and the one &ldquo;wtf&rdquo; rule?</p>
+
+<pre><code class="ruby">def setup
+  @minibot        = Minibot.new
+  @zomg_responses = [ &quot;http://i.imgur.com/49ORL0o.gif&quot;,
+                      &quot;http://i.imgur.com/KqCfQPR.gif&quot;,
+                      &quot;http://i.imgur.com/fc5LmfO.gif&quot; ]
+  @wtf_response   =   &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+  @minibot.add &quot;zomg&quot;, @zomg_responses[0]
+  @minibot.add &quot;zomg&quot;, @zomg_responses[1]
+  @minibot.add &quot;zomg&quot;, @zomg_responses[2]
+  @minibot.add &quot;wtf&quot;,  @wtf_response
+end
+</code></pre>
+
+<h3>Improved <code>match</code> tests</h3>
+
+<p>Now let&rsquo;s turn our attention to the <code>Minibot#match</code> tests. We have a match, a no match, and a random response test. We can change the match test to look for any response in the <code>@zomg_responses</code> array, and add another test to match the &ldquo;wtf&rdquo; rule. Here is what those tests can look like using the shared setup.</p>
+
+<pre><code class="ruby">def test_match_zomg
+  response = @minibot.match &quot;ZOMG! This is cool!&quot;
+  assert_includes @zomg_responses, response
+end
+
+def test_match_wtf
+  response = @minibot.match &quot;Wait, this works? WTF?&quot;
+  assert_equal @wtf_response, response
+end
+
+def test_match_returns_random_response
+  sample = 300.times.map { @minibot.match &quot;ZOMG! This is cool!&quot; }
+  responses = Hash[sample.group_by{|i| i }.map{|k,v| [k,v.size]}]
+
+  assert_in_delta 100, responses[@zomg_responses[0]], 25
+  assert_in_delta 100, responses[@zomg_responses[1]], 25
+  assert_in_delta 100, responses[@zomg_responses[2]], 25
+end
+
+def test_no_match
+  response = @minibot.match &quot;ZOINKS! This doesn&#39;t match!&quot;
+  assert_nil response
+end
+</code></pre>
+
+<p>Much better! The tests are clearer and to the point. Most don&rsquo;t have <em>Arrange</em> steps, and provide the <em>Act</em> and <em>Assert</em> steps only. While there is some data duplication in the tests, notably the message string sent to <code>Minibot#match</code>, I&rsquo;m happy with the behavior they describe. And best of all the tests still pass cleanly:</p>
+
+<pre><code class="shell">$ ruby -Ilib:test test/test_minibot.rb
+
+Run options: --seed 47256
+
+# Running:
+
+........
+
+Finished in 0.001475s, 5423.7288 runs/s, 18983.0508 assertions/s.
+
+8 runs, 28 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
+
+<h3>Improved <code>add</code> tests</h3>
+
+<p>With the shared Minibot instance, the <code>add</code> tests can be consolidated. We can also add some additional coverage, asserting that the triggers are empty when no rules have been added.</p>
+
+<pre><code class="ruby">def test_adding_rules
+  assert_equal 2, @minibot.triggers.size
+  assert_includes @minibot.triggers, &quot;zomg&quot;
+  assert_includes @minibot.triggers, &quot;wtf&quot;
+end
+
+def test_adding_no_rules
+  @minibot = Minibot.new
+  assert_equal 0, @minibot.triggers.size
+  refute_includes @minibot.triggers, &quot;zomg&quot;
+  refute_includes @minibot.triggers, &quot;wtf&quot;
+end
+</code></pre>
+
+<h3>Improved <code>responses</code> tests</h3>
+
+<p>The <code>responses</code> tests can be simplified as well. We can simply assert that the data entered in <code>setup</code> is the same data that is available from the Minibot object. We can add additional coverage like we did for <code>add</code>, asserting that the responses for an unadded trigger returns an empty list (and doesn&rsquo;t raise an exception).</p>
+
+<pre><code class="ruby">def test_zomg_responses
+  responses = @minibot.responses &quot;zomg&quot;
+  assert_equal 3, responses.size
+  assert_includes responses, @zomg_responses[0]
+  assert_includes responses, @zomg_responses[1]
+  assert_includes responses, @zomg_responses[2]
+end
+
+def test_wtf_responses
+  responses = @minibot.responses &quot;wtf&quot;
+  assert_equal 1, responses.size
+  assert_includes responses, @wtf_response
+end
+
+def test_no_responses
+  responses = @minibot.responses &quot;zoinks&quot;
+  assert_equal 0, responses.size
+end
+</code></pre>
+
+<p>Again, we should only revisit the test design after all code under test is properly refactored while passing all the tests cleanly.</p>
+
+<h2>Recap</h2>
+
+<p>The <em>Refactor</em> step provides an opportunity to revisit the design of all our code, both the application code and the tests we use to drive it&rsquo;s design. Don&rsquo;t be afraid of making changes to your tests. Take care of your tests and they will take care of you.</p>
+<div id="ch7-spec-dsl" class="page_break"></div>
+<h1>Chapter 7: Minitest Spec DSL</h1>
 
 <p>In chapter 1 we looked at the Minitest API and using <code>Minitest::Test</code> to create <em>test classes</em> and <em>test methods</em> using <em>assertion methods</em> and <em>support methods</em>. This style of testing may seem primitive to some who prefer using a high level spec DSL instead of an API. Minitest also provides a spec DSL, but to understand the spec DSL you must first understand the Minitest API. So I encourage you to read chapter 1 if you skipped it in your excitement.</p>
 
 <p>Using a spec DSL is also very popular with practitioners of BDD, a variation of TDD. In BDD the spec DSL is used to create tests that can read as a software specification. Minitest&rsquo;s spec DSL is built on top of Minitest&rsquo;s API and provides this abstraction with minimal DIFFERENCE(?).</p>
 
-<p>To demonstrate the spec DSL, let&rsquo;s start with the <code>test_hello_world.rb</code> file created from chapters 1 and 2. We will convert this file from using the Minitest API to the spec DSL. Here are the contents of the file we are starting with:</p>
+<p>To demonstrate the spec DSL, let&rsquo;s start with the recently refactored <code>test/test_minibot.rb</code> file. We will convert this file from using the Minitest API to the spec DSL. Here are the contents of the file we are starting with:</p>
 
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
+<pre><code class="ruby">require &quot;minitest/autorun&quot;
+require &quot;minibot&quot;
 
 class TestMinibot &lt; Minitest::Test
   def setup
-    @minibot = Minibot.new
+    @minibot        = Minibot.new
+    @zomg_responses = [ &quot;http://i.imgur.com/49ORL0o.gif&quot;,
+                        &quot;http://i.imgur.com/KqCfQPR.gif&quot;,
+                        &quot;http://i.imgur.com/fc5LmfO.gif&quot; ]
+    @wtf_response   =   &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+    @minibot.add &quot;zomg&quot;, @zomg_responses[0]
+    @minibot.add &quot;zomg&quot;, @zomg_responses[1]
+    @minibot.add &quot;zomg&quot;, @zomg_responses[2]
+    @minibot.add &quot;wtf&quot;,  @wtf_response
   end
 
-  def test_add_rule
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-
-    assert_equal 1, @minibot.triggers.size
-    assert_includes @minibot.triggers, &quot;zomg&quot;
+  def test_match_zomg
+    response = @minibot.match &quot;ZOMG! This is cool!&quot;
+    assert_includes @zomg_responses, response
   end
 
-  def test_add_rules
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+  def test_match_wtf
+    response = @minibot.match &quot;Wait, this works? WTF?&quot;
+    assert_equal @wtf_response, response
+  end
 
+  def test_match_returns_random_response
+    sample = 300.times.map { @minibot.match &quot;ZOMG! This is cool!&quot; }
+    responses = Hash[sample.group_by{|i| i }.map{|k,v| [k,v.size]}]
+
+    assert_in_delta 100, responses[@zomg_responses[0]], 33
+    assert_in_delta 100, responses[@zomg_responses[1]], 33
+    assert_in_delta 100, responses[@zomg_responses[2]], 33
+  end
+
+  def test_no_match
+    response = @minibot.match &quot;ZOINKS! This doesn&#39;t match!&quot;
+    assert_nil response
+  end
+
+  def test_adding_rules
     assert_equal 2, @minibot.triggers.size
     assert_includes @minibot.triggers, &quot;zomg&quot;
     assert_includes @minibot.triggers, &quot;wtf&quot;
   end
 
-  def test_add_multiple_rules_on_same_trigger
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-
-    assert_equal 1, @minibot.triggers.size
-    assert_includes @minibot.triggers, &quot;zomg&quot;
+  def test_adding_no_rules
+    @minibot = Minibot.new
+    assert_equal 0, @minibot.triggers.size
+    refute_includes @minibot.triggers, &quot;zomg&quot;
+    refute_includes @minibot.triggers, &quot;wtf&quot;
   end
 
-  def test_triggers_is_empty
-    assert_equal 0, @minibot.triggers.size
+  def test_zomg_responses
+    responses = @minibot.responses &quot;zomg&quot;
+    assert_equal 3, responses.size
+    assert_includes responses, @zomg_responses[0]
+    assert_includes responses, @zomg_responses[1]
+    assert_includes responses, @zomg_responses[2]
+  end
+
+  def test_wtf_responses
+    responses = @minibot.responses &quot;wtf&quot;
+    assert_equal 1, responses.size
+    assert_includes responses, @wtf_response
+  end
+
+  def test_no_responses
+    responses = @minibot.responses &quot;zoinks&quot;
+    assert_equal 0, responses.size
   end
 end
 </code></pre>
@@ -981,7 +1739,7 @@ end
 
 <h2>The <code>describe</code> Block</h2>
 
-<p>The spec DSL is comprised of a series of nested blocks. Instead of creating a <em>test class</em> explicitly, we can use a <strong><code>describe</code> block</strong> to do this for us. We can replace the line <code>class TestHelloWorld &lt; Minitest::Test</code> with a describe:</p>
+<p>The spec DSL is comprised of a series of nested blocks. Instead of creating a <em>test class</em> explicitly, we can use a <strong><code>describe</code> block</strong> to do this for us. We can replace the class definition with a describe:</p>
 
 <h3>Before</h3>
 
@@ -995,45 +1753,85 @@ end
 
 <p>The <code>describe</code> block can be passed the constant of the class you are testing, or a string, or any object that can be converted to a string, like a symbol. But for the most part a class constant it preferred when possible.</p>
 
-<p>We can use nested <code>describe</code> blocks to narrow the focus of our tests. This focus can be about a specific method under test, or it can be a scenario such as collaborator being valid or invalid, or permissions being present or not present. In our case, most of our <em>test methods</em> are specific to the <code>add</code> method, so let&rsquo;s create a nested <code>describe</code> block that is focused on that method:</p>
+<p>We can use nested <code>describe</code> blocks to narrow the focus of our tests. This focus can be about a specific method under test, or it can be a scenario such as collaborator being valid or invalid, or permissions being present or not present. For instance, there are several <em>test methods</em> specific to the <code>match</code>, <code>add</code>, and <code>responses</code> methods. Therefire we can create nested <code>describe</code> blocks that contain those tests:</p>
 
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
+<pre><code class="ruby">require &quot;minitest/autorun&quot;
+require &quot;minibot&quot;
 
 describe Minibot do
   def setup
-    @minibot = Minibot.new
+    @minibot        = Minibot.new
+    @zomg_responses = [ &quot;http://i.imgur.com/49ORL0o.gif&quot;,
+                        &quot;http://i.imgur.com/KqCfQPR.gif&quot;,
+                        &quot;http://i.imgur.com/fc5LmfO.gif&quot; ]
+    @wtf_response   =   &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+    @minibot.add &quot;zomg&quot;, @zomg_responses[0]
+    @minibot.add &quot;zomg&quot;, @zomg_responses[1]
+    @minibot.add &quot;zomg&quot;, @zomg_responses[2]
+    @minibot.add &quot;wtf&quot;,  @wtf_response
+  end
+
+  describe :match do
+    def test_match_zomg
+      response = @minibot.match &quot;ZOMG! This is cool!&quot;
+      assert_includes @zomg_responses, response
+    end
+
+    def test_match_wtf
+      response = @minibot.match &quot;Wait, this works? WTF?&quot;
+      assert_equal @wtf_response, response
+    end
+
+    def test_match_returns_random_response
+      sample = 300.times.map { @minibot.match &quot;ZOMG! This is cool!&quot; }
+      responses = Hash[sample.group_by{|i| i }.map{|k,v| [k,v.size]}]
+
+      assert_in_delta 100, responses[@zomg_responses[0]], 33
+      assert_in_delta 100, responses[@zomg_responses[1]], 33
+      assert_in_delta 100, responses[@zomg_responses[2]], 33
+    end
+
+    def test_no_match
+      response = @minibot.match &quot;ZOINKS! This doesn&#39;t match!&quot;
+      assert_nil response
+    end
   end
 
   describe :add do
-    def test_add_rule
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-
-      assert_equal 1, @minibot.triggers.size
-      assert_includes @minibot.triggers, &quot;zomg&quot;
-    end
-
-    def test_add_rules
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
-
+    def test_adding_rules
       assert_equal 2, @minibot.triggers.size
       assert_includes @minibot.triggers, &quot;zomg&quot;
       assert_includes @minibot.triggers, &quot;wtf&quot;
     end
 
-    def test_add_multiple_rules_on_same_trigger
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-
-      assert_equal 1, @minibot.triggers.size
-      assert_includes @minibot.triggers, &quot;zomg&quot;
+    def test_adding_no_rules
+      @minibot = Minibot.new
+      assert_equal 0, @minibot.triggers.size
+      refute_includes @minibot.triggers, &quot;zomg&quot;
+      refute_includes @minibot.triggers, &quot;wtf&quot;
     end
   end
 
-  def test_triggers_is_empty
-    assert_equal 0, @minibot.triggers.size
+  describe :responses do
+    def test_zomg_responses
+      responses = @minibot.responses &quot;zomg&quot;
+      assert_equal 3, responses.size
+      assert_includes responses, @zomg_responses[0]
+      assert_includes responses, @zomg_responses[1]
+      assert_includes responses, @zomg_responses[2]
+    end
+
+    def test_wtf_responses
+      responses = @minibot.responses &quot;wtf&quot;
+      assert_equal 1, responses.size
+      assert_includes responses, @wtf_response
+    end
+
+    def test_no_responses
+      responses = @minibot.responses &quot;zoinks&quot;
+      assert_equal 0, responses.size
+    end
   end
 end
 </code></pre>
@@ -1046,74 +1844,73 @@ end
 
 <h2>The <code>it</code> Block</h2>
 
-<p>You can create <em>test methods</em> using the spec DSL, just as you can create <em>test classes</em>. <em>Test methods</em> are created using the <strong><code>it</code> block</strong>, which must be nested inside of a <code>describe</code> block, the same way a <em>test method</em> must be located inside a <em>test class</em>. The <code>it</code> block takes a string that can provide more descriptive description (?!?) than the name of the <em>test method</em>:</p>
+<p>You can create <em>test methods</em> using the spec DSL, just as you can create <em>test classes</em>. <em>Test methods</em> are created using the <strong><code>it</code> block</strong>, which must be nested inside of a <code>describe</code> block, the same way a <em>test method</em> must be located inside a <em>test class</em>. The <code>it</code> block takes a string that can provide more expressive description than the name of the <em>test method</em>. In our test:</p>
+
+<pre><code class="ruby">def test_match_zomg
+</code></pre>
+
+<p>Can be written with an <code>it</code> block:</p>
+
+<pre><code class="ruby">it &quot;matches the trigger &#39;zomg&#39;&quot; do
+</code></pre>
 
 <h3>Before</h3>
 
-<pre><code class="ruby">def test_add_rule
-</code></pre>
-
-<pre><code class="ruby">def test_add_rules
-</code></pre>
-
-<pre><code class="ruby">def test_add_multiple_rules_on_same_trigger
-</code></pre>
-
-<h3>After</h3>
-
-<pre><code class="ruby">it &quot;adds a single rule&quot; do
-</code></pre>
-
-<pre><code class="ruby">it &quot;adds multiple rules with different triggers&quot; do
-</code></pre>
-
-<pre><code class="ruby">it &quot;adds several rules all on the same trigger&quot; do
-</code></pre>
-
-<p>Our revised test is now:</p>
-
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
-
-describe Minibot do
-  def setup
-    @minibot = Minibot.new
+<pre><code class="ruby">describe :match do
+  def test_match_zomg
+    response = @minibot.match &quot;ZOMG! This is cool!&quot;
+    assert_includes @zomg_responses, response
   end
 
-  describe :add do
-    it &quot;adds a single rule&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-
-      assert_equal 1, @minibot.triggers.size
-      assert_includes @minibot.triggers, &quot;zomg&quot;
-    end
-
-    it &quot;adds multiple rules with different triggers&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
-
-      assert_equal 2, @minibot.triggers.size
-      assert_includes @minibot.triggers, &quot;zomg&quot;
-      assert_includes @minibot.triggers, &quot;wtf&quot;
-    end
-
-    it &quot;adds several rules all on the same trigger&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-
-      assert_equal 1, @minibot.triggers.size
-      assert_includes @minibot.triggers, &quot;zomg&quot;
-    end
+  def test_match_wtf
+    response = @minibot.match &quot;Wait, this works? WTF?&quot;
+    assert_equal @wtf_response, response
   end
 
-  it &quot;has an empty trigger list by default&quot; do
-    assert_equal 0, @minibot.triggers.size
+  def test_match_returns_random_response
+    sample = 300.times.map { @minibot.match &quot;ZOMG! This is cool!&quot; }
+    responses = Hash[sample.group_by{|i| i }.map{|k,v| [k,v.size]}]
+
+    assert_in_delta 100, responses[@zomg_responses[0]], 33
+    assert_in_delta 100, responses[@zomg_responses[1]], 33
+    assert_in_delta 100, responses[@zomg_responses[2]], 33
+  end
+
+  def test_no_match
+    response = @minibot.match &quot;ZOINKS! This doesn&#39;t match!&quot;
+    assert_nil response
   end
 end
 </code></pre>
 
-<p><code>test/test_minibot.rb</code></p>
+<h3>After</h3>
+
+<pre><code class="ruby">describe :match do
+  it &quot;matches the trigger &#39;zomg&#39;&quot; do
+    response = @minibot.match &quot;ZOMG! This is cool!&quot;
+    assert_includes @zomg_responses, response
+  end
+
+  it &quot;matches the trigger &#39;wtf&#39;&quot; do
+    response = @minibot.match &quot;Wait, this works? WTF?&quot;
+    assert_equal @wtf_response, response
+  end
+
+  it &quot;returns a random response&quot; do
+    sample = 300.times.map { @minibot.match &quot;ZOMG! This is cool!&quot; }
+    responses = Hash[sample.group_by{|i| i }.map{|k,v| [k,v.size]}]
+
+    assert_in_delta 100, responses[@zomg_responses[0]], 33
+    assert_in_delta 100, responses[@zomg_responses[1]], 33
+    assert_in_delta 100, responses[@zomg_responses[2]], 33
+  end
+
+  it &quot;doesn&#39;t match an unknown trigger&quot; do
+    response = @minibot.match &quot;ZOINKS! This doesn&#39;t match!&quot;
+    assert_nil response
+  end
+end
+</code></pre>
 
 <p>Under the covers Minitest is creating a <em>test method</em> that uses the string provided to the <code>it</code> block. So the contents of the <code>it &quot;adds a single rule&quot;</code> block is used to create a method named &ldquo;<code>test_0001_adds a single rule</code>&rdquo; and contents of the <code>it &quot;adds multiple rules with different triggers&quot;</code> block is used to create a method named &ldquo;<code>test_0002_adds multiple rules with different triggers</code>&rdquo;.</p>
 
@@ -1141,45 +1938,60 @@ end
 <pre><code class="ruby">@minibot.triggers.size.must_equal 1
 </code></pre>
 
-<p>Our revised test is now:</p>
+<h3>Before</h3>
 
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
-
-describe Minibot do
-  def setup
-    @minibot = Minibot.new
+<pre><code class="ruby">describe :match do
+  it &quot;matches the trigger &#39;zomg&#39;&quot; do
+    response = @minibot.match &quot;ZOMG! This is cool!&quot;
+    assert_includes @zomg_responses, response
   end
 
-  describe :add do
-    it &quot;adds a single rule&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-
-      @minibot.triggers.size.must_equal 1
-      @minibot.triggers.must_include &quot;zomg&quot;
-    end
-
-    it &quot;adds multiple rules with different triggers&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
-
-      @minibot.triggers.size.must_equal 2
-      @minibot.triggers.must_include &quot;zomg&quot;
-      @minibot.triggers.must_include &quot;wtf&quot;
-    end
-
-    it &quot;adds several rules all on the same trigger&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-
-      @minibot.triggers.size.must_equal 1
-      @minibot.triggers.must_include &quot;zomg&quot;
-    end
+  it &quot;matches the trigger &#39;wtf&#39;&quot; do
+    response = @minibot.match &quot;Wait, this works? WTF?&quot;
+    assert_equal @wtf_response, response
   end
 
-  it &quot;has an empty trigger list by default&quot; do
-    @minibot.triggers.size.must_equal 0
+  it &quot;returns a random response&quot; do
+    sample = 300.times.map { @minibot.match &quot;ZOMG! This is cool!&quot; }
+    responses = Hash[sample.group_by{|i| i }.map{|k,v| [k,v.size]}]
+
+    assert_in_delta 100, responses[@zomg_responses[0]], 33
+    assert_in_delta 100, responses[@zomg_responses[1]], 33
+    assert_in_delta 100, responses[@zomg_responses[2]], 33
+  end
+
+  it &quot;doesn&#39;t match an unknown trigger&quot; do
+    response = @minibot.match &quot;ZOINKS! This doesn&#39;t match!&quot;
+    assert_nil response
+  end
+end
+</code></pre>
+
+<h3>After</h3>
+
+<pre><code class="ruby">describe :match do
+  it &quot;matches the trigger &#39;zomg&#39;&quot; do
+    response = @minibot.match &quot;ZOMG! This is cool!&quot;
+    @zomg_responses.must_include response
+  end
+
+  it &quot;matches the trigger &#39;wtf&#39;&quot; do
+    response = @minibot.match &quot;Wait, this works? WTF?&quot;
+    response.must_equal @wtf_response
+  end
+
+  it &quot;returns a random response&quot; do
+    sample = 300.times.map { @minibot.match &quot;ZOMG! This is cool!&quot; }
+    responses = Hash[sample.group_by{|i| i }.map{|k,v| [k,v.size]}]
+
+    responses[@zomg_responses[0]].must_be_close_to 100, 33
+    responses[@zomg_responses[1]].must_be_close_to 100, 33
+    responses[@zomg_responses[2]].must_be_close_to 100, 33
+  end
+
+  it &quot;doesn&#39;t match an unknown trigger&quot; do
+    response = @minibot.match &quot;ZOINKS! This doesn&#39;t match!&quot;
+    response.must_be_nil
   end
 end
 </code></pre>
@@ -1195,14 +2007,32 @@ end
 <h3>Before</h3>
 
 <pre><code class="ruby">def setup
-  @minibot = Minibot.new
+  @minibot        = Minibot.new
+  @zomg_responses = [ &quot;http://i.imgur.com/49ORL0o.gif&quot;,
+                      &quot;http://i.imgur.com/KqCfQPR.gif&quot;,
+                      &quot;http://i.imgur.com/fc5LmfO.gif&quot; ]
+  @wtf_response   =   &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+  @minibot.add &quot;zomg&quot;, @zomg_responses[0]
+  @minibot.add &quot;zomg&quot;, @zomg_responses[1]
+  @minibot.add &quot;zomg&quot;, @zomg_responses[2]
+  @minibot.add &quot;wtf&quot;,  @wtf_response
 end
 </code></pre>
 
 <h3>After</h3>
 
 <pre><code class="ruby">before do
-  @minibot = Minibot.new
+  @minibot        = Minibot.new
+  @zomg_responses = [ &quot;http://i.imgur.com/49ORL0o.gif&quot;,
+                      &quot;http://i.imgur.com/KqCfQPR.gif&quot;,
+                      &quot;http://i.imgur.com/fc5LmfO.gif&quot; ]
+  @wtf_response   =   &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+  @minibot.add &quot;zomg&quot;, @zomg_responses[0]
+  @minibot.add &quot;zomg&quot;, @zomg_responses[1]
+  @minibot.add &quot;zomg&quot;, @zomg_responses[2]
+  @minibot.add &quot;wtf&quot;,  @wtf_response
 end
 </code></pre>
 
@@ -1237,447 +2067,131 @@ end
 <h3>Before</h3>
 
 <pre><code class="ruby">before do
-  @minibot = Minibot.new
+  @minibot        = Minibot.new
+  @zomg_responses = [ &quot;http://i.imgur.com/49ORL0o.gif&quot;,
+                      &quot;http://i.imgur.com/KqCfQPR.gif&quot;,
+                      &quot;http://i.imgur.com/fc5LmfO.gif&quot; ]
+  @wtf_response   =   &quot;http://i.imgur.com/ULQl7.gif&quot;
+
+  @minibot.add &quot;zomg&quot;, @zomg_responses[0]
+  @minibot.add &quot;zomg&quot;, @zomg_responses[1]
+  @minibot.add &quot;zomg&quot;, @zomg_responses[2]
+  @minibot.add &quot;wtf&quot;,  @wtf_response
 end
 </code></pre>
 
 <h3>After</h3>
 
-<pre><code class="ruby">let(:minibot) { Minibot.new }
+<pre><code class="ruby">let(:minibot)        { Minibot.new }
+let(:zomg_responses) { [ &quot;http://i.imgur.com/49ORL0o.gif&quot;,
+                         &quot;http://i.imgur.com/KqCfQPR.gif&quot;,
+                         &quot;http://i.imgur.com/fc5LmfO.gif&quot; ] }
+let(:wtf_response)   { &quot;http://i.imgur.com/ULQl7.gif&quot; }
+
+before do
+  minibot.add &quot;zomg&quot;, zomg_responses[0]
+  minibot.add &quot;zomg&quot;, zomg_responses[1]
+  minibot.add &quot;zomg&quot;, zomg_responses[2]
+  minibot.add &quot;wtf&quot;,  wtf_response
+end
 </code></pre>
 
-<p>This is one of the advantages (???) <code>let</code> blocks can call other let block, because they just </p>
+<p>One of the advantages of the <code>let</code> blocks is that they can call other let blocks. They can be used within the <code>before</code> and <code>after</code> blocks. And they are lazy evaluated, so if you have an object that is expensive to initialize but rarely used, you don&rsquo;t pay the performance penalty on the tests that don&rsquo;t call it.</p>
 
 <p>The <code>before</code> and <code>after</code> and <code>let</code> blocks are more ways to create a <em>support methods</em> in your tests. The output of the spec DSL are methods using the Minitest API.</p>
 
-<h2>Conclusion</h2>
+<h2>Final Result</h2>
 
 <p>Our revised test is now:</p>
 
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
+<pre><code class="ruby">require &quot;minitest/autorun&quot;
+require &quot;minibot&quot;
 
 describe Minibot do
-  let(:minibot) { Minibot.new }
+  let(:minibot)        { Minibot.new }
+  let(:zomg_responses) { [ &quot;http://i.imgur.com/49ORL0o.gif&quot;,
+                           &quot;http://i.imgur.com/KqCfQPR.gif&quot;,
+                           &quot;http://i.imgur.com/fc5LmfO.gif&quot; ] }
+  let(:wtf_response)   { &quot;http://i.imgur.com/ULQl7.gif&quot; }
 
-  describe :add do
-    it &quot;adds a single rule&quot; do
-      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
+  before do
+    minibot.add &quot;zomg&quot;, zomg_responses[0]
+    minibot.add &quot;zomg&quot;, zomg_responses[1]
+    minibot.add &quot;zomg&quot;, zomg_responses[2]
+    minibot.add &quot;wtf&quot;,  wtf_response
+  end
 
-      minibot.triggers.size.must_equal 1
-      minibot.triggers.must_include &quot;zomg&quot;
+  describe :match do
+    it &quot;matches the trigger &#39;zomg&#39;&quot; do
+      response = minibot.match &quot;ZOMG! This is cool!&quot;
+      zomg_responses.must_include response
     end
 
-    it &quot;adds multiple rules with different triggers&quot; do
-      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
+    it &quot;matches the trigger &#39;wtf&#39;&quot; do
+      response = minibot.match &quot;Wait, this works? WTF?&quot;
+      response.must_equal wtf_response
+    end
 
+    it &quot;returns a random response&quot; do
+      sample = 300.times.map { minibot.match &quot;ZOMG! This is cool!&quot; }
+      responses = Hash[sample.group_by{|i| i }.map{|k,v| [k,v.size]}]
+
+      responses[zomg_responses[0]].must_be_close_to 100, 33
+      responses[zomg_responses[1]].must_be_close_to 100, 33
+      responses[zomg_responses[2]].must_be_close_to 100, 33
+    end
+
+    it &quot;doesn&#39;t match an unknown trigger&quot; do
+      response = minibot.match &quot;ZOINKS! This doesn&#39;t match!&quot;
+      response.must_be_nil
+    end
+  end
+
+  describe :add do
+    it &quot;adds triggers for added rules&quot; do
       minibot.triggers.size.must_equal 2
       minibot.triggers.must_include &quot;zomg&quot;
       minibot.triggers.must_include &quot;wtf&quot;
     end
 
-    it &quot;adds several rules all on the same trigger&quot; do
-      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-
-      minibot.triggers.size.must_equal 1
-      minibot.triggers.must_include &quot;zomg&quot;
+    it &quot;defaults to empty triggers&quot; do
+      minibot = Minibot.new
+      minibot.triggers.size.must_equal 0
+      minibot.triggers.wont_include &quot;zomg&quot;
+      minibot.triggers.wont_include &quot;wtf&quot;
     end
   end
 
-  it &quot;has an empty trigger list by default&quot; do
-    minibot.triggers.size.must_equal 0
+  describe :responses do
+    it &quot;knows responses for &#39;zomg&#39;&quot; do
+      responses = minibot.responses &quot;zomg&quot;
+      responses.size.must_equal 3
+      responses.must_include zomg_responses[0]
+      responses.must_include zomg_responses[1]
+      responses.must_include zomg_responses[2]
+    end
+
+    it &quot;knows responses for &#39;wtf&#39;&quot; do
+      responses = minibot.responses &quot;wtf&quot;
+      responses.size.must_equal 1
+      responses.must_include wtf_response
+    end
+
+    it &quot;returns empty responses for unknown trigger&quot; do
+      responses = minibot.responses &quot;zoinks&quot;
+      responses.size.must_equal 0
+    end
   end
 end
 </code></pre>
 
-<p><code>test/test_minibot.rb</code></p>
-
 <p>You&rsquo;ve now converted your test from the Minitest API to the spec DSL. </p>
+
+<h2>Recap</h2>
 
 <p>You&rsquo;ve created <em>test classes</em> using <strong><code>describe</code> blocks</strong>, created <em>test methods</em> using <strong><code>it</code> blocks</strong>, called <em>assertion methods</em> using <strong>expectations</strong>, and created <em>support methods</em> using <strong><code>before</code></strong> and <strong><code>after</code></strong> and <strong><code>let</code> blocks</strong>.</p>
 
 <p>The spec DSL allows for an english-like/high-level abstraction for creating objects and methods using the Minitest API. Minitest tests can use a combination of the spec DSL and the Minitest API. You can use <code>it</code> blocks with <em>test classes</em>, and <em>assertions</em> with <code>let</code> blocks. The spec DSL generates objects and methods according to the Minitest API that Minitest uses.</p>
-<h1>Chapter 5: Minitest Spec DSL</h1>
-
-<p>In chapter 1 we looked at the Minitest API and using <code>Minitest::Test</code> to create <em>test classes</em> and <em>test methods</em> using <em>assertion methods</em> and <em>support methods</em>. This style of testing may seem primitive to some who prefer using a high level spec DSL instead of an API. Minitest also provides a spec DSL, but to understand the spec DSL you must first understand the Minitest API. So I encourage you to read chapter 1 if you skipped it in your excitement.</p>
-
-<p>Using a spec DSL is also very popular with practitioners of BDD, a variation of TDD. In BDD the spec DSL is used to create tests that can read as a software specification. Minitest&rsquo;s spec DSL is built on top of Minitest&rsquo;s API and provides this abstraction with minimal DIFFERENCE(?).</p>
-
-<p>To demonstrate the spec DSL, let&rsquo;s start with the <code>test_hello_world.rb</code> file created from chapters 1 and 2. We will convert this file from using the Minitest API to the spec DSL. Here are the contents of the file we are starting with:</p>
-
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
-
-class TestMinibot &lt; Minitest::Test
-  def setup
-    @minibot = Minibot.new
-  end
-
-  def test_add_rule
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-
-    assert_equal 1, @minibot.triggers.size
-    assert_includes @minibot.triggers, &quot;zomg&quot;
-  end
-
-  def test_add_rules
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
-
-    assert_equal 2, @minibot.triggers.size
-    assert_includes @minibot.triggers, &quot;zomg&quot;
-    assert_includes @minibot.triggers, &quot;wtf&quot;
-  end
-
-  def test_add_multiple_rules_on_same_trigger
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-    @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-
-    assert_equal 1, @minibot.triggers.size
-    assert_includes @minibot.triggers, &quot;zomg&quot;
-  end
-
-  def test_triggers_is_empty
-    assert_equal 0, @minibot.triggers.size
-  end
-end
-</code></pre>
-
-<p><code>test/test_minibot.rb</code></p>
-
-<h2>The <code>describe</code> Block</h2>
-
-<p>The spec DSL is comprised of a series of nested blocks. Instead of creating a <em>test class</em> explicitly, we can use a <strong><code>describe</code> block</strong> to do this for us. We can replace the line <code>class TestHelloWorld &lt; Minitest::Test</code> with a describe:</p>
-
-<h3>Before</h3>
-
-<pre><code class="ruby">class TestMinibot &lt; Minitest::Test
-</code></pre>
-
-<h3>After</h3>
-
-<pre><code class="ruby">describe Minibot do
-</code></pre>
-
-<p>The <code>describe</code> block can be passed the constant of the class you are testing, or a string, or any object that can be converted to a string, like a symbol. But for the most part a class constant it preferred when possible.</p>
-
-<p>We can use nested <code>describe</code> blocks to narrow the focus of our tests. This focus can be about a specific method under test, or it can be a scenario such as collaborator being valid or invalid, or permissions being present or not present. In our case, most of our <em>test methods</em> are specific to the <code>add</code> method, so let&rsquo;s create a nested <code>describe</code> block that is focused on that method:</p>
-
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
-
-describe Minibot do
-  def setup
-    @minibot = Minibot.new
-  end
-
-  describe :add do
-    def test_add_rule
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-
-      assert_equal 1, @minibot.triggers.size
-      assert_includes @minibot.triggers, &quot;zomg&quot;
-    end
-
-    def test_add_rules
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
-
-      assert_equal 2, @minibot.triggers.size
-      assert_includes @minibot.triggers, &quot;zomg&quot;
-      assert_includes @minibot.triggers, &quot;wtf&quot;
-    end
-
-    def test_add_multiple_rules_on_same_trigger
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-
-      assert_equal 1, @minibot.triggers.size
-      assert_includes @minibot.triggers, &quot;zomg&quot;
-    end
-  end
-
-  def test_triggers_is_empty
-    assert_equal 0, @minibot.triggers.size
-  end
-end
-</code></pre>
-
-<p><code>test/test_minibot.rb</code></p>
-
-<p>Under the covers Minitest is creating a <em>test class</em> with the contents of each <code>describe</code> block. The <em>test class</em> inherits from the <code>describe</code> block it is nested under, or the default <code>Minitest::Spec</code> class if it is not nested. So the <em>test class</em> created by the <code>describe :add</code> block inherits from the <em>test class</em> created by the <code>describe Minibot</code> block, which inherits from <code>Minitest::Spec</code> (which inherits from <code>Minitest::Test</code>).</p>
-
-<p>The <code>describe</code> block is just another way to create a <em>test class</em> in your tests. The output of the spec DSL are objects using the Minitest API.</p>
-
-<h2>The <code>it</code> Block</h2>
-
-<p>You can create <em>test methods</em> using the spec DSL, just as you can create <em>test classes</em>. <em>Test methods</em> are created using the <strong><code>it</code> block</strong>, which must be nested inside of a <code>describe</code> block, the same way a <em>test method</em> must be located inside a <em>test class</em>. The <code>it</code> block takes a string that can provide more descriptive description (?!?) than the name of the <em>test method</em>:</p>
-
-<h3>Before</h3>
-
-<pre><code class="ruby">def test_add_rule
-</code></pre>
-
-<pre><code class="ruby">def test_add_rules
-</code></pre>
-
-<pre><code class="ruby">def test_add_multiple_rules_on_same_trigger
-</code></pre>
-
-<h3>After</h3>
-
-<pre><code class="ruby">it &quot;adds a single rule&quot; do
-</code></pre>
-
-<pre><code class="ruby">it &quot;adds multiple rules with different triggers&quot; do
-</code></pre>
-
-<pre><code class="ruby">it &quot;adds several rules all on the same trigger&quot; do
-</code></pre>
-
-<p>Our revised test is now:</p>
-
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
-
-describe Minibot do
-  def setup
-    @minibot = Minibot.new
-  end
-
-  describe :add do
-    it &quot;adds a single rule&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-
-      assert_equal 1, @minibot.triggers.size
-      assert_includes @minibot.triggers, &quot;zomg&quot;
-    end
-
-    it &quot;adds multiple rules with different triggers&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
-
-      assert_equal 2, @minibot.triggers.size
-      assert_includes @minibot.triggers, &quot;zomg&quot;
-      assert_includes @minibot.triggers, &quot;wtf&quot;
-    end
-
-    it &quot;adds several rules all on the same trigger&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-
-      assert_equal 1, @minibot.triggers.size
-      assert_includes @minibot.triggers, &quot;zomg&quot;
-    end
-  end
-
-  it &quot;has an empty trigger list by default&quot; do
-    assert_equal 0, @minibot.triggers.size
-  end
-end
-</code></pre>
-
-<p><code>test/test_minibot.rb</code></p>
-
-<p>Under the covers Minitest is creating a <em>test method</em> that uses the string provided to the <code>it</code> block. So the contents of the <code>it &quot;adds a single rule&quot;</code> block is used to create a method named &ldquo;<code>test_0001_adds a single rule</code>&rdquo; and contents of the <code>it &quot;adds multiple rules with different triggers&quot;</code> block is used to create a method named &ldquo;<code>test_0002_adds multiple rules with different triggers</code>&rdquo;.</p>
-
-<p>The <code>it</code> block is just another way to create a <em>test methods</em> in your tests. The output of the spec DSL are methods using the Minitest API.</p>
-
-<h2>Expectations</h2>
-
-<p>Instead of passing calculated values to the main <code>assert</code> method, or using special case assertions such as <code>assert_equal</code> or <code>assert_match</code>, we can use call the assertions using an alternate API(?) called <strong>expectations</strong>.</p>
-
-<p>The common order of arguments for assertions is expected, then actual. Consider the argument names for the <code>assert_equal</code> method as defined in Minitest:</p>
-
-<pre><code>def assert_equal exp, act, msg = nil
-  msg = message(msg, &quot;&quot;) { diff exp, act }
-  assert exp == act, msg
-end
-</code></pre>
-
-<p>In the assertion method the position of the arguments is important, but expectations are called on the actual value eliminating the need to remember the positioning. In our tests, the <code>assert_equal</code> assertion:</p>
-
-<pre><code class="ruby">assert_equal 1, @minibot.triggers.size
-</code></pre>
-
-<p>Can be written with the <code>must_equal</code> expectation:</p>
-
-<pre><code class="ruby">@minibot.triggers.size.must_equal 1
-</code></pre>
-
-<p>Our revised test is now:</p>
-
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
-
-describe Minibot do
-  def setup
-    @minibot = Minibot.new
-  end
-
-  describe :add do
-    it &quot;adds a single rule&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-
-      @minibot.triggers.size.must_equal 1
-      @minibot.triggers.must_include &quot;zomg&quot;
-    end
-
-    it &quot;adds multiple rules with different triggers&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
-
-      @minibot.triggers.size.must_equal 2
-      @minibot.triggers.must_include &quot;zomg&quot;
-      @minibot.triggers.must_include &quot;wtf&quot;
-    end
-
-    it &quot;adds several rules all on the same trigger&quot; do
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-      @minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-
-      @minibot.triggers.size.must_equal 1
-      @minibot.triggers.must_include &quot;zomg&quot;
-    end
-  end
-
-  it &quot;has an empty trigger list by default&quot; do
-    @minibot.triggers.size.must_equal 0
-  end
-end
-</code></pre>
-
-<p><code>test/test_minibot.rb</code></p>
-
-<p>Under the covers Minitest is calling <em>assertion methods</em> from the <em>expectations</em>. <em>Expectations</em> are just another way to call <em>assertion methods</em> in your tests. The output of the spec DSL are methods using the Minitest API.</p>
-
-<h2>The <code>before</code> and <code>after</code> Blocks</h2>
-
-<p>The spec DSL has analogs for the <code>setup</code> and <code>teardown</code> support methods. They are expressed as <code>before</code> and <code>after</code> blocks. The contents of the <code>setup</code> and <code>teardown</code> support methods will transfer directly to the <code>before</code> and <code>after</code> blocks.</p>
-
-<h3>Before</h3>
-
-<pre><code class="ruby">def setup
-  @minibot = Minibot.new
-end
-</code></pre>
-
-<h3>After</h3>
-
-<pre><code class="ruby">before do
-  @minibot = Minibot.new
-end
-</code></pre>
-
-<h2>The <code>let</code> Block</h2>
-
-<p>Since the test was only using the <code>setup</code> and <code>teardown</code> methods to initialize an instance variable in our <em>test class</em>, the spec DSL provides a way to declare this outside of the the <code>before</code> and <code>after</code> blocks. This is the <code>let</code> block.</p>
-
-<p>The <code>let</code> block will create a support method that returns the result of the given block. And it will execute the block only once per test. So while it can be called several times in a test the block will only be executed the first time. And unlike the <code>setup</code> method or the <code>before</code> block it is lazy evaluated so if it is never called the block will never be invoked.</p>
-
-<p>Under the covers the <code>let</code> block Minitest is creates a memoized accessor method that clears the value between tests. So the following test-style code:</p>
-
-<pre><code class="ruby">def setup
-  @foo = nil
-end
-
-def foo
-  @foo ||= Foo.new
-end
-
-def teardown
-  @foo = nil
-end
-</code></pre>
-
-<p>Can be replaced with the spec-style code:</p>
-
-<pre><code class="ruby">let(:foo) { Foo.new }
-</code></pre>
-
-<p>We can replace our use of the <code>before</code> block with a <code>let</code> block and then update all instances of the instance variable with calls to the accessor method within the test methods.</p>
-
-<h3>Before</h3>
-
-<pre><code class="ruby">before do
-  @minibot = Minibot.new
-end
-</code></pre>
-
-<h3>After</h3>
-
-<pre><code class="ruby">let(:minibot) { Minibot.new }
-</code></pre>
-
-<p>This is one of the advantages (???) <code>let</code> blocks can call other let block, because they just </p>
-
-<p>The <code>before</code> and <code>after</code> and <code>let</code> blocks are more ways to create a <em>support methods</em> in your tests. The output of the spec DSL are methods using the Minitest API.</p>
-
-<h2>Conclusion</h2>
-
-<p>Our revised test is now:</p>
-
-<pre><code class="ruby">gem &quot;minitest&quot;
-require &quot;minitest/autorun&quot;
-
-describe Minibot do
-  let(:minibot) { Minibot.new }
-
-  describe :add do
-    it &quot;adds a single rule&quot; do
-      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-
-      minibot.triggers.size.must_equal 1
-      minibot.triggers.must_include &quot;zomg&quot;
-    end
-
-    it &quot;adds multiple rules with different triggers&quot; do
-      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      minibot.add &quot;wtf&quot;, &quot;http://i.imgur.com/ULQl7.gif&quot;
-
-      minibot.triggers.size.must_equal 2
-      minibot.triggers.must_include &quot;zomg&quot;
-      minibot.triggers.must_include &quot;wtf&quot;
-    end
-
-    it &quot;adds several rules all on the same trigger&quot; do
-      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/49ORL0o.gif&quot;
-      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/KqCfQPR.gif&quot;
-      minibot.add &quot;zomg&quot;, &quot;http://i.imgur.com/fc5LmfO.gif&quot;
-
-      minibot.triggers.size.must_equal 1
-      minibot.triggers.must_include &quot;zomg&quot;
-    end
-  end
-
-  it &quot;has an empty trigger list by default&quot; do
-    minibot.triggers.size.must_equal 0
-  end
-end
-</code></pre>
-
-<p><code>test/test_minibot.rb</code></p>
-
-<p>You&rsquo;ve now converted your test from the Minitest API to the spec DSL. </p>
-
-<p>You&rsquo;ve created <em>test classes</em> using <strong><code>describe</code> blocks</strong>, created <em>test methods</em> using <strong><code>it</code> blocks</strong>, called <em>assertion methods</em> using <strong>expectations</strong>, and created <em>support methods</em> using <strong><code>before</code></strong> and <strong><code>after</code></strong> and <strong><code>let</code> blocks</strong>.</p>
-
-<p>The spec DSL allows for an english-like/high-level abstraction for creating objects and methods using the Minitest API. Minitest tests can use a combination of the spec DSL and the Minitest API. You can use <code>it</code> blocks with <em>test classes</em>, and <em>assertions</em> with <code>let</code> blocks. The spec DSL generates objects and methods according to the Minitest API that Minitest uses.</p>
-<div class="page_break"></div>
-<h1>Assertions</h1>
-
-<p>Go here.</p>
-<div class="page_break"></div>
-<h1>API Changes</h1>
-
-<p>Info here.</p>
 <div class="page_break"></div>
 <small><pre>
 Creative Commons Legal Code
